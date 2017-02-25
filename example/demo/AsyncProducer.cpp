@@ -163,9 +163,10 @@ int main(int argc, char *argv[]) {
     TimeCount tcTotal;
     tcTotal.begin();
 
-    SampleSendCallback* ptrSendCallback = new SampleSendCallback();
     for (int i = 0; i < count; i++)
     {
+	    SampleSendCallback* ptrSendCallback = new SampleSendCallback();
+
         try
         {
             snprintf(key, sizeof(key), "KEY_%d_%d", nNow, i);
