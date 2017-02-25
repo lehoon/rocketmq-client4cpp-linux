@@ -48,7 +48,7 @@ namespace rmq
 	class MQException;
 
     /**
-    * Push·½Ê½µÄConsumerÊµÏÖ
+    * Pushæ–¹å¼çš„Consumerå®ç°
     *
     */
     class DefaultMQPushConsumerImpl : public  MQConsumerInner
@@ -116,19 +116,19 @@ namespace rmq
 
     private:
         /**
-        * Í¨¹ıTag¹ıÂËÊ±£¬»á´æÔÚoffset²»×¼È·µÄÇé¿ö£¬ĞèÒª¾ÀÕı
+        * é€šè¿‡Tagè¿‡æ»¤æ—¶ï¼Œä¼šå­˜åœ¨offsetä¸å‡†ç¡®çš„æƒ…å†µï¼Œéœ€è¦çº æ­£
         */
         void correctTagsOffset(PullRequest& pullRequest) ;
 
         void pullMessage(PullRequest* pPullRequest);
 
         /**
-        * Á¢¿ÌÖ´ĞĞÕâ¸öPullRequest
+        * ç«‹åˆ»æ‰§è¡Œè¿™ä¸ªPullRequest
         */
         void executePullRequestImmediately(PullRequest* pullRequest);
 
         /**
-        * ÉÔºóÔÙÖ´ĞĞÕâ¸öPullRequest
+        * ç¨åå†æ‰§è¡Œè¿™ä¸ªPullRequest
         */
         void executePullRequestLater(PullRequest* pullRequest, long timeDelay);
 		void executeTaskLater(kpr::TimerHandler* handler, long timeDelay);
@@ -139,28 +139,28 @@ namespace rmq
         void updateTopicSubscribeInfoWhenSubscriptionChanged();
 
     private:
-        static long long s_PullTimeDelayMillsWhenException;// À­ÏûÏ¢Òì³£Ê±£¬ÑÓ³ÙÒ»¶ÎÊ±¼äÔÙÀ­
+        static long long s_PullTimeDelayMillsWhenException;// æ‹‰æ¶ˆæ¯å¼‚å¸¸æ—¶ï¼Œå»¶è¿Ÿä¸€æ®µæ—¶é—´å†æ‹‰
         static long long s_PullTimeDelayMillsWhenFlowControl;
         static long long s_PullTimeDelayMillsWhenSuspend;
 
-        static long long s_BrokerSuspendMaxTimeMillis;// ³¤ÂÖÑ¯Ä£Ê½£¬ConsumerÁ¬½ÓÔÚBroker¹ÒÆğ×î³¤Ê±¼ä
-        static long long s_ConsumerTimeoutMillisWhenSuspend;// ³¤ÂÖÑ¯Ä£Ê½£¬Consumer³¬Ê±Ê±¼ä£¨±ØĞëÒª´óÓÚbrokerSuspendMaxTimeMillis£©
+        static long long s_BrokerSuspendMaxTimeMillis;// é•¿è½®è¯¢æ¨¡å¼ï¼ŒConsumerè¿æ¥åœ¨BrokeræŒ‚èµ·æœ€é•¿æ—¶é—´
+        static long long s_ConsumerTimeoutMillisWhenSuspend;// é•¿è½®è¯¢æ¨¡å¼ï¼ŒConsumerè¶…æ—¶æ—¶é—´ï¼ˆå¿…é¡»è¦å¤§äºbrokerSuspendMaxTimeMillisï¼‰
 
         long long flowControlTimes1;
         long long flowControlTimes2;
         ServiceState m_serviceState;
-        volatile bool m_pause;// ÊÇ·ñÔİÍ£½ÓÊÕÏûÏ¢ suspend/resume
-        bool m_consumeOrderly;// ÊÇ·ñË³ĞòÏû·ÑÏûÏ¢
+        volatile bool m_pause;// æ˜¯å¦æš‚åœæ¥æ”¶æ¶ˆæ¯ suspend/resume
+        bool m_consumeOrderly;// æ˜¯å¦é¡ºåºæ¶ˆè´¹æ¶ˆæ¯
         DefaultMQPushConsumer* m_pDefaultMQPushConsumer;
         MQClientFactory* m_pMQClientFactory;
         PullAPIWrapper* m_pPullAPIWrapper;
-        MessageListener* m_pMessageListenerInner;// Ïû·ÑÏûÏ¢¼àÌıÆ÷
-        OffsetStore* m_pOffsetStore;// Ïû·Ñ½ø¶È´æ´¢
-        RebalanceImpl* m_pRebalanceImpl;// RebalanceÊµÏÖ
+        MessageListener* m_pMessageListenerInner;// æ¶ˆè´¹æ¶ˆæ¯ç›‘å¬å™¨
+        OffsetStore* m_pOffsetStore;// æ¶ˆè´¹è¿›åº¦å­˜å‚¨
+        RebalanceImpl* m_pRebalanceImpl;// Rebalanceå®ç°
         ConsumerStatManager* m_pConsumerStatManager;
-        ConsumeMessageService* m_pConsumeMessageService;// Ïû·ÑÏûÏ¢·şÎñ
+        ConsumeMessageService* m_pConsumeMessageService;// æ¶ˆè´¹æ¶ˆæ¯æœåŠ¡
 
-        std::list<ConsumeMessageHook*> m_hookList;//Ïû·ÑÃ¿ÌõÏûÏ¢»á»Øµ÷
+        std::list<ConsumeMessageHook*> m_hookList;//æ¶ˆè´¹æ¯æ¡æ¶ˆæ¯ä¼šå›è°ƒ
         friend class PullMessageService;
         friend class RebalancePushImpl;
         friend class DefaultMQPushConsumerImplCallback;

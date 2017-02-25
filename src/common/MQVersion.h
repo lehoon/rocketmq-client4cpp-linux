@@ -22,7 +22,7 @@
 namespace rmq
 {
     /**
-    * 定义各个版本信息
+    * 瀹氫箟鍚勪釜鐗堟湰淇℃伅
     *
     */
     class MQVersion

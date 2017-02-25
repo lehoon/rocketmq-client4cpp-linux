@@ -26,11 +26,11 @@ namespace rmq
     {
         long long brokerOffset;
         long long consumerOffset;
-        long long lastTimestamp;// Ïû·ÑµÄ×îºóÒ»ÌõÏûÏ¢¶ÔÓ¦µÄÊ±¼ä´Á
+        long long lastTimestamp;// æ¶ˆè´¹çš„æœ€åä¸€æ¡æ¶ˆæ¯å¯¹åº”çš„æ—¶é—´æˆ³
     } OffsetWrapper;
 
     /**
-    * ConsumerÏû·Ñ½ø¶È
+    * Consumeræ¶ˆè´¹è¿›åº¦
     *
     * @author kangliqiang<kangliq@163.com>
     */

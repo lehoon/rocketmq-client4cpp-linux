@@ -43,7 +43,7 @@ namespace rmq
     const std::string yyyyMMddHHmmss = "yyyyMMddHHmmss";
 
     /**
-    * ¸÷ÖÖ·½·¨´óÔÓ»â
+    * å„ç§æ–¹æ³•å¤§æ‚çƒ©
     *
     */
     class UtilAll

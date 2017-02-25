@@ -194,7 +194,7 @@ void RebalanceImpl::lockAll()
                     m_pMQClientFactory->getMQClientAPIImpl()->lockBatchMQ(
                         findBrokerResult.brokerAddr, requestBody, 1000);
 
-                // Ëø¶¨³É¹¦µÄ¶ÓÁĞ
+                // é”å®šæˆåŠŸçš„é˜Ÿåˆ—
                 std::set<MessageQueue>::iterator its = lockOKMQSet.begin();
                 for (; its != lockOKMQSet.end(); its++)
                 {
@@ -216,7 +216,7 @@ void RebalanceImpl::lockAll()
                     }
                 }
 
-                // Ëø¶¨Ê§°ÜµÄ¶ÓÁĞ
+                // é”å®šå¤±è´¥çš„é˜Ÿåˆ—
                 its = mqs.begin();
                 for (; its != mqs.end(); its++)
                 {
@@ -400,18 +400,18 @@ void RebalanceImpl::rebalanceByTopic(const std::string& topic)
                 std::set<MessageQueue> mqSet = it->second;
                 std::set<MessageQueue>::iterator its = mqSet.begin();
 
-                //set ±¾ÉíÒÑ¾­ÅÅĞò
+                //set æœ¬èº«å·²ç»æ’åº
                 for (; its != mqSet.end(); its++)
                 {
                     mqAll.push_back(*its);
                 }
 
-                // ÅÅĞò
+                // æ’åº
                 cidAll.sort();
 
                 AllocateMessageQueueStrategy* strategy = m_pAllocateMessageQueueStrategy;
 
-                // Ö´ĞĞ·ÖÅäËã·¨
+                // æ‰§è¡Œåˆ†é…ç®—æ³•
                 std::vector<MessageQueue>* allocateResult = NULL;
                 try
                 {
@@ -436,7 +436,7 @@ void RebalanceImpl::rebalanceByTopic(const std::string& topic)
                     delete allocateResult;
                 }
 
-                // ¸üĞÂ±¾µØ¶ÓÁĞ
+                // æ›´æ–°æœ¬åœ°é˜Ÿåˆ—
                 bool changed = updateProcessQueueTableInRebalance(topic, allocateResultSet);
                 if (changed)
                 {
@@ -481,7 +481,7 @@ bool RebalanceImpl::updateProcessQueueTableInRebalance(const std::string& topic,
 	RMQ_DEBUG("updateProcessQueueTableInRebalance begin, topic={%s}", topic.c_str());
     bool changed = false;
 
-    // ½«¶àÓàµÄ¶ÓÁĞÉ¾³ı
+    // å°†å¤šä½™çš„é˜Ÿåˆ—åˆ é™¤
     {
         kpr::ScopedLock<kpr::Mutex> lock(m_processQueueTableLock);
         std::map<MessageQueue, ProcessQueue*>::iterator it = m_processQueueTable.begin();
@@ -495,7 +495,7 @@ bool RebalanceImpl::updateProcessQueueTableInRebalance(const std::string& topic,
                 std::set<MessageQueue>::iterator itMq = mqSet.find(mq);
                 if (itMq == mqSet.end())
                 {
-                	//TODO ÔõÃ´É¾³ıProcessQueue£¿
+                	//TODO æ€ä¹ˆåˆ é™¤ProcessQueueï¼Ÿ
                     pq->setDropped(true);
         			if (this->removeUnnecessaryMessageQueue(mq, *pq))
         			{
@@ -531,7 +531,7 @@ bool RebalanceImpl::updateProcessQueueTableInRebalance(const std::string& topic,
         }
     }
 
-    // Ôö¼ÓĞÂÔöµÄ¶ÓÁĞ
+    // å¢åŠ æ–°å¢çš„é˜Ÿåˆ—
     std::list<PullRequest*> pullRequestList;
     std::set<MessageQueue>::iterator its = mqSet.begin();
     for (; its != mqSet.end(); its++)
@@ -549,13 +549,13 @@ bool RebalanceImpl::updateProcessQueueTableInRebalance(const std::string& topic,
 
         if (!find)
         {
-        	//todo: memleak,´Ë´¦ÉêÇëÃ»ÓĞÊÍ·Å£¬ÓĞÄÚ´æĞ¹Â¶
+        	//todo: memleak,æ­¤å¤„ç”³è¯·æ²¡æœ‰é‡Šæ”¾ï¼Œæœ‰å†…å­˜æ³„éœ²
             PullRequest* pullRequest = new PullRequest();
             pullRequest->setConsumerGroup(m_consumerGroup);
             pullRequest->setMessageQueue(mq);
             pullRequest->setProcessQueue(new ProcessQueue());//todo: memleak
 
-            // Õâ¸öĞèÒª¸ù¾İ²ßÂÔÀ´ÉèÖÃ
+            // è¿™ä¸ªéœ€è¦æ ¹æ®ç­–ç•¥æ¥è®¾ç½®
             long long nextOffset = computePullFromWhere(mq);
             if (nextOffset >= 0)
             {
@@ -563,7 +563,7 @@ bool RebalanceImpl::updateProcessQueueTableInRebalance(const std::string& topic,
                 pullRequestList.push_back(pullRequest);
                 changed = true;
 
-				// ¼ÓÈëĞÂ¶ÓÁĞ
+				// åŠ å…¥æ–°é˜Ÿåˆ—
 				{
 	                kpr::ScopedLock<kpr::Mutex> lock(m_processQueueTableLock);
 	                m_processQueueTable[mq] = pullRequest->getProcessQueue();
@@ -573,7 +573,7 @@ bool RebalanceImpl::updateProcessQueueTableInRebalance(const std::string& topic,
             }
             else
             {
-                // µÈ´ıRebalance×öÖØÊÔ
+                // ç­‰å¾…Rebalanceåšé‡è¯•
                 RMQ_WARN("doRebalance, {%s}, add new mq failed, {%s}",
                 	m_consumerGroup.c_str(), mq.toString().c_str());
             }

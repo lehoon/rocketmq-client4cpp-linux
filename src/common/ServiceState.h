@@ -20,25 +20,25 @@
 namespace rmq
 {
     /**
-     * 服务对象的状态，通常需要start，shutdown
+     * 鏈嶅姟瀵硅薄鐨勭姸鎬侊紝閫氬父闇�瑕乻tart锛宻hutdown
      *
      */
     enum ServiceState
     {
         /**
-        * 服务对象刚刚创建，但是未启动
+        * 鏈嶅姟瀵硅薄鍒氬垰鍒涘缓锛屼絾鏄湭鍚姩
         */
         CREATE_JUST,
         /**
-        * 服务启动成功
+        * 鏈嶅姟鍚姩鎴愬姛
         */
         RUNNING,
         /**
-        * 服务已经关闭
+        * 鏈嶅姟宸茬粡鍏抽棴
         */
         SHUTDOWN_ALREADY,
         /**
-        * 服务启动失败
+        * 鏈嶅姟鍚姩澶辫触
         */
         START_FAILED
     };

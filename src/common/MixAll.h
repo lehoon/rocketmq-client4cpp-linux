@@ -34,7 +34,7 @@
 namespace rmq
 {
     /**
-     * ¸÷ÖÖ·½·¨´óÔÓ»â
+     * å„ç§æ–¹æ³•å¤§æ‚çƒ©
      *
      */
     class MixAll
@@ -48,9 +48,9 @@ namespace rmq
         static const std::string TOOLS_CONSUMER_GROUP;
         static const std::string CLIENT_INNER_PRODUCER_GROUP;
         static const std::string SELF_TEST_TOPIC;
-        // ÎªÃ¿¸öConsumer Group½¨Á¢Ò»¸öÄ¬ÈÏµÄTopic£¬Ç°×º + GroupName£¬ÓÃÀ´±£´æ´¦ÀíÊ§°ÜĞèÒªÖØÊÔµÄÏûÏ¢
+        // ä¸ºæ¯ä¸ªConsumer Groupå»ºç«‹ä¸€ä¸ªé»˜è®¤çš„Topicï¼Œå‰ç¼€ + GroupNameï¼Œç”¨æ¥ä¿å­˜å¤„ç†å¤±è´¥éœ€è¦é‡è¯•çš„æ¶ˆæ¯
         static const std::string RETRY_GROUP_TOPIC_PREFIX;
-        // ÎªÃ¿¸öConsumer Group½¨Á¢Ò»¸öÄ¬ÈÏµÄTopic£¬Ç°×º + GroupName£¬ÓÃÀ´±£´æÖØÊÔ¶à´Î¶¼Ê§°Ü£¬½ÓÏÂÀ´²»ÔÙÖØÊÔµÄÏûÏ¢
+        // ä¸ºæ¯ä¸ªConsumer Groupå»ºç«‹ä¸€ä¸ªé»˜è®¤çš„Topicï¼Œå‰ç¼€ + GroupNameï¼Œç”¨æ¥ä¿å­˜é‡è¯•å¤šæ¬¡éƒ½å¤±è´¥ï¼Œæ¥ä¸‹æ¥ä¸å†é‡è¯•çš„æ¶ˆæ¯
         static const std::string DLQ_GROUP_TOPIC_PREFIX;
         static const std::string NAMESRV_ADDR_ENV;
         static const std::string ROCKETMQ_HOME_ENV;

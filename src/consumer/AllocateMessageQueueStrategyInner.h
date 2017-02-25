@@ -26,21 +26,21 @@
 namespace rmq
 {
     /**
-    * Consumer¶ÓÁĞ×Ô¶¯·ÖÅä²ßÂÔ,Æ½¾ù·ÖÅä¶ÓÁĞËã·¨(°´Ò³·ÖÅä)
+    * Consumeré˜Ÿåˆ—è‡ªåŠ¨åˆ†é…ç­–ç•¥,å¹³å‡åˆ†é…é˜Ÿåˆ—ç®—æ³•(æŒ‰é¡µåˆ†é…)
     *
     */
     class AllocateMessageQueueAveragely : public AllocateMessageQueueStrategy
     {
         /**
-        * ¸øµ±Ç°µÄConsumerId·ÖÅä¶ÓÁĞ
+        * ç»™å½“å‰çš„ConsumerIdåˆ†é…é˜Ÿåˆ—
         *
         * @param currentCID
-        *            µ±Ç°ConsumerId
+        *            å½“å‰ConsumerId
         * @param mqAll
-        *            µ±Ç°TopicµÄËùÓĞ¶ÓÁĞ¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
+        *            å½“å‰Topicçš„æ‰€æœ‰é˜Ÿåˆ—é›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
         * @param cidAll
-        *            µ±Ç°¶©ÔÄ×éµÄËùÓĞConsumer¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
-        * @return ·ÖÅä½á¹û£¬ÎŞÖØ¸´Êı¾İ
+        *            å½“å‰è®¢é˜…ç»„çš„æ‰€æœ‰Consumeré›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
+        * @return åˆ†é…ç»“æœï¼Œæ— é‡å¤æ•°æ®
         */
     public:
         virtual ~AllocateMessageQueueAveragely() {}
@@ -78,7 +78,7 @@ namespace rmq
                 }
             }
 
-            // ²»´æÔÚ´ËConsumerId ,Ö±½Ó·µ»Ø
+            // ä¸å­˜åœ¨æ­¤ConsumerId ,ç›´æ¥è¿”å›
             if (index == -1)
             {
 				RMQ_ERROR("[BUG] ConsumerGroup: {%s} The consumerId: {%s} not in cidAll: {%s}", //
@@ -114,21 +114,21 @@ namespace rmq
 
 
 	/**
-    * Consumer¶ÓÁĞ×Ô¶¯·ÖÅä²ßÂÔ,Æ½¾ù·ÖÅä¶ÓÁĞËã·¨(»·ĞÎ·ÖÅä)
+    * Consumeré˜Ÿåˆ—è‡ªåŠ¨åˆ†é…ç­–ç•¥,å¹³å‡åˆ†é…é˜Ÿåˆ—ç®—æ³•(ç¯å½¢åˆ†é…)
     *
     */
     class AllocateMessageQueueAveragelyByCircle : public AllocateMessageQueueStrategy
     {
         /**
-        * ¸øµ±Ç°µÄConsumerId·ÖÅä¶ÓÁĞ
+        * ç»™å½“å‰çš„ConsumerIdåˆ†é…é˜Ÿåˆ—
         *
         * @param currentCID
-        *            µ±Ç°ConsumerId
+        *            å½“å‰ConsumerId
         * @param mqAll
-        *            µ±Ç°TopicµÄËùÓĞ¶ÓÁĞ¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
+        *            å½“å‰Topicçš„æ‰€æœ‰é˜Ÿåˆ—é›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
         * @param cidAll
-        *            µ±Ç°¶©ÔÄ×éµÄËùÓĞConsumer¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
-        * @return ·ÖÅä½á¹û£¬ÎŞÖØ¸´Êı¾İ
+        *            å½“å‰è®¢é˜…ç»„çš„æ‰€æœ‰Consumeré›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
+        * @return åˆ†é…ç»“æœï¼Œæ— é‡å¤æ•°æ®
         */
     public:
         virtual ~AllocateMessageQueueAveragelyByCircle() {}
@@ -164,7 +164,7 @@ namespace rmq
                 }
             }
 
-            // ²»´æÔÚ´ËConsumerId ,Ö±½Ó·µ»Ø
+            // ä¸å­˜åœ¨æ­¤ConsumerId ,ç›´æ¥è¿”å›
             if (index == -1)
             {
 				RMQ_ERROR("[BUG] ConsumerGroup: {%s} The consumerId: {%s} not in cidAll: {%s}", //
@@ -193,21 +193,21 @@ namespace rmq
     };
 
     /**
-    * Consumer¶ÓÁĞ×Ô¶¯·ÖÅä²ßÂÔ,°´ÕÕÅäÖÃÀ´·ÖÅä¶ÓÁĞ£¬½¨ÒéÓ¦ÓÃÊ¹ÓÃSpringÀ´³õÊ¼»¯
+    * Consumeré˜Ÿåˆ—è‡ªåŠ¨åˆ†é…ç­–ç•¥,æŒ‰ç…§é…ç½®æ¥åˆ†é…é˜Ÿåˆ—ï¼Œå»ºè®®åº”ç”¨ä½¿ç”¨Springæ¥åˆå§‹åŒ–
     *
     */
     class AllocateMessageQueueByConfig : public AllocateMessageQueueStrategy
     {
         /**
-        * ¸øµ±Ç°µÄConsumerId·ÖÅä¶ÓÁĞ
+        * ç»™å½“å‰çš„ConsumerIdåˆ†é…é˜Ÿåˆ—
         *
         * @param currentCID
-        *            µ±Ç°ConsumerId
+        *            å½“å‰ConsumerId
         * @param mqAll
-        *            µ±Ç°TopicµÄËùÓĞ¶ÓÁĞ¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
+        *            å½“å‰Topicçš„æ‰€æœ‰é˜Ÿåˆ—é›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
         * @param cidAll
-        *            µ±Ç°¶©ÔÄ×éµÄËùÓĞConsumer¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
-        * @return ·ÖÅä½á¹û£¬ÎŞÖØ¸´Êı¾İ
+        *            å½“å‰è®¢é˜…ç»„çš„æ‰€æœ‰Consumeré›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
+        * @return åˆ†é…ç»“æœï¼Œæ— é‡å¤æ•°æ®
         */
     public:
         virtual ~AllocateMessageQueueByConfig() {}
@@ -227,21 +227,21 @@ namespace rmq
     };
 
     /**
-    * Consumer¶ÓÁĞ×Ô¶¯·ÖÅä²ßÂÔ,°´ÕÕ»ú·¿À´·ÖÅä¶ÓÁĞ£¬ÀıÈçÖ§¸¶±¦Âß¼­»ú·¿
+    * Consumeré˜Ÿåˆ—è‡ªåŠ¨åˆ†é…ç­–ç•¥,æŒ‰ç…§æœºæˆ¿æ¥åˆ†é…é˜Ÿåˆ—ï¼Œä¾‹å¦‚æ”¯ä»˜å®é€»è¾‘æœºæˆ¿
     *
     */
     class AllocateMessageQueueByMachineRoom : public AllocateMessageQueueStrategy
     {
         /**
-        * ¸øµ±Ç°µÄConsumerId·ÖÅä¶ÓÁĞ
+        * ç»™å½“å‰çš„ConsumerIdåˆ†é…é˜Ÿåˆ—
         *
         * @param currentCID
-        *            µ±Ç°ConsumerId
+        *            å½“å‰ConsumerId
         * @param mqAll
-        *            µ±Ç°TopicµÄËùÓĞ¶ÓÁĞ¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
+        *            å½“å‰Topicçš„æ‰€æœ‰é˜Ÿåˆ—é›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
         * @param cidAll
-        *            µ±Ç°¶©ÔÄ×éµÄËùÓĞConsumer¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
-        * @return ·ÖÅä½á¹û£¬ÎŞÖØ¸´Êı¾İ
+        *            å½“å‰è®¢é˜…ç»„çš„æ‰€æœ‰Consumeré›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
+        * @return åˆ†é…ç»“æœï¼Œæ— é‡å¤æ•°æ®
         */
     public:
         virtual ~AllocateMessageQueueByMachineRoom() {}

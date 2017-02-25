@@ -22,7 +22,7 @@
 namespace rmq
 {
 	/**
-	 * ProducerÓëConsumerµÄ¹«¹²ÅäÖÃ
+	 * Producerä¸Consumerçš„å…¬å…±é…ç½®
 	 *
 	 * @author kangliqiang <kangliq@163.com>
 	 * @since 2013-10-31

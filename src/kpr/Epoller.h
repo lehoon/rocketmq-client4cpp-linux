@@ -10,78 +10,78 @@ namespace kpr
 /////////////////////////////////////////////////
 /**
  * @file  epoller.h
- * @brief  epoll²Ù×÷·â×°Àà
+ * @brief  epollæ“ä½œå°è£…ç±»
  *
  * @author  jarodruan@tencent.com
  */
 /////////////////////////////////////////////////
 
 /**
- * @brief epoller²Ù×÷Àà£¬ÒÑ¾­Ä¬ÈÏ²ÉÓÃÁËEPOLLET·½Ê½×ö´¥·¢
+ * @brief epolleræ“ä½œç±»ï¼Œå·²ç»é»˜è®¤é‡‡ç”¨äº†EPOLLETæ–¹å¼åšè§¦å‘
  */
 class Epoller
 {
 public:
 
     /**
-     * @brief ¹¹Ôìº¯Êı.
+     * @brief æ„é€ å‡½æ•°.
      *
-     * @param bEt Ä¬ÈÏÊÇETÄ£Ê½£¬µ±×´Ì¬·¢Éú±ä»¯µÄÊ±ºò²Å»ñµÃÍ¨Öª
+     * @param bEt é»˜è®¤æ˜¯ETæ¨¡å¼ï¼Œå½“çŠ¶æ€å‘ç”Ÿå˜åŒ–çš„æ—¶å€™æ‰è·å¾—é€šçŸ¥
      */
     Epoller(bool bEt = true);
 
     /**
-     * @brief Îö¹»º¯Êı.
+     * @brief æå¤Ÿå‡½æ•°.
      */
     ~Epoller();
 
     /**
-     * @brief Éú³Éepoll¾ä±ú.
+     * @brief ç”Ÿæˆepollå¥æŸ„.
      *
-     * @param max_connections epoll·şÎñĞèÒªÖ§³ÖµÄ×î´óÁ¬½ÓÊı
+     * @param max_connections epollæœåŠ¡éœ€è¦æ”¯æŒçš„æœ€å¤§è¿æ¥æ•°
      */
     void create(int max_connections);
 
     /**
-     * @brief Ìí¼Ó¼àÌı¾ä±ú.
+     * @brief æ·»åŠ ç›‘å¬å¥æŸ„.
      *
-     * @param fd    ¾ä±ú
-     * @param data  ¸¨ÖúµÄÊı¾İ, ¿ÉÒÔºóĞøÔÚepoll_eventÖĞ»ñÈ¡µ½
-     * @param event ĞèÒª¼àÌıµÄÊÂ¼şEPOLLIN|EPOLLOUT
+     * @param fd    å¥æŸ„
+     * @param data  è¾…åŠ©çš„æ•°æ®, å¯ä»¥åç»­åœ¨epoll_eventä¸­è·å–åˆ°
+     * @param event éœ€è¦ç›‘å¬çš„äº‹ä»¶EPOLLIN|EPOLLOUT
      *
      */
     void add(int fd, long long data, __uint32_t event);
 
     /**
-     * @brief ĞŞ¸Ä¾ä±úÊÂ¼ş.
+     * @brief ä¿®æ”¹å¥æŸ„äº‹ä»¶.
      *
-     * @param fd    ¾ä±ú
-     * @param data  ¸¨ÖúµÄÊı¾İ, ¿ÉÒÔºóĞøÔÚepoll_eventÖĞ»ñÈ¡µ½
-     * @param event ĞèÒª¼àÌıµÄÊÂ¼şEPOLLIN|EPOLLOUT
+     * @param fd    å¥æŸ„
+     * @param data  è¾…åŠ©çš„æ•°æ®, å¯ä»¥åç»­åœ¨epoll_eventä¸­è·å–åˆ°
+     * @param event éœ€è¦ç›‘å¬çš„äº‹ä»¶EPOLLIN|EPOLLOUT
      */
     void mod(int fd, long long data, __uint32_t event);
 
     /**
-     * @brief É¾³ı¾ä±úÊÂ¼ş.
+     * @brief åˆ é™¤å¥æŸ„äº‹ä»¶.
      *
-     * @param fd    ¾ä±ú
-     * @param data  ¸¨ÖúµÄÊı¾İ, ¿ÉÒÔºóĞøÔÚepoll_eventÖĞ»ñÈ¡µ½
-     * @param event ĞèÒª¼àÌıµÄÊÂ¼şEPOLLIN|EPOLLOUT
+     * @param fd    å¥æŸ„
+     * @param data  è¾…åŠ©çš„æ•°æ®, å¯ä»¥åç»­åœ¨epoll_eventä¸­è·å–åˆ°
+     * @param event éœ€è¦ç›‘å¬çš„äº‹ä»¶EPOLLIN|EPOLLOUT
      */
     void del(int fd, long long data, __uint32_t event);
 
     /**
-     * @brief µÈ´ıÊ±¼ä.
+     * @brief ç­‰å¾…æ—¶é—´.
      *
-     * @param millsecond ºÁÃë
-     * @return int       ÓĞÊÂ¼ş´¥·¢µÄ¾ä±úÊı
+     * @param millsecond æ¯«ç§’
+     * @return int       æœ‰äº‹ä»¶è§¦å‘çš„å¥æŸ„æ•°
      */
     int wait(int millsecond);
 
     /**
-     * @brief »ñÈ¡±»´¥·¢µÄÊÂ¼ş.
+     * @brief è·å–è¢«è§¦å‘çš„äº‹ä»¶.
      *
-     * @return struct epoll_event&±»´¥·¢µÄÊÂ¼ş
+     * @return struct epoll_event&è¢«è§¦å‘çš„äº‹ä»¶
      */
     struct epoll_event& get(int i)
     {
@@ -92,13 +92,13 @@ public:
 protected:
 
     /**
-     * @brief ¿ØÖÆepoll£¬½«EPOLLÉèÎª±ßÔµ´¥·¢EPOLLETÄ£Ê½
-     * @param fd    ¾ä±ú£¬ÔÚcreateº¯ÊıÊ±±»¸³Öµ
-     * @param data  ¸¨ÖúµÄÊı¾İ, ¿ÉÒÔºóĞøÔÚepoll_eventÖĞ»ñÈ¡µ½
-     * @param event ĞèÒª¼àÌıµÄÊÂ¼ş
-     * @param op    EPOLL_CTL_ADD£º ×¢²áĞÂµÄfdµ½epfdÖĞ£»
-     *              EPOLL_CTL_MOD£ºĞŞ¸ÄÒÑ¾­×¢²áµÄfdµÄ¼àÌıÊÂ¼ş£»
-     *              EPOLL_CTL_DEL£º´ÓepfdÖĞÉ¾³ıÒ»¸öfd£»
+     * @brief æ§åˆ¶epollï¼Œå°†EPOLLè®¾ä¸ºè¾¹ç¼˜è§¦å‘EPOLLETæ¨¡å¼
+     * @param fd    å¥æŸ„ï¼Œåœ¨createå‡½æ•°æ—¶è¢«èµ‹å€¼
+     * @param data  è¾…åŠ©çš„æ•°æ®, å¯ä»¥åç»­åœ¨epoll_eventä¸­è·å–åˆ°
+     * @param event éœ€è¦ç›‘å¬çš„äº‹ä»¶
+     * @param op    EPOLL_CTL_ADDï¼š æ³¨å†Œæ–°çš„fdåˆ°epfdä¸­ï¼›
+     *              EPOLL_CTL_MODï¼šä¿®æ”¹å·²ç»æ³¨å†Œçš„fdçš„ç›‘å¬äº‹ä»¶ï¼›
+     *              EPOLL_CTL_DELï¼šä»epfdä¸­åˆ é™¤ä¸€ä¸ªfdï¼›
      *
      */
     void ctrl(int fd, long long data, __uint32_t events, int op);
@@ -111,17 +111,17 @@ protected:
     int _iEpollfd;
 
     /**
-     * ×î´óÁ¬½ÓÊı
+     * æœ€å¤§è¿æ¥æ•°
      */
     int _max_connections;
 
     /**
-     * ÊÂ¼ş¼¯
+     * äº‹ä»¶é›†
      */
     struct epoll_event* _pevs;
 
     /**
-     * ÊÇ·ñÊÇETÄ£Ê½
+     * æ˜¯å¦æ˜¯ETæ¨¡å¼
      */
     bool _et;
 };

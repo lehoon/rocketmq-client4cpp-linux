@@ -17,7 +17,7 @@ PLATFORM := $(strip $(shell echo `uname -m`))
 ifneq ($(MFLAGS),64)
 	  ifneq ($(MFLAGS),32)
 			ifeq ($(PLATFORM),x86_64)
-		MFLAGS := 64
+				MFLAGS := 64
 			else
 				MFLAGS := 32
 			endif

@@ -57,7 +57,7 @@ void MQAdminImpl::createTopic(const std::string& key, const std::string& newTopi
         std::list<BrokerData> brokerDataList = topicRouteData->getBrokerDatas();
         if (!brokerDataList.empty())
         {
-            // ÅÅĞòÔ­Òò£º¼´Ê¹Ã»ÓĞÅäÖÃË³ĞòÏûÏ¢Ä£Ê½£¬Ä¬ÈÏ¶ÓÁĞµÄË³ĞòÍ¬ÅäÖÃµÄÒ»ÖÂ¡£
+            // æ’åºåŸå› ï¼šå³ä½¿æ²¡æœ‰é…ç½®é¡ºåºæ¶ˆæ¯æ¨¡å¼ï¼Œé»˜è®¤é˜Ÿåˆ—çš„é¡ºåºåŒé…ç½®çš„ä¸€è‡´ã€‚
             brokerDataList.sort();
 
             MQClientException exception("", 0, "", 0);

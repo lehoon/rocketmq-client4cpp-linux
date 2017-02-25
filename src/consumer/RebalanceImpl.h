@@ -33,7 +33,7 @@ namespace rmq
     class MQClientFactory;
 
     /**
-    * RebalanceµÄ¾ßÌåÊµÏÖ
+    * Rebalanceçš„å…·ä½“å®ç°
     *
     */
     class RebalanceImpl
@@ -86,17 +86,17 @@ namespace rmq
         void truncateMessageQueueNotMyTopic();
 
     protected:
-        // ·ÖÅäºÃµÄ¶ÓÁĞ£¬ÏûÏ¢´æ´¢Ò²ÔÚÕâÀï
+        // åˆ†é…å¥½çš„é˜Ÿåˆ—ï¼Œæ¶ˆæ¯å­˜å‚¨ä¹Ÿåœ¨è¿™é‡Œ
         std::map<MessageQueue, ProcessQueue*> m_processQueueTable;
         kpr::Mutex m_processQueueTableLock;
 
-        // ¿ÉÒÔ¶©ÔÄµÄËùÓĞ¶ÓÁĞ£¨¶¨Ê±´ÓName Server¸üĞÂ×îĞÂ°æ±¾£©
+        // å¯ä»¥è®¢é˜…çš„æ‰€æœ‰é˜Ÿåˆ—ï¼ˆå®šæ—¶ä»Name Serveræ›´æ–°æœ€æ–°ç‰ˆæœ¬ï¼‰
         std::map<std::string, std::set<MessageQueue> > m_topicSubscribeInfoTable;
-        kpr::Mutex m_topicSubscribeInfoTableLock;//todo: Õâ¸öĞÅÏ¢ÔÚÔËĞĞÊ±¿ÉÄÜ»á±ä»¯£¬ËùÒÔĞèÒª¼ÓËø
+        kpr::Mutex m_topicSubscribeInfoTableLock;//todo: è¿™ä¸ªä¿¡æ¯åœ¨è¿è¡Œæ—¶å¯èƒ½ä¼šå˜åŒ–ï¼Œæ‰€ä»¥éœ€è¦åŠ é”
 
-        // ¶©ÔÄ¹ØÏµ£¬ÓÃ»§ÅäÖÃµÄÔ­Ê¼Êı¾İ key <topic> value <SubscriptionData>
+        // è®¢é˜…å…³ç³»ï¼Œç”¨æˆ·é…ç½®çš„åŸå§‹æ•°æ® key <topic> value <SubscriptionData>
         std::map<std::string, SubscriptionData> m_subscriptionInner;
-        kpr::Mutex m_subscriptionInnerLock;//todo: ¶©ÔÄ¹ØÏµÔÚ³õÊ¼»¯Ê±¾ÍÈ·¶¨ÁË£¬ËùÒÔÕâÀï²»ĞèÒª¼ÓËø
+        kpr::Mutex m_subscriptionInnerLock;//todo: è®¢é˜…å…³ç³»åœ¨åˆå§‹åŒ–æ—¶å°±ç¡®å®šäº†ï¼Œæ‰€ä»¥è¿™é‡Œä¸éœ€è¦åŠ é”
 
         std::string m_consumerGroup;
         MessageModel m_messageModel;

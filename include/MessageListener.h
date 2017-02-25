@@ -26,8 +26,8 @@
 namespace rmq
 {
 	/**
-	* ÏûÏ¢¼àÌıÆ÷£¬±»¶¯·½Ê½¶©ÔÄÏûÏ¢Ê¹ÓÃ£¬ĞèÒªÓÃ»§ÊµÏÖ<br>
-	* Ó¦ÓÃ²»¿ÉÒÔÖ±½Ó¼Ì³Ğ´Ë½Ó¿Ú
+	* æ¶ˆæ¯ç›‘å¬å™¨ï¼Œè¢«åŠ¨æ–¹å¼è®¢é˜…æ¶ˆæ¯ä½¿ç”¨ï¼Œéœ€è¦ç”¨æˆ·å®ç°<br>
+	* åº”ç”¨ä¸å¯ä»¥ç›´æ¥ç»§æ‰¿æ­¤æ¥å£
 	*
 	*/
 	class MessageListener
@@ -38,10 +38,10 @@ namespace rmq
 
 	enum ConsumeOrderlyStatus
 	{
-		SUCCESS,// ÏûÏ¢´¦Àí³É¹¦
-		ROLLBACK,// »Ø¹öÏûÏ¢
-		COMMIT,// Ìá½»ÏûÏ¢
-		SUSPEND_CURRENT_QUEUE_A_MOMENT,// ½«µ±Ç°¶ÓÁĞ¹ÒÆğÒ»Ğ¡»á¶ù
+		SUCCESS,// æ¶ˆæ¯å¤„ç†æˆåŠŸ
+		ROLLBACK,// å›æ»šæ¶ˆæ¯
+		COMMIT,// æäº¤æ¶ˆæ¯
+		SUSPEND_CURRENT_QUEUE_A_MOMENT,// å°†å½“å‰é˜Ÿåˆ—æŒ‚èµ·ä¸€å°ä¼šå„¿
 	};
 
 	typedef struct tagConsumeOrderlyContext
@@ -54,20 +54,20 @@ namespace rmq
 
 		}
 
-		MessageQueue messageQueue;///< ÒªÏû·ÑµÄÏûÏ¢ÊôÓÚÄÄ¸ö¶ÓÁĞ
-		bool autoCommit;///< ÏûÏ¢OffsetÊÇ·ñ×Ô¶¯Ìá½»
+		MessageQueue messageQueue;///< è¦æ¶ˆè´¹çš„æ¶ˆæ¯å±äºå“ªä¸ªé˜Ÿåˆ—
+		bool autoCommit;///< æ¶ˆæ¯Offsetæ˜¯å¦è‡ªåŠ¨æäº¤
 		long suspendCurrentQueueTimeMillis;
 	}ConsumeOrderlyContext;
 
 	class MessageListenerOrderly : public MessageListener
 	{
 		/**
-		* ·½·¨Å×³öÒì³£µÈÍ¬ÓÚ·µ»Ø ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT<br>
-		* P.S: ½¨ÒéÓ¦ÓÃ²»ÒªÅ×³öÒì³£
+		* æ–¹æ³•æŠ›å‡ºå¼‚å¸¸ç­‰åŒäºè¿”å› ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT<br>
+		* P.S: å»ºè®®åº”ç”¨ä¸è¦æŠ›å‡ºå¼‚å¸¸
 		*
 		* @param msgs
 		*            msgs.size() >= 1<br>
-		*            DefaultMQPushConsumer.consumeMessageBatchMaxSize=1£¬Ä¬ÈÏÏûÏ¢ÊıÎª1
+		*            DefaultMQPushConsumer.consumeMessageBatchMaxSize=1ï¼Œé»˜è®¤æ¶ˆæ¯æ•°ä¸º1
 		* @param context
 		* @return
 		*/
@@ -78,8 +78,8 @@ namespace rmq
 
 	enum ConsumeConcurrentlyStatus
 	{
-		CONSUME_SUCCESS,// ±íÊ¾Ïû·Ñ³É¹¦
-		RECONSUME_LATER,// ±íÊ¾Ïû·ÑÊ§°Ü£¬µ«ÊÇÉÔºó»¹»áÖØĞÂÏû·ÑÕâÅúÏûÏ¢
+		CONSUME_SUCCESS,// è¡¨ç¤ºæ¶ˆè´¹æˆåŠŸ
+		RECONSUME_LATER,// è¡¨ç¤ºæ¶ˆè´¹å¤±è´¥ï¼Œä½†æ˜¯ç¨åè¿˜ä¼šé‡æ–°æ¶ˆè´¹è¿™æ‰¹æ¶ˆæ¯
 	};
 
 	struct ConsumeConcurrentlyContext
@@ -90,27 +90,27 @@ namespace rmq
 			ackIndex(INT_MAX)
 		{
 		}
-		MessageQueue messageQueue;///< ÒªÏû·ÑµÄÏûÏ¢ÊôÓÚÄÄ¸ö¶ÓÁĞ
+		MessageQueue messageQueue;///< è¦æ¶ˆè´¹çš„æ¶ˆæ¯å±äºå“ªä¸ªé˜Ÿåˆ—
 		/**
-		* ÏÂ´ÎÏûÏ¢ÖØÊÔÑÓÊ±Ê±¼ä<br>
-		* -1£¬±íÊ¾²»ÖØÊÔ£¬Ö±½Ó½øÈëËÀĞÅ¶ÓÁĞ<br>
-		* 0£¬±íÊ¾ÓÉ·şÎñÆ÷¸ù¾İÖØÊÔ´ÎÊı×Ô¶¯µş¼Ó<br>
-		* >0£¬±íÊ¾¿Í»§¶ËÇ¿ÖÆÖ¸¶¨ÑÓÊ±Level
+		* ä¸‹æ¬¡æ¶ˆæ¯é‡è¯•å»¶æ—¶æ—¶é—´<br>
+		* -1ï¼Œè¡¨ç¤ºä¸é‡è¯•ï¼Œç›´æ¥è¿›å…¥æ­»ä¿¡é˜Ÿåˆ—<br>
+		* 0ï¼Œè¡¨ç¤ºç”±æœåŠ¡å™¨æ ¹æ®é‡è¯•æ¬¡æ•°è‡ªåŠ¨å åŠ <br>
+		* >0ï¼Œè¡¨ç¤ºå®¢æˆ·ç«¯å¼ºåˆ¶æŒ‡å®šå»¶æ—¶Level
 		*/
 		int delayLevelWhenNextConsume;
-		int ackIndex;///< ¶ÔÓÚÅúÁ¿Ïû·Ñ£¬ackÖÁÄÄÌõÏûÏ¢£¬Ä¬ÈÏÈ«²¿ack£¬ÖÁ×îºóÒ»ÌõÏûÏ¢
+		int ackIndex;///< å¯¹äºæ‰¹é‡æ¶ˆè´¹ï¼Œackè‡³å“ªæ¡æ¶ˆæ¯ï¼Œé»˜è®¤å…¨éƒ¨ackï¼Œè‡³æœ€åä¸€æ¡æ¶ˆæ¯
 	};
 
 	class MessageListenerConcurrently : public MessageListener
 	{
 	public:
 		/**
-		* ·½·¨Å×³öÒì³£µÈÍ¬ÓÚ·µ»Ø ConsumeConcurrentlyStatus.RECONSUME_LATER<br>
-		* P.S: ½¨ÒéÓ¦ÓÃ²»ÒªÅ×³öÒì³£
+		* æ–¹æ³•æŠ›å‡ºå¼‚å¸¸ç­‰åŒäºè¿”å› ConsumeConcurrentlyStatus.RECONSUME_LATER<br>
+		* P.S: å»ºè®®åº”ç”¨ä¸è¦æŠ›å‡ºå¼‚å¸¸
 		*
 		* @param msgs
 		*            msgs.size() >= 1<br>
-		*            DefaultMQPushConsumer.consumeMessageBatchMaxSize=1£¬Ä¬ÈÏÏûÏ¢ÊıÎª1
+		*            DefaultMQPushConsumer.consumeMessageBatchMaxSize=1ï¼Œé»˜è®¤æ¶ˆæ¯æ•°ä¸º1
 		* @param context
 		* @return
 		*/

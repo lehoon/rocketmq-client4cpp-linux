@@ -291,7 +291,7 @@ MessageExt* MessageDecoder::decode(const char* pData, int len, int& offset, bool
 
         offset = 22 * sizeof(int) + bodyLen + 1 + topicLen + 2 + propertiesLength;
 
-        // ÏûÏ¢ID
+        // æ¶ˆæ¯ID
         std::string msgId =  createMessageId(storeAddr, physicOffset);
         msgExt->setMsgId(msgId);
 

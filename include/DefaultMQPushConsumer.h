@@ -36,8 +36,8 @@ namespace rmq
 	class OffsetStore;
 
 	/**
-	* ÀàËÆÓÚBroker PushÏûÏ¢µ½Consumer·½Ê½£¬µ«Êµ¼ÊÈÔÈ»ÊÇConsumerÄÚ²¿ºóÌ¨´ÓBroker PullÏûÏ¢<br>
-	* ²ÉÓÃ³¤ÂÖÑ¯·½Ê½À­ÏûÏ¢£¬ÊµÊ±ĞÔÍ¬push·½Ê½Ò»ÖÂ£¬ÇÒ²»»áÎŞÎ½µÄÀ­ÏûÏ¢µ¼ÖÂBroker¡¢ConsumerÑ¹Á¦Ôö´ó
+	* ç±»ä¼¼äºBroker Pushæ¶ˆæ¯åˆ°Consumeræ–¹å¼ï¼Œä½†å®é™…ä»ç„¶æ˜¯Consumerå†…éƒ¨åå°ä»Broker Pullæ¶ˆæ¯<br>
+	* é‡‡ç”¨é•¿è½®è¯¢æ–¹å¼æ‹‰æ¶ˆæ¯ï¼Œå®æ—¶æ€§åŒpushæ–¹å¼ä¸€è‡´ï¼Œä¸”ä¸ä¼šæ— è°“çš„æ‹‰æ¶ˆæ¯å¯¼è‡´Brokerã€Consumerå‹åŠ›å¢å¤§
 	*
 	*/
 	class DefaultMQPushConsumer : public ClientConfig ,public MQPushConsumer
@@ -135,17 +135,17 @@ namespace rmq
 
 	private:
 		/**
-		* ×öÍ¬ÑùÊÂÇéµÄConsumer¹éÎªÍ¬Ò»¸öGroup£¬Ó¦ÓÃ±ØĞëÉèÖÃ£¬²¢±£Ö¤ÃüÃûÎ¨Ò»
+		* åšåŒæ ·äº‹æƒ…çš„Consumerå½’ä¸ºåŒä¸€ä¸ªGroupï¼Œåº”ç”¨å¿…é¡»è®¾ç½®ï¼Œå¹¶ä¿è¯å‘½åå”¯ä¸€
 		*/
 		std::string m_consumerGroup;
 
 		/**
-		* ¼¯ÈºÏû·Ñ/¹ã²¥Ïû·Ñ
+		* é›†ç¾¤æ¶ˆè´¹/å¹¿æ’­æ¶ˆè´¹
 		*/
 		MessageModel m_messageModel;
 
 		/**
-		* ConsumerÆô¶¯Ê±£¬´ÓÄÄÀï¿ªÊ¼Ïû·Ñ
+		* Consumerå¯åŠ¨æ—¶ï¼Œä»å“ªé‡Œå¼€å§‹æ¶ˆè´¹
 		*/
 		ConsumeFromWhere m_consumeFromWhere;
 
@@ -158,57 +158,57 @@ namespace rmq
 		std::string m_consumeTimestamp;
 
 		/**
-		* ¶ÓÁĞ·ÖÅäËã·¨£¬Ó¦ÓÃ¿ÉÖØĞ´
+		* é˜Ÿåˆ—åˆ†é…ç®—æ³•ï¼Œåº”ç”¨å¯é‡å†™
 		*/
 		AllocateMessageQueueStrategy* m_pAllocateMessageQueueStrategy ;
 
 		/**
-		* ¶©ÔÄ¹ØÏµ
+		* è®¢é˜…å…³ç³»
 		*/
 		std::map<std::string /* topic */, std::string /* sub expression */> m_subscription ;
 
 		/**
-		* ÏûÏ¢¼àÌıÆ÷
+		* æ¶ˆæ¯ç›‘å¬å™¨
 		*/
 		MessageListener* m_pMessageListener;
 
 		/**
-		* Offset´æ´¢£¬ÏµÍ³»á¸ù¾İ¿Í»§¶ËÅäÖÃ×Ô¶¯´´½¨ÏàÓ¦µÄÊµÏÖ£¬Èç¹ûÓ¦ÓÃÅäÖÃÁË£¬ÔòÒÔÓ¦ÓÃÅäÖÃµÄÎªÖ÷
+		* Offsetå­˜å‚¨ï¼Œç³»ç»Ÿä¼šæ ¹æ®å®¢æˆ·ç«¯é…ç½®è‡ªåŠ¨åˆ›å»ºç›¸åº”çš„å®ç°ï¼Œå¦‚æœåº”ç”¨é…ç½®äº†ï¼Œåˆ™ä»¥åº”ç”¨é…ç½®çš„ä¸ºä¸»
 		*/
 		OffsetStore* m_pOffsetStore;
 
 		/**
-		* Ïû·ÑÏûÏ¢Ïß³Ì£¬×îĞ¡ÊıÄ¿
+		* æ¶ˆè´¹æ¶ˆæ¯çº¿ç¨‹ï¼Œæœ€å°æ•°ç›®
 		*/
 		int m_consumeThreadMin;
 
 		/**
-		* Ïû·ÑÏûÏ¢Ïß³Ì£¬×î´óÊıÄ¿
+		* æ¶ˆè´¹æ¶ˆæ¯çº¿ç¨‹ï¼Œæœ€å¤§æ•°ç›®
 		*/
 		int m_consumeThreadMax;
 
 		/**
-		* Í¬Ò»¶ÓÁĞ²¢ĞĞÏû·ÑµÄ×î´ó¿ç¶È£¬Ë³ĞòÏû·Ñ·½Ê½Çé¿öÏÂ£¬´Ë²ÎÊıÎŞĞ§
+		* åŒä¸€é˜Ÿåˆ—å¹¶è¡Œæ¶ˆè´¹çš„æœ€å¤§è·¨åº¦ï¼Œé¡ºåºæ¶ˆè´¹æ–¹å¼æƒ…å†µä¸‹ï¼Œæ­¤å‚æ•°æ— æ•ˆ
 		*/
 		int m_consumeConcurrentlyMaxSpan;
 
 		/**
-		* ±¾µØ¶ÓÁĞÏûÏ¢Êı³¬¹ı´Ë·§Öµ£¬¿ªÊ¼Á÷¿Ø
+		* æœ¬åœ°é˜Ÿåˆ—æ¶ˆæ¯æ•°è¶…è¿‡æ­¤é˜€å€¼ï¼Œå¼€å§‹æµæ§
 		*/
 		int m_pullThresholdForQueue;
 
 		/**
-		* À­ÏûÏ¢¼ä¸ô£¬Èç¹ûÎªÁË½µµÍÀ­È¡ËÙ¶È£¬¿ÉÒÔÉèÖÃ´óÓÚ0µÄÖµ
+		* æ‹‰æ¶ˆæ¯é—´éš”ï¼Œå¦‚æœä¸ºäº†é™ä½æ‹‰å–é€Ÿåº¦ï¼Œå¯ä»¥è®¾ç½®å¤§äº0çš„å€¼
 		*/
 		long m_pullInterval;
 
 		/**
-		* Ïû·ÑÒ»ÅúÏûÏ¢£¬×î´óÊı
+		* æ¶ˆè´¹ä¸€æ‰¹æ¶ˆæ¯ï¼Œæœ€å¤§æ•°
 		*/
 		int m_consumeMessageBatchMaxSize;
 
 		/**
-		* À­ÏûÏ¢£¬Ò»´ÎÀ­¶àÉÙÌõ
+		* æ‹‰æ¶ˆæ¯ï¼Œä¸€æ¬¡æ‹‰å¤šå°‘æ¡
 		*/
 		int m_pullBatchSize;
 	};

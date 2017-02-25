@@ -27,14 +27,14 @@ namespace rmq
 {
 	enum PullStatus
 	{
-		FOUND,//�ҵ���Ϣ
-		NO_NEW_MSG,//û���µ���Ϣ���Ա���ȡ
-		NO_MATCHED_MSG,//�������˺�û��ƥ�����Ϣ
-		OFFSET_ILLEGAL//Offset���Ϸ������ܹ�����߹�С
+		FOUND,//找到消息
+		NO_NEW_MSG,//没有新的消息可以被拉取
+		NO_MATCHED_MSG,//经过过滤后，没有匹配的消息
+		OFFSET_ILLEGAL//Offset不合法，可能过大或者过小
 	};
 
 	/**
-	* ����Ϣ���ؽ��
+	* 拉消息返回结果
 	*
 	*/
 	struct PullResult

@@ -21,17 +21,17 @@
 namespace rmq
 {
 	/**
-	 * ��������
+	 * 消费类型
 	 *
 	 */
 	enum ConsumeType
 	{
 		/**
-		* ������ʽ����
+		* 主动方式消费
 		*/
 		CONSUME_ACTIVELY,
 		/**
-		* ������ʽ����
+		* 被动方式消费
 		*/
 		CONSUME_PASSIVELY,
 	};
@@ -39,33 +39,33 @@ namespace rmq
 	enum ConsumeFromWhere
 	{
 		/**
-		* ÿ�����������ϴμ�¼��λ�㿪ʼ���ѣ�����ǵ�һ������������λ�㿪ʼ���ѣ���������������ʹ��
+		* 每次启动都从上次记录的位点开始消费，如果是第一次启动则从最大位点开始消费，建议在生产环境使用
 		*/
 		CONSUME_FROM_LAST_OFFSET,
 		/**
-		* ÿ�����������ϴμ�¼��λ�㿪ʼ���ѣ�����ǵ�һ�����������Сλ�㿪ʼ���ѣ��������ʱʹ��<br>
-		* ���ϻ����������������Ҫ��ˣ�������Ч
+		* 每次启动都从上次记录的位点开始消费，如果是第一次启动则从最小位点开始消费，建议测试时使用<br>
+		* 线上环境此配置项可能需要审核，否则无效
 		*/
 		CONSUME_FROM_LAST_OFFSET_AND_FROM_MIN_WHEN_BOOT_FIRST,
 		/**
-		* ÿ������������Сλ�㿪ʼ���ѣ��������ʱʹ��<br>
-		* ���ϻ����������������Ҫ��ˣ�������Ч
+		* 每次启动都从最小位点开始消费，建议测试时使用<br>
+		* 线上环境此配置项可能需要审核，否则无效
 		*/
 		CONSUME_FROM_MIN_OFFSET,
 		/**
-		* ÿ�������������λ�㿪ʼ���ѣ��������ʱʹ��
+		* 每次启动都从最大位点开始消费，建议测试时使用
 		*/
 		CONSUME_FROM_MAX_OFFSET,
 
 		/**
-	     * һ���µĶ������һ�������Ӷ��е���ǰλ�ÿ�ʼ����<br>
-	     * ���������������ϴ����ѵĽ��ȿ�ʼ����
+	     * 一个新的订阅组第一次启动从队列的最前位置开始消费<br>
+	     * 后续再启动接着上次消费的进度开始消费
 	     */
 	    CONSUME_FROM_FIRST_OFFSET,
 	    /**
-	     * һ���µĶ������һ��������ָ��ʱ��㿪ʼ����<br>
-	     * ���������������ϴ����ѵĽ��ȿ�ʼ����<br>
-	     * ʱ������òμ�DefaultMQPushConsumer.consumeTimestamp����
+	     * 一个新的订阅组第一次启动从指定时间点开始消费<br>
+	     * 后续再启动接着上次消费的进度开始消费<br>
+	     * 时间点设置参见DefaultMQPushConsumer.consumeTimestamp参数
 	     */
 	    CONSUME_FROM_TIMESTAMP,
 	};
@@ -73,15 +73,15 @@ namespace rmq
 	enum MessageModel
 	{
 		/**
-		* �㲥ģ��
+		* 广播模型
 		*/
 		BROADCASTING,
 		/**
-		* ��Ⱥģ��
+		* 集群模型
 		*/
 		CLUSTERING,
 		// /**
-		// * δ֪��������������ѣ�����ȷ��Ӧ�õ���Ϣģ��
+		// * 未知，如果是主动消费，很难确定应用的消息模型
 		// */
 		// UNKNOWNS,
 	};

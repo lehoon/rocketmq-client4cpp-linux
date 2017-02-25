@@ -323,7 +323,7 @@ int TcpTransport::getMsgSize(const char* pBuf)
     int len = 0;
     memcpy(&len, pBuf, sizeof(int));
 
-    //ÓÉÓÚ³¤¶ÈÖµ²»°üº¬×ÔÉí£¬ËùÒÔĞèÒª+4
+    //ç”±äºé•¿åº¦å€¼ä¸åŒ…å«è‡ªèº«ï¼Œæ‰€ä»¥éœ€è¦+4
     return ntohl(len) + 4;
 }
 
@@ -336,7 +336,7 @@ int TcpTransport::recvData(std::list<std::string*>& dataList)
 
 void TcpTransport::processData(std::list<std::string*>& dataList)
 {
-	// ×¢Òâ: Ñ­»·ÀïÃæ¿ÉÄÜ»á²úÉú¶à¸ö°ü
+	// æ³¨æ„: å¾ªç¯é‡Œé¢å¯èƒ½ä¼šäº§ç”Ÿå¤šä¸ªåŒ…
     while (m_recvBufUsed > int(sizeof(int)))
     {
         int msgLen = 0;

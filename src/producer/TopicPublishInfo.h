@@ -34,7 +34,7 @@
 namespace rmq
 {
     /**
-    * ·¢²¼TopicÓÃµ½µÄÂ·ÓÉĞÅÏ¢
+    * å‘å¸ƒTopicç”¨åˆ°çš„è·¯ç”±ä¿¡æ¯
     *
     */
     class TopicPublishInfo : public kpr::RefCount
@@ -98,7 +98,7 @@ namespace rmq
 	    }
 
         /**
-        * Èç¹ûlastBrokerName²»Îªnull£¬ÔòÑ°ÕÒÓëÆä²»Í¬µÄMessageQueue
+        * å¦‚æœlastBrokerNameä¸ä¸ºnullï¼Œåˆ™å¯»æ‰¾ä¸å…¶ä¸åŒçš„MessageQueue
         */
         MessageQueue* selectOneMessageQueue(const std::string lastBrokerName)
         {

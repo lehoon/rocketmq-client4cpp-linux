@@ -24,7 +24,7 @@ namespace rmq
 	class MQException;
 
 	/**
-	 * Òì²½À­ÏûÏ¢»Øµ÷½Ó¿Ú
+	 * å¼‚æ­¥æ‹‰æ¶ˆæ¯å›è°ƒæ¥å£
 	 *
 	 */
 	class PullCallback

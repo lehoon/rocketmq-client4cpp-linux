@@ -192,7 +192,7 @@ void  LocalFileOffsetStore::persist(const MessageQueue& mq)
 
 void  LocalFileOffsetStore::removeOffset(const MessageQueue& mq)
 {
-    // 消费进度存储到Consumer本地时暂不做 offset 清理
+    // 娑堣垂杩涘害瀛樺偍鍒癈onsumer鏈湴鏃舵殏涓嶅仛 offset 娓呯悊
 }
 
 

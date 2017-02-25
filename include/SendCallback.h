@@ -24,7 +24,7 @@ namespace rmq
 	class MQException;
 
 	/**
-	* Òì²½·¢ËÍÏûÏ¢»Øµ÷½Ó¿Ú
+	* å¼‚æ­¥å‘é€æ¶ˆæ¯å›è°ƒæ¥å£
 	*
 	*/
 	class SendCallback

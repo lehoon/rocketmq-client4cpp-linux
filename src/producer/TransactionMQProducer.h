@@ -23,7 +23,7 @@
 namespace rmq
 {
     /**
-    * Ö§³Ö·Ö²¼Ê½ÊÂÎñProducer
+    * æ”¯æŒåˆ†å¸ƒå¼äº‹åŠ¡Producer
     *
     */
     class TransactionMQProducer : public DefaultMQProducer
@@ -113,9 +113,9 @@ namespace rmq
 
     private:
         TransactionCheckListener* m_pTransactionCheckListener;
-        int m_checkThreadPoolMinSize;///< ÊÂÎñ»Ø²é×îĞ¡²¢·¢Êı
-        int m_checkThreadPoolMaxSize;///< ÊÂÎñ»Ø²é×î´ó²¢·¢Êı
-        int m_checkRequestHoldMax;///< ÊÂÎñ»Ø²é¶ÓÁĞÊı
+        int m_checkThreadPoolMinSize;///< äº‹åŠ¡å›æŸ¥æœ€å°å¹¶å‘æ•°
+        int m_checkThreadPoolMaxSize;///< äº‹åŠ¡å›æŸ¥æœ€å¤§å¹¶å‘æ•°
+        int m_checkRequestHoldMax;///< äº‹åŠ¡å›æŸ¥é˜Ÿåˆ—æ•°
     };
 }
 

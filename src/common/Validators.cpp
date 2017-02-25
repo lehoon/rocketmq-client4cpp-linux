@@ -71,7 +71,7 @@ void Validators::checkTopic(const std::string& topic)
         THROW_MQEXCEPTION(MQClientException, "the specified topic is longer than topic max length 255.", -1);
     }
 
-    // TopicÃû×ÖÊÇ·ñÓë±£Áô×Ö¶Î³åÍ»
+    // Topicåå­—æ˜¯å¦ä¸ä¿ç•™å­—æ®µå†²çª
     if (topic == MixAll::DEFAULT_TOPIC)
     {
         THROW_MQEXCEPTION(MQClientException, "the topic[" + topic + "] is conflict with default topic.", -1);

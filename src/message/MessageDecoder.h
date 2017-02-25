@@ -29,7 +29,7 @@ namespace rmq
     class UnknownHostException;
 
     /**
-    * ÏûÏ¢½âÂë
+    * æ¶ˆæ¯è§£ç 
     *
     */
     class MessageDecoder
@@ -50,18 +50,18 @@ namespace rmq
 
     public:
         /**
-        * ĞòÁĞ»¯ÏûÏ¢ÊôĞÔ
+        * åºåˆ—åŒ–æ¶ˆæ¯å±æ€§
         */
         static const char NAME_VALUE_SEPARATOR;
         static const char PROPERTY_SEPARATOR;
 
         /**
-        * ÏûÏ¢ID¶¨³¤
+        * æ¶ˆæ¯IDå®šé•¿
         */
         static const int MSG_ID_LENGTH;
 
         /**
-        * ´æ´¢¼ÇÂ¼¸÷¸ö×Ö¶ÎÎ»ÖÃ
+        * å­˜å‚¨è®°å½•å„ä¸ªå­—æ®µä½ç½®
         */
         static int MessageMagicCodePostion;
         static int MessageFlagPostion;

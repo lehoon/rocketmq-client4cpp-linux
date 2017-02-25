@@ -25,7 +25,7 @@ namespace rmq
 	class MessageQueue;
 
 	/**
-	* Ïû·ÑÏûÏ¢·şÎñ£¬¹«¹²½Ó¿Ú
+	* æ¶ˆè´¹æ¶ˆæ¯æœåŠ¡ï¼Œå…¬å…±æ¥å£
 	*
 	*/
 	class ConsumeMessageService

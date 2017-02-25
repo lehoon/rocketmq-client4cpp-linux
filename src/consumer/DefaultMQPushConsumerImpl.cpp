@@ -48,7 +48,7 @@ namespace rmq
 {
 
 /* RemoveProcessQueueLater */
-// Çå³ıprocessqueueµÄÈÎÎñ
+// æ¸…é™¤processqueueçš„ä»»åŠ¡
 class RemoveProcessQueueLater : public kpr::TimerHandler
 {
 public:
@@ -111,7 +111,7 @@ public:
 	            {
 	                m_pPullRequest->setNextOffset(pPullResult->nextBeginOffset);
 
-	                //TODO Õâ¸öÊ±¼ä¿ÉÄÜĞèÒªµ÷Õû£¬Ä¿Ç°windowsÏÂÖ»Ö§³Ö32Î»
+	                //TODO è¿™ä¸ªæ—¶é—´å¯èƒ½éœ€è¦è°ƒæ•´ï¼Œç›®å‰windowsä¸‹åªæ”¯æŒ32ä½
 	                long long pullRT = KPRUtil::GetCurrentTimeMillis() - m_beginTimestamp;
 	                m_pDefaultMQPushConsumerImpl->getConsumerStatManager()->getConsumertat()
 	                .pullTimesTotal++;
@@ -127,13 +127,13 @@ public:
 	                    m_pPullRequest->getMessageQueue(), //
 	                    dispatchToConsume);
 
-	                // Á÷¿Ø
+	                // æµæ§
 	                if (m_pDefaultMQPushConsumerImpl->m_pDefaultMQPushConsumer->getPullInterval() > 0)
 	                {
 	                    m_pDefaultMQPushConsumerImpl->executePullRequestLater(m_pPullRequest,
 	                            m_pDefaultMQPushConsumerImpl->m_pDefaultMQPushConsumer->getPullInterval());
 	                }
-	                // Á¢¿ÌÀ­ÏûÏ¢
+	                // ç«‹åˆ»æ‹‰æ¶ˆæ¯
 	                else
 	                {
 	                    m_pDefaultMQPushConsumerImpl->executePullRequestImmediately(m_pPullRequest);
@@ -168,7 +168,7 @@ public:
 	                m_pDefaultMQPushConsumerImpl->executePullRequestImmediately(m_pPullRequest);
 	                */
 
-	                // todo Òì³£offset£¬ĞèÒªÒì²½É¾³ı¶ÔÓ¦¶ÓÁĞ
+	                // todo å¼‚å¸¸offsetï¼Œéœ€è¦å¼‚æ­¥åˆ é™¤å¯¹åº”é˜Ÿåˆ—
 	                m_pPullRequest->setNextOffset(pPullResult->nextBeginOffset);
 					m_pPullRequest->getProcessQueue()->setDropped(true);
 
@@ -206,13 +206,13 @@ private:
 };
 
 
-// À­ÏûÏ¢Òì³£Ê±£¬ÑÓ³ÙÒ»¶ÎÊ±¼äÔÙÀ­
+// æ‹‰æ¶ˆæ¯å¼‚å¸¸æ—¶ï¼Œå»¶è¿Ÿä¸€æ®µæ—¶é—´å†æ‹‰
 long long DefaultMQPushConsumerImpl::s_PullTimeDelayMillsWhenException = 3000;
 long long DefaultMQPushConsumerImpl::s_PullTimeDelayMillsWhenFlowControl = 50;
 long long DefaultMQPushConsumerImpl::s_PullTimeDelayMillsWhenSuspend = 1000;
-// ³¤ÂÖÑ¯Ä£Ê½£¬ConsumerÁ¬½ÓÔÚBroker¹ÒÆğ×î³¤Ê±¼ä
+// é•¿è½®è¯¢æ¨¡å¼ï¼ŒConsumerè¿æ¥åœ¨BrokeræŒ‚èµ·æœ€é•¿æ—¶é—´
 long long DefaultMQPushConsumerImpl::s_BrokerSuspendMaxTimeMillis = 1000 * 15;
-// ³¤ÂÖÑ¯Ä£Ê½£¬Consumer³¬Ê±Ê±¼ä£¨±ØĞëÒª´óÓÚbrokerSuspendMaxTimeMillis£©
+// é•¿è½®è¯¢æ¨¡å¼ï¼ŒConsumerè¶…æ—¶æ—¶é—´ï¼ˆå¿…é¡»è¦å¤§äºbrokerSuspendMaxTimeMillisï¼‰
 long long DefaultMQPushConsumerImpl::s_ConsumerTimeoutMillisWhenSuspend = 1000 * 30;
 
 DefaultMQPushConsumerImpl::DefaultMQPushConsumerImpl(DefaultMQPushConsumer* pDefaultMQPushConsumer)
@@ -271,7 +271,7 @@ void DefaultMQPushConsumerImpl::start()
 
             m_pMQClientFactory = MQClientManager::getInstance()->getAndCreateMQClientFactory(*m_pDefaultMQPushConsumer);
 
-            // ³õÊ¼»¯Rebalance±äÁ¿
+            // åˆå§‹åŒ–Rebalanceå˜é‡
             m_pRebalanceImpl->setConsumerGroup(m_pDefaultMQPushConsumer->getConsumerGroup());
             m_pRebalanceImpl->setMessageModel(m_pDefaultMQPushConsumer->getMessageModel());
             m_pRebalanceImpl->setAllocateMessageQueueStrategy(m_pDefaultMQPushConsumer->getAllocateMessageQueueStrategy());
@@ -285,7 +285,7 @@ void DefaultMQPushConsumerImpl::start()
             }
             else
             {
-                // ¹ã²¥Ïû·Ñ/¼¯ÈºÏû·Ñ
+                // å¹¿æ’­æ¶ˆè´¹/é›†ç¾¤æ¶ˆè´¹
                 switch (m_pDefaultMQPushConsumer->getMessageModel())
                 {
                     case BROADCASTING:
@@ -299,10 +299,10 @@ void DefaultMQPushConsumerImpl::start()
                 }
             }
 
-            // ¼ÓÔØÏû·Ñ½ø¶È
+            // åŠ è½½æ¶ˆè´¹è¿›åº¦
             m_pOffsetStore->load();
 
-            // Æô¶¯Ïû·ÑÏûÏ¢·şÎñ
+            // å¯åŠ¨æ¶ˆè´¹æ¶ˆæ¯æœåŠ¡
             if (dynamic_cast<MessageListenerOrderly*>(m_pMessageListenerInner) != NULL)
             {
                 m_consumeOrderly = true;
@@ -575,11 +575,11 @@ void DefaultMQPushConsumerImpl::setPause(bool pause)
 }
 
 /**
-* Í¨¹ıTag¹ıÂËÊ±£¬»á´æÔÚoffset²»×¼È·µÄÇé¿ö£¬ĞèÒª¾ÀÕı
+* é€šè¿‡Tagè¿‡æ»¤æ—¶ï¼Œä¼šå­˜åœ¨offsetä¸å‡†ç¡®çš„æƒ…å†µï¼Œéœ€è¦çº æ­£
 */
 void DefaultMQPushConsumerImpl::correctTagsOffset(PullRequest& pullRequest)
 {
-    // ËµÃ÷±¾µØÃ»ÓĞ¿ÉÏû·ÑµÄÏûÏ¢
+    // è¯´æ˜æœ¬åœ°æ²¡æœ‰å¯æ¶ˆè´¹çš„æ¶ˆæ¯
     if (pullRequest.getProcessQueue()->getMsgCount().get() == 0)
     {
         m_pOffsetStore->updateOffset(pullRequest.getMessageQueue(), pullRequest.getNextOffset(), true);
@@ -594,14 +594,14 @@ void DefaultMQPushConsumerImpl::pullMessage(PullRequest* pPullRequest)
     if (processQueue->isDropped())
     {
         RMQ_INFO("the pull request[%s] is dropped.", pPullRequest->toString().c_str());
-        //todo ·ÅÄÄÀïÊÍ·ÅÄØ
+        //todo æ”¾å“ªé‡Œé‡Šæ”¾å‘¢
         delete pPullRequest;
         return;
     }
 
     pPullRequest->getProcessQueue()->setLastPullTimestamp(KPRUtil::GetCurrentTimeMillis());
 
-    // ¼ì²âConsumerÊÇ·ñÆô¶¯
+    // æ£€æµ‹Consumeræ˜¯å¦å¯åŠ¨
     try
     {
         makeSureStateOK();
@@ -613,7 +613,7 @@ void DefaultMQPushConsumerImpl::pullMessage(PullRequest* pPullRequest)
         return;
     }
 
-    // ¼ì²âConsumerÊÇ·ñ±»¹ÒÆğ
+    // æ£€æµ‹Consumeræ˜¯å¦è¢«æŒ‚èµ·
     if (isPause())
     {
     	RMQ_WARN("consumer was paused, execute pull request later. instanceName={%s}",
@@ -622,7 +622,7 @@ void DefaultMQPushConsumerImpl::pullMessage(PullRequest* pPullRequest)
         return;
     }
 
-    // Á÷Á¿¿ØÖÆ£¬¶ÓÁĞÖĞÏûÏ¢×ÜÊı
+    // æµé‡æ§åˆ¶ï¼Œé˜Ÿåˆ—ä¸­æ¶ˆæ¯æ€»æ•°
     long size = processQueue->getMsgCount().get();
     if (size > m_pDefaultMQPushConsumer->getPullThresholdForQueue())
     {
@@ -635,7 +635,7 @@ void DefaultMQPushConsumerImpl::pullMessage(PullRequest* pPullRequest)
         return;
     }
 
-    // Á÷Á¿¿ØÖÆ£¬¶ÓÁĞÖĞÏûÏ¢×î´ó¿ç¶È
+    // æµé‡æ§åˆ¶ï¼Œé˜Ÿåˆ—ä¸­æ¶ˆæ¯æœ€å¤§è·¨åº¦
     if (!m_consumeOrderly)
     {
         if (processQueue->getMaxSpan() > m_pDefaultMQPushConsumer->getConsumeConcurrentlyMaxSpan())
@@ -650,13 +650,13 @@ void DefaultMQPushConsumerImpl::pullMessage(PullRequest* pPullRequest)
         }
     }
 
-    // ²éÑ¯¶©ÔÄ¹ØÏµ
+    // æŸ¥è¯¢è®¢é˜…å…³ç³»
     std::map<std::string, SubscriptionData>& subTable = getSubscriptionInner();
     std::string topic = pPullRequest->getMessageQueue().getTopic();
     std::map<std::string, SubscriptionData>::iterator it = subTable.find(topic);
     if (it == subTable.end())
     {
-        // ÓÉÓÚ²¢·¢¹ØÏµ£¬¼´Ê¹ÕÒ²»µ½¶©ÔÄ¹ØÏµ£¬Ò²ÒªÖØÊÔÏÂ£¬·ÀÖ¹¶ªÊ§PullRequest
+        // ç”±äºå¹¶å‘å…³ç³»ï¼Œå³ä½¿æ‰¾ä¸åˆ°è®¢é˜…å…³ç³»ï¼Œä¹Ÿè¦é‡è¯•ä¸‹ï¼Œé˜²æ­¢ä¸¢å¤±PullRequest
         executePullRequestLater(pPullRequest, s_PullTimeDelayMillsWhenException);
         RMQ_WARN("find the consumer's subscription failed, {%s}", pPullRequest->toString().c_str());
         return;
@@ -708,7 +708,7 @@ void DefaultMQPushConsumerImpl::pullMessage(PullRequest* pPullRequest)
 }
 
 /**
-* Á¢¿ÌÖ´ĞĞÕâ¸öPullRequest
+* ç«‹åˆ»æ‰§è¡Œè¿™ä¸ªPullRequest
 */
 void DefaultMQPushConsumerImpl::executePullRequestImmediately(PullRequest* pullRequest)
 {
@@ -716,7 +716,7 @@ void DefaultMQPushConsumerImpl::executePullRequestImmediately(PullRequest* pullR
 }
 
 /**
-* ÉÔºóÔÙÖ´ĞĞÕâ¸öPullRequest
+* ç¨åå†æ‰§è¡Œè¿™ä¸ªPullRequest
 */
 void DefaultMQPushConsumerImpl::executePullRequestLater(PullRequest* pullRequest, long timeDelay)
 {
@@ -802,7 +802,7 @@ void DefaultMQPushConsumerImpl::sendMessageBack(MessageExt& msg, int delayLevel,
 
 void DefaultMQPushConsumerImpl::checkConfig()
 {
-    // consumerGroup ÓĞĞ§ĞÔ¼ì²é
+    // consumerGroup æœ‰æ•ˆæ€§æ£€æŸ¥
     Validators::checkGroup(m_pDefaultMQPushConsumer->getConsumerGroup());
 
     // consumerGroup
@@ -913,7 +913,7 @@ void DefaultMQPushConsumerImpl::copySubscription()
 {
     try
     {
-        // ¸´ÖÆÓÃ»§³õÊ¼ÉèÖÃµÄ¶©ÔÄ¹ØÏµ
+        // å¤åˆ¶ç”¨æˆ·åˆå§‹è®¾ç½®çš„è®¢é˜…å…³ç³»
         std::map<std::string, std::string>& sub = m_pDefaultMQPushConsumer->getSubscription();
         std::map<std::string, std::string>::iterator it = sub.begin();
         for (; it != sub.end(); it++)
@@ -933,7 +933,7 @@ void DefaultMQPushConsumerImpl::copySubscription()
                 break;
             case CLUSTERING:
             {
-                // Ä¬ÈÏ¶©ÔÄÏûÏ¢ÖØÊÔTopic
+                // é»˜è®¤è®¢é˜…æ¶ˆæ¯é‡è¯•Topic
                 std::string retryTopic = MixAll::getRetryTopic(m_pDefaultMQPushConsumer->getConsumerGroup());
                 SubscriptionDataPtr subscriptionData =
                     FilterAPI::buildSubscriptionData(retryTopic, SubscriptionData::SUB_ALL);
@@ -973,7 +973,7 @@ void DefaultMQPushConsumerImpl::subscribe(const std::string& topic, const std::s
         SubscriptionDataPtr subscriptionData = FilterAPI::buildSubscriptionData(topic, subExpression);
         m_pRebalanceImpl->getSubscriptionInner()[topic] = *subscriptionData;
 
-        // ·¢ËÍĞÄÌø£¬½«±ä¸üµÄ¶©ÔÄ¹ØÏµ×¢²áÉÏÈ¥
+        // å‘é€å¿ƒè·³ï¼Œå°†å˜æ›´çš„è®¢é˜…å…³ç³»æ³¨å†Œä¸Šå»
         if (m_pMQClientFactory)
         {
             m_pMQClientFactory->sendHeartbeatToAllBrokerWithLock();

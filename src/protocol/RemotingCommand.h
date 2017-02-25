@@ -46,10 +46,10 @@ namespace rmq
 
     typedef enum
     {
-        SUCCESS_VALUE = 0,// �ɹ�
-        SYSTEM_ERROR_VALUE,// ������δ�����쳣
-        SYSTEM_BUSY_VALUE,// �����̳߳�ӵ�£�ϵͳ��æ
-        REQUEST_CODE_NOT_SUPPORTED_VALUE ,// ������벻֧��
+        SUCCESS_VALUE = 0,// 成功
+        SYSTEM_ERROR_VALUE,// 发生了未捕获异常
+        SYSTEM_BUSY_VALUE,// 由于线程池拥堵，系统繁忙
+        REQUEST_CODE_NOT_SUPPORTED_VALUE ,// 请求代码不支持
     } ResponseCode;
 
     typedef enum

@@ -22,15 +22,15 @@
 namespace rmq
 {
 
-// ¿Í»§¶Ë±¾µØLock´æ»î×î´óÊ±¼ä£¬³¬¹ıÔò×Ô¶¯¹ıÆÚ£¬µ¥Î»ms
+// å®¢æˆ·ç«¯æœ¬åœ°Lockå­˜æ´»æœ€å¤§æ—¶é—´ï¼Œè¶…è¿‡åˆ™è‡ªåŠ¨è¿‡æœŸï¼Œå•ä½ms
 //"rocketmq.client.rebalance.lockMaxLiveTime", "30000"
 unsigned int ProcessQueue::s_RebalanceLockMaxLiveTime = 30000;
 
-// ¶¨Ê±Lock¼ä¸ôÊ±¼ä£¬µ¥Î»ms
+// å®šæ—¶Locké—´éš”æ—¶é—´ï¼Œå•ä½ms
 //"rocketmq.client.rebalance.lockInterval", "20000"
 unsigned int ProcessQueue::s_RebalanceLockInterval = 20000;
 
-// ×î´óÀ­È¡idleÊ±¼ä£¬µ¥Î»ms
+// æœ€å¤§æ‹‰å–idleæ—¶é—´ï¼Œå•ä½ms
 // rocketmq.client.pull.pullMaxIdleTime, 120000
 unsigned int ProcessQueue::s_PullMaxIdleTime = 120000;
 
@@ -91,7 +91,7 @@ bool ProcessQueue::putMessage(const std::list<MessageExt*>& msgs)
 }
 
 /**
-* »ñÈ¡µ±Ç°¶ÓÁĞµÄ×î´ó¿ç¶È
+* è·å–å½“å‰é˜Ÿåˆ—çš„æœ€å¤§è·¨åº¦
 */
 long long ProcessQueue::getMaxSpan()
 {
@@ -232,7 +232,7 @@ void ProcessQueue::setLastConsumeTimestamp(unsigned long long lastConsumeTimesta
 
 /**
 * ========================================================================
-* ÒÔÏÂ²¿·ÖÎªË³ĞòÏûÏ¢×¨ÓĞ²Ù×÷
+* ä»¥ä¸‹éƒ¨åˆ†ä¸ºé¡ºåºæ¶ˆæ¯ä¸“æœ‰æ“ä½œ
 */
 kpr::Mutex& ProcessQueue::getLockConsume()
 {
@@ -301,8 +301,8 @@ void ProcessQueue::makeMessageToCosumeAgain(const std::list<MessageExt*>& msgs)
 {
     try
     {
-        // ÁÙÊ±TableÉ¾³ı
-        // Õı³£TableÔö¼Ó
+        // ä¸´æ—¶Tableåˆ é™¤
+        // æ­£å¸¸Tableå¢åŠ 
         kpr::ScopedWLock<kpr::RWMutex> lock(m_lockTreeMap);
         std::list<MessageExt*>::const_iterator it = msgs.begin();
         for (; it != msgs.end(); it++)
@@ -319,7 +319,7 @@ void ProcessQueue::makeMessageToCosumeAgain(const std::list<MessageExt*>& msgs)
 }
 
 /**
-* Èç¹ûÈ¡²»µ½ÏûÏ¢£¬Ôò½«ÕıÔÚÏû·Ñ×´Ì¬ÖÃÎªfalse
+* å¦‚æœå–ä¸åˆ°æ¶ˆæ¯ï¼Œåˆ™å°†æ­£åœ¨æ¶ˆè´¹çŠ¶æ€ç½®ä¸ºfalse
 *
 * @param batchSize
 * @return

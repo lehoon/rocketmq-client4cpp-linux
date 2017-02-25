@@ -93,7 +93,7 @@ void DefaultMQProducerImpl::start(bool startFactory)
                                   + "] has been created before, specify another name please.", -1);
             }
 
-            // 默认Topic注册
+            // 榛樿Topic娉ㄥ唽
             m_topicPublishInfoTable[m_pDefaultMQProducer->getCreateTopicKey()] =
                 TopicPublishInfo();
 
@@ -216,7 +216,7 @@ void DefaultMQProducerImpl::executeHookAfter(const SendMessageContext& context)
 }
 
 
-//父类接口实现
+//鐖剁被鎺ュ彛瀹炵幇
 std::set<std::string> DefaultMQProducerImpl::getPublishTopicList()
 {
 	kpr::ScopedRLock<kpr::RWMutex> lock(m_topicPublishInfoTableLock);
@@ -267,7 +267,7 @@ void DefaultMQProducerImpl::updateTopicPublishInfo(const std::string& topic,
     }
 }
 
-//父类接口实现 end
+//鐖剁被鎺ュ彛瀹炵幇 end
 
 void DefaultMQProducerImpl::createTopic(const std::string& key,
                                         const std::string& newTopic, int queueNum)
@@ -707,7 +707,7 @@ SendResult DefaultMQProducerImpl::sendKernelImpl(Message& msg,
                 sysFlag |= MessageSysFlag::TransactionPreparedType;
             }
 
-            // 执行hook
+            // 鎵цhook
             if (hasHook())
             {
                 context.producerGroup = (m_pDefaultMQProducer->getProducerGroup());

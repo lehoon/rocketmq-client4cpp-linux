@@ -20,7 +20,7 @@
 namespace rmq
 {
 	/**
-	 * 通信方式
+	 * 閫氫俊鏂瑰紡
 	 *
 	 */
 	enum CommunicationMode

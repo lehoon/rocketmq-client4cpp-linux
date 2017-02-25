@@ -50,7 +50,7 @@ RebalancePushImpl::RebalancePushImpl(const std::string& consumerGroup,
 void RebalancePushImpl::dispatchPullRequest(std::list<PullRequest*>& pullRequestList)
 {
     std::list<PullRequest*>::iterator it = pullRequestList.begin();
-    // ÅÉ·¢PullRequest
+    // æ´¾å‘PullRequest
     for (; it != pullRequestList.end(); it++)
     {
         m_pDefaultMQPushConsumerImpl->executePullRequestImmediately(*it);
@@ -75,13 +75,13 @@ long long RebalancePushImpl::computePullFromWhere(MessageQueue& mq)
             {
                 result = lastOffset;
             }
-            // µ±Ç°¶©ÔÄ×éÔÚ·şÎñÆ÷Ã»ÓĞ¶ÔÓ¦µÄOffset
-            // ËµÃ÷ÊÇµÚÒ»´ÎÆô¶¯
+            // å½“å‰è®¢é˜…ç»„åœ¨æœåŠ¡å™¨æ²¡æœ‰å¯¹åº”çš„Offset
+            // è¯´æ˜æ˜¯ç¬¬ä¸€æ¬¡å¯åŠ¨
             else if (-1 == lastOffset)
             {
                 result = 0L;
             }
-            // ·¢ÉúÆäËû´íÎó
+            // å‘ç”Ÿå…¶ä»–é”™è¯¯
             else
             {
                 result = -1;
@@ -95,16 +95,16 @@ long long RebalancePushImpl::computePullFromWhere(MessageQueue& mq)
             {
                 result = lastOffset;
             }
-            // µ±Ç°¶©ÔÄ×éÔÚ·şÎñÆ÷Ã»ÓĞ¶ÔÓ¦µÄOffset
-            // ËµÃ÷ÊÇµÚÒ»´ÎÆô¶¯
+            // å½“å‰è®¢é˜…ç»„åœ¨æœåŠ¡å™¨æ²¡æœ‰å¯¹åº”çš„Offset
+            // è¯´æ˜æ˜¯ç¬¬ä¸€æ¬¡å¯åŠ¨
             else if (-1 == lastOffset)
             {
-                // Èç¹ûÊÇÖØÊÔ¶ÓÁĞ£¬ĞèÒª´Ó0¿ªÊ¼
+                // å¦‚æœæ˜¯é‡è¯•é˜Ÿåˆ—ï¼Œéœ€è¦ä»0å¼€å§‹
                 if (strncmp(MixAll::RETRY_GROUP_TOPIC_PREFIX.c_str(), mq.getTopic().c_str(), MixAll::RETRY_GROUP_TOPIC_PREFIX.size()) == 0)
                 {
                     result = 0L;
                 }
-                // Õı³£¶ÓÁĞÔò´ÓÄ©Î²¿ªÊ¼
+                // æ­£å¸¸é˜Ÿåˆ—åˆ™ä»æœ«å°¾å¼€å§‹
                 else
                 {
                     //result = LLONG_MAX;
@@ -118,7 +118,7 @@ long long RebalancePushImpl::computePullFromWhere(MessageQueue& mq)
                     }
                 }
             }
-            // ·¢ÉúÆäËû´íÎó
+            // å‘ç”Ÿå…¶ä»–é”™è¯¯
             else
             {
                 result = -1;
@@ -139,11 +139,11 @@ long long RebalancePushImpl::computePullFromWhere(MessageQueue& mq)
 	            {
 	                result = lastOffset;
 	            }
-	            // µ±Ç°¶©ÔÄ×éÔÚ·şÎñÆ÷Ã»ÓĞ¶ÔÓ¦µÄOffset
-	            // ËµÃ÷ÊÇµÚÒ»´ÎÆô¶¯
+	            // å½“å‰è®¢é˜…ç»„åœ¨æœåŠ¡å™¨æ²¡æœ‰å¯¹åº”çš„Offset
+	            // è¯´æ˜æ˜¯ç¬¬ä¸€æ¬¡å¯åŠ¨
 	            else if (-1 == lastOffset)
 	            {
-	                // Èç¹ûÊÇÖØÊÔ¶ÓÁĞ£¬ĞèÒª´ÓÄ©Î²¿ªÊ¼
+	                // å¦‚æœæ˜¯é‡è¯•é˜Ÿåˆ—ï¼Œéœ€è¦ä»æœ«å°¾å¼€å§‹
 	                if (strncmp(MixAll::RETRY_GROUP_TOPIC_PREFIX.c_str(), mq.getTopic().c_str(), MixAll::RETRY_GROUP_TOPIC_PREFIX.size()) == 0)
 	                {
 	                	//result = LLONG_MAX;
@@ -171,7 +171,7 @@ long long RebalancePushImpl::computePullFromWhere(MessageQueue& mq)
 	                    }
 	                }
 	            }
-	            // ·¢ÉúÆäËû´íÎó
+	            // å‘ç”Ÿå…¶ä»–é”™è¯¯
 	            else
 	            {
 	                result = -1;

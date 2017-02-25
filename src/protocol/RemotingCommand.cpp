@@ -183,7 +183,7 @@ void RemotingCommand::setBody(char* pData, int len, bool copy)
 
 RemotingCommand* RemotingCommand::decode(const char* pData, int len)
 {
-    //½âÎöheader
+    //è§£æheader
     Json::Reader reader;
     Json::Value object;
 

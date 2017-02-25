@@ -80,7 +80,7 @@ void Thread::SetName(const char* name)
 {
     ScopedLock<Mutex> guard(m_mutex);
 
-    //如果name为空指针，则用内部名称，Thread-threadNumber
+    //濡傛灉name涓虹┖鎸囬拡锛屽垯鐢ㄥ唴閮ㄥ悕绉帮紝Thread-threadNumber
     if (name == NULL)
     {
         snprintf(m_name, sizeof(m_name), "Thread-%u", m_threadNumber);

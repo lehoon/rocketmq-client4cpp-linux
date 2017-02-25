@@ -2,7 +2,7 @@
 VERSION=1.0.3
 BUILD_PATH=`pwd`
 INSTALL_PATH=$BUILD_PATH/release
-RELEASE_PATH=/data/libs/rocketmq
+RELEASE_PATH=$BUILD_PATH/libs/rocketmq
 
 echo -e  "\e[33;1m# copy include files...\e[0m"
 mkdir -p $INSTALL_PATH

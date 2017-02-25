@@ -33,7 +33,7 @@ namespace rmq
     class OffsetSerializeWrapper;
 
     /**
-    * 消费进度存储到Consumer本地
+    * 娑堣垂杩涘害瀛樺偍鍒癈onsumer鏈湴
     *
     */
     class LocalFileOffsetStore : public OffsetStore
@@ -56,7 +56,7 @@ namespace rmq
     private:
         MQClientFactory* m_pMQClientFactory;
         std::string m_groupName;
-        std::string m_storePath;// 本地Offset存储路径
+        std::string m_storePath;// 鏈湴Offset瀛樺偍璺緞
         std::map<MessageQueue, kpr::AtomicLong> m_offsetTable;
         kpr::RWMutex m_tableMutex;
     };

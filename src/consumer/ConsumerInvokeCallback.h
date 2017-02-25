@@ -25,7 +25,7 @@ namespace rmq
 	class MQClientAPIImpl;
 
 	/**
-	* 异步调用应答回调接口
+	* 寮傛璋冪敤搴旂瓟鍥炶皟鎺ュ彛
 	*
 	*/
 	class ConsumerInvokeCallback : public InvokeCallback

@@ -48,7 +48,7 @@ std::string VirtualEnvUtil::buildWithProjectGroup(const std::string& origin, con
 
 
 /**
-* 清除虚拟运行环境相关的projectGroupPrefix
+* 娓呴櫎铏氭嫙杩愯鐜鐩稿叧鐨刾rojectGroupPrefix
 *
 * @param origin
 * @param projectGroup

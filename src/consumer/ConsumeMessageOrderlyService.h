@@ -63,7 +63,7 @@ namespace rmq
 
 
   /**
-  * Ë³ĞòÏû·ÑÏûÏ¢·şÎñ
+  * é¡ºåºæ¶ˆè´¹æ¶ˆæ¯æœåŠ¡
   *
   */
   class ConsumeMessageOrderlyService : public ConsumeMessageService
@@ -88,7 +88,7 @@ namespace rmq
 
       ConsumerStat& getConsumerStat();
       /**
-      * ÔÚConsumer±¾µØ¶¨Ê±Ïß³ÌÖĞ¶¨Ê±ÖØÊÔ
+      * åœ¨Consumeræœ¬åœ°å®šæ—¶çº¿ç¨‹ä¸­å®šæ—¶é‡è¯•
       */
       void submitConsumeRequestLater(ProcessQueue* pProcessQueue,
                                      const MessageQueue& messageQueue,

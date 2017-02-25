@@ -25,7 +25,7 @@
 namespace rmq
 	{
 	/**
-	* ÏûÏ¢À©Õ¹ÊôĞÔ£¬ÔÚ·şÎñÆ÷ÉÏ²úÉú´Ë¶ÔÏó
+	* æ¶ˆæ¯æ‰©å±•å±æ€§ï¼Œåœ¨æœåŠ¡å™¨ä¸Šäº§ç”Ÿæ­¤å¯¹è±¡
 	*
 	*/
 	class MessageExt : public Message
@@ -88,19 +88,19 @@ namespace rmq
 		std::string toString() const;
 
 	private:
-		long long m_queueOffset;// ¶ÓÁĞÆ«ÒÆÁ¿
-		long long m_commitLogOffset;// ÏûÏ¢¶ÔÓ¦µÄCommit Log Offset
-		long long m_bornTimestamp;// ÏûÏ¢ÔÚ¿Í»§¶Ë´´½¨Ê±¼ä´Á <PUT>
-		long long m_storeTimestamp;// ÏûÏ¢ÔÚ·şÎñÆ÷´æ´¢Ê±¼ä´Á
+		long long m_queueOffset;// é˜Ÿåˆ—åç§»é‡
+		long long m_commitLogOffset;// æ¶ˆæ¯å¯¹åº”çš„Commit Log Offset
+		long long m_bornTimestamp;// æ¶ˆæ¯åœ¨å®¢æˆ·ç«¯åˆ›å»ºæ—¶é—´æˆ³ <PUT>
+		long long m_storeTimestamp;// æ¶ˆæ¯åœ¨æœåŠ¡å™¨å­˜å‚¨æ—¶é—´æˆ³
 		long long m_preparedTransactionOffset;
-		int m_queueId;// ¶ÓÁĞID <PUT>
-		int m_storeSize;// ´æ´¢¼ÇÂ¼´óĞ¡
-		int m_sysFlag;// ÏûÏ¢±êÖ¾Î» <PUT>
-		int m_bodyCRC;// ÏûÏ¢ÌåCRC
-		int m_reconsumeTimes;// µ±Ç°ÏûÏ¢±»Ä³¸ö¶©ÔÄ×éÖØĞÂÏû·ÑÁË¼¸´Î£¨¶©ÔÄ×éÖ®¼ä¶ÀÁ¢¼ÆÊı£©
-		sockaddr m_bornHost;// ÏûÏ¢À´×ÔÄÄÀï <PUT>
-		sockaddr m_storeHost;// ÏûÏ¢´æ´¢ÔÚÄÄ¸ö·şÎñÆ÷ <PUT>
-		std::string m_msgId;// ÏûÏ¢ID
+		int m_queueId;// é˜Ÿåˆ—ID <PUT>
+		int m_storeSize;// å­˜å‚¨è®°å½•å¤§å°
+		int m_sysFlag;// æ¶ˆæ¯æ ‡å¿—ä½ <PUT>
+		int m_bodyCRC;// æ¶ˆæ¯ä½“CRC
+		int m_reconsumeTimes;// å½“å‰æ¶ˆæ¯è¢«æŸä¸ªè®¢é˜…ç»„é‡æ–°æ¶ˆè´¹äº†å‡ æ¬¡ï¼ˆè®¢é˜…ç»„ä¹‹é—´ç‹¬ç«‹è®¡æ•°ï¼‰
+		sockaddr m_bornHost;// æ¶ˆæ¯æ¥è‡ªå“ªé‡Œ <PUT>
+		sockaddr m_storeHost;// æ¶ˆæ¯å­˜å‚¨åœ¨å“ªä¸ªæœåŠ¡å™¨ <PUT>
+		std::string m_msgId;// æ¶ˆæ¯ID
 	};
 }
 

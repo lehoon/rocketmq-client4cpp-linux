@@ -37,7 +37,7 @@ namespace rmq
 	class DefaultMQProducerImpl;
 
 	/**
-	* ÏûÏ¢Éú²úÕß£¬ÊÊºÏÊ¹ÓÃspring³õÊ¼»¯
+	* æ¶ˆæ¯ç”Ÿäº§è€…ï¼Œé€‚åˆä½¿ç”¨springåˆå§‹åŒ–
 	*
 	*/
 	class DefaultMQProducer : public ClientConfig ,public MQProducer
@@ -113,15 +113,15 @@ namespace rmq
 		DefaultMQProducerImpl* m_pDefaultMQProducerImpl;
 
 	private:
-		std::string m_producerGroup;///< Ò»°ã·¢ËÍÍ¬ÑùÏûÏ¢µÄProducer£¬¹éÎªÍ¬Ò»¸öGroup£¬Ó¦ÓÃ±ØĞëÉèÖÃ£¬²¢±£Ö¤ÃüÃûÎ¨Ò»
-		std::string m_createTopicKey;///< Ö§³ÖÔÚ·¢ËÍÏûÏ¢Ê±£¬Èç¹ûTopic²»´æÔÚ£¬×Ô¶¯´´½¨Topic£¬µ«ÊÇÒªÖ¸¶¨Key
+		std::string m_producerGroup;///< ä¸€èˆ¬å‘é€åŒæ ·æ¶ˆæ¯çš„Producerï¼Œå½’ä¸ºåŒä¸€ä¸ªGroupï¼Œåº”ç”¨å¿…é¡»è®¾ç½®ï¼Œå¹¶ä¿è¯å‘½åå”¯ä¸€
+		std::string m_createTopicKey;///< æ”¯æŒåœ¨å‘é€æ¶ˆæ¯æ—¶ï¼Œå¦‚æœTopicä¸å­˜åœ¨ï¼Œè‡ªåŠ¨åˆ›å»ºTopicï¼Œä½†æ˜¯è¦æŒ‡å®šKey
 
-		int m_defaultTopicQueueNums;///< ·¢ËÍÏûÏ¢£¬×Ô¶¯´´½¨TopicÊ±£¬Ä¬ÈÏ¶ÓÁĞÊı4
-		int m_sendMsgTimeout;///< ·¢ËÍÏûÏ¢³¬Ê±£¬Ä¬ÈÏ3000, ²»½¨ÒéĞŞ¸Ä
-		int m_compressMsgBodyOverHowmuch;///< Message Body´óĞ¡³¬¹ı·§Öµ£¬ÔòÑ¹Ëõ,Ä¬ÈÏ4k
-		int m_retryTimesWhenSendFailed;///< ·¢ËÍÊ§°ÜÔÙÖØÊÔ´ÎÊı£¬Ä¬ÈÏ2
-		bool m_retryAnotherBrokerWhenNotStoreOK;// ÏûÏ¢ÒÑ¾­³É¹¦Ğ´ÈëMaster£¬µ«ÊÇË¢ÅÌ³¬Ê±»òÕßÍ¬²½µ½SlaveÊ§°Ü£¬Ôò³¢ÊÔÖØÊÔÁíÒ»¸öBroker£¬²»½¨ÒéĞŞ¸ÄÄ¬ÈÏÖµ£¬Ë³ĞòÏûÏ¢ÎŞĞ§
-		int m_maxMessageSize;///< ×î´óÏûÏ¢´óĞ¡£¬Ä¬ÈÏ128K
+		int m_defaultTopicQueueNums;///< å‘é€æ¶ˆæ¯ï¼Œè‡ªåŠ¨åˆ›å»ºTopicæ—¶ï¼Œé»˜è®¤é˜Ÿåˆ—æ•°4
+		int m_sendMsgTimeout;///< å‘é€æ¶ˆæ¯è¶…æ—¶ï¼Œé»˜è®¤3000, ä¸å»ºè®®ä¿®æ”¹
+		int m_compressMsgBodyOverHowmuch;///< Message Bodyå¤§å°è¶…è¿‡é˜€å€¼ï¼Œåˆ™å‹ç¼©,é»˜è®¤4k
+		int m_retryTimesWhenSendFailed;///< å‘é€å¤±è´¥å†é‡è¯•æ¬¡æ•°ï¼Œé»˜è®¤2
+		bool m_retryAnotherBrokerWhenNotStoreOK;// æ¶ˆæ¯å·²ç»æˆåŠŸå†™å…¥Masterï¼Œä½†æ˜¯åˆ·ç›˜è¶…æ—¶æˆ–è€…åŒæ­¥åˆ°Slaveå¤±è´¥ï¼Œåˆ™å°è¯•é‡è¯•å¦ä¸€ä¸ªBrokerï¼Œä¸å»ºè®®ä¿®æ”¹é»˜è®¤å€¼ï¼Œé¡ºåºæ¶ˆæ¯æ— æ•ˆ
+		int m_maxMessageSize;///< æœ€å¤§æ¶ˆæ¯å¤§å°ï¼Œé»˜è®¤128K
 		int m_compressLevel;
 	};
 }

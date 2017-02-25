@@ -64,7 +64,7 @@ namespace rmq
         void setLockOKMQSet(const std::set<MessageQueue>& lockOKMQSet);
 
     private:
-        std::set<MessageQueue> m_lockOKMQSet;// Lock³É¹¦µÄ¶ÓÁĞ¼¯ºÏ
+        std::set<MessageQueue> m_lockOKMQSet;// LockæˆåŠŸçš„é˜Ÿåˆ—é›†åˆ
     };
 
     typedef LockBatchRequestBody UnlockBatchRequestBody;

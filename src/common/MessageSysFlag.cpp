@@ -27,7 +27,7 @@ int MessageSysFlag::MultiTagsFlag = (0x1 << 1);
 
 /**
 * 7 6 5 4 3 2 1 0<br>
-* SysFlag ÊÂÎñÏà¹Ø£¬´Ó×óÊô£¬2Óë3
+* SysFlag äº‹åŠ¡ç›¸å…³ï¼Œä»å·¦å±ï¼Œ2ä¸3
 */
 int MessageSysFlag::TransactionNotType = (0x0 << 2);
 int MessageSysFlag::TransactionPreparedType = (0x1 << 2);

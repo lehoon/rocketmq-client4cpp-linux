@@ -28,7 +28,7 @@ namespace rmq
     class MessageQueue;
 
     /**
-     * Consumer内部接口，供MQClientFactory使用
+     * Consumer鍐呴儴鎺ュ彛锛屼緵MQClientFactory浣跨敤
      *
      */
     class MQConsumerInner

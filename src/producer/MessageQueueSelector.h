@@ -33,7 +33,7 @@ namespace rmq
     class Message;
 
     /**
-    * ¶ÓÁĞÑ¡ÔñÆ÷
+    * é˜Ÿåˆ—é€‰æ‹©å™¨
     *
     */
     class MessageQueueSelector
@@ -44,7 +44,7 @@ namespace rmq
     };
 
     /**
-    * ·¢ËÍÏûÏ¢£¬Ëæ»úÑ¡Ôñ¶ÓÁĞ
+    * å‘é€æ¶ˆæ¯ï¼Œéšæœºé€‰æ‹©é˜Ÿåˆ—
     *
     */
     class SelectMessageQueueByRandoom : public MessageQueueSelector
@@ -60,7 +60,7 @@ namespace rmq
     };
 
     /**
-    * Ê¹ÓÃ¹şÏ£Ëã·¨À´Ñ¡Ôñ¶ÓÁĞ£¬Ë³ĞòÏûÏ¢Í¨³£¶¼ÕâÑù×ö<br>
+    * ä½¿ç”¨å“ˆå¸Œç®—æ³•æ¥é€‰æ‹©é˜Ÿåˆ—ï¼Œé¡ºåºæ¶ˆæ¯é€šå¸¸éƒ½è¿™æ ·åš<br>
     *
     */
     class SelectMessageQueueByHash : public MessageQueueSelector
@@ -82,7 +82,7 @@ namespace rmq
 
 
     /**
-    * ¸ù¾İ»ú·¿À´Ñ¡Ôñ·¢ÍùÄÄ¸ö¶ÓÁĞ
+    * æ ¹æ®æœºæˆ¿æ¥é€‰æ‹©å‘å¾€å“ªä¸ªé˜Ÿåˆ—
     *
     */
     class SelectMessageQueueByMachineRoom : public MessageQueueSelector

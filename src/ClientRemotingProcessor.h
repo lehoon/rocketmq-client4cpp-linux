@@ -25,7 +25,7 @@ namespace rmq
 	class RemotingCommand;
 
 	/**
-	* Client接收Broker的回调操作，例如事务回调，或者其他管理类命令回调
+	* Client鎺ユ敹Broker鐨勫洖璋冩搷浣滐紝渚嬪浜嬪姟鍥炶皟锛屾垨鑰呭叾浠栫鐞嗙被鍛戒护鍥炶皟
 	*
 	*/
 	class ClientRemotingProcessor : public TcpRequestProcessor

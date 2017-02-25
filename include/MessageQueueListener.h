@@ -22,7 +22,7 @@
 namespace rmq
 {
 	/**
-	 * ¶ÓÁĞ±ä»¯¼àÌıÆ÷
+	 * é˜Ÿåˆ—å˜åŒ–ç›‘å¬å™¨
 	 *
 	 */
 	class MessageQueueListener

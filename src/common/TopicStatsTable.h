@@ -31,7 +31,7 @@ namespace rmq
     } TopicOffset;
 
     /**
-    * Topic所有队列的Offset
+    * Topic鎵�鏈夐槦鍒楃殑Offset
     *
     */
     class TopicStatsTable

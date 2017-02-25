@@ -23,7 +23,7 @@ namespace rmq
 	class MQClientFactory;
 
 	/**
-	* Rebalance·şÎñ
+	* RebalanceæœåŠ¡
 	*
 	*/
 	class RebalanceService : public ServiceThread

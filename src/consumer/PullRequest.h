@@ -26,7 +26,7 @@
 namespace rmq
 {
     /**
-    * À­ÏûÏ¢ÇëÇó
+    * æ‹‰æ¶ˆæ¯è¯·æ±‚
     *
     */
     class PullRequest
@@ -55,7 +55,7 @@ namespace rmq
         std::string m_consumerGroup;
         MessageQueue m_messageQueue;
 
-        // hashCodeÓëequals·½·¨²»°üº¬ÒÔÏÂ×Ö¶Î
+        // hashCodeä¸equalsæ–¹æ³•ä¸åŒ…å«ä»¥ä¸‹å­—æ®µ
         ProcessQueue* m_pProcessQueue;
         long long m_nextOffset;
     };

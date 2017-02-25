@@ -33,7 +33,7 @@ namespace rmq
   class SubscriptionData;
 
   /**
-  * ¶ÔPull½Ó¿Ú½øĞĞ½øÒ»²½µÄ·â×°
+  * å¯¹Pullæ¥å£è¿›è¡Œè¿›ä¸€æ­¥çš„å°è£…
   *
   */
   class PullAPIWrapper
@@ -43,13 +43,13 @@ namespace rmq
       void updatePullFromWhichNode(MessageQueue& mq, long brokerId);
 
       /**
-      * ¶ÔÀ­È¡½á¹û½øĞĞ´¦Àí£¬Ö÷ÒªÊÇÏûÏ¢·´ĞòÁĞ»¯
+      * å¯¹æ‹‰å–ç»“æœè¿›è¡Œå¤„ç†ï¼Œä¸»è¦æ˜¯æ¶ˆæ¯ååºåˆ—åŒ–
       *
       * @param mq
       * @param pullResult
       * @param subscriptionData
       * @param projectGroupPrefix
-      *            ĞéÄâ»·¾³projectGroupPrefix£¬²»´æÔÚ¿ÉÉèÖÃÎª null
+      *            è™šæ‹Ÿç¯å¢ƒprojectGroupPrefixï¼Œä¸å­˜åœ¨å¯è®¾ç½®ä¸º null
       * @return
       */
       PullResult* processPullResult(MessageQueue& mq,
@@ -57,7 +57,7 @@ namespace rmq
                                     SubscriptionData& subscriptionData);
 
       /**
-      * Ã¿¸ö¶ÓÁĞ¶¼Ó¦¸ÃÓĞÏàÓ¦µÄ±äÁ¿À´±£´æ´ÓÄÄ¸ö·şÎñÆ÷À­
+      * æ¯ä¸ªé˜Ÿåˆ—éƒ½åº”è¯¥æœ‰ç›¸åº”çš„å˜é‡æ¥ä¿å­˜ä»å“ªä¸ªæœåŠ¡å™¨æ‹‰
       */
       long recalculatePullFromWhichNode(MessageQueue& mq);
 

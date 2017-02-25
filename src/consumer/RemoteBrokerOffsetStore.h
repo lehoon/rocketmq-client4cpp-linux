@@ -29,7 +29,7 @@ namespace rmq
     class MQClientFactory;
 
     /**
-    * Ïû·Ñ½ø¶È´æ´¢µ½Ô¶¶ËBroker£¬±È½Ï¿É¿¿
+    * æ¶ˆè´¹è¿›åº¦å­˜å‚¨åˆ°è¿œç«¯Brokerï¼Œæ¯”è¾ƒå¯é 
     *
     */
     class RemoteBrokerOffsetStore : public OffsetStore
@@ -47,7 +47,7 @@ namespace rmq
 
     private:
         /**
-        * ¸üĞÂConsumer Offset£¬ÔÚMaster¶ÏÍøÆÚ¼ä£¬¿ÉÄÜ»á¸üĞÂµ½Slave£¬ÕâÀïĞèÒªÓÅ»¯£¬»òÕßÔÚSlave¶ËÓÅ»¯£¬ TODO
+        * æ›´æ–°Consumer Offsetï¼Œåœ¨Masteræ–­ç½‘æœŸé—´ï¼Œå¯èƒ½ä¼šæ›´æ–°åˆ°Slaveï¼Œè¿™é‡Œéœ€è¦ä¼˜åŒ–ï¼Œæˆ–è€…åœ¨Slaveç«¯ä¼˜åŒ–ï¼Œ TODO
         */
         void updateConsumeOffsetToBroker(const MessageQueue& mq, long long offset);
         long long fetchConsumeOffsetFromBroker(const MessageQueue& mq);

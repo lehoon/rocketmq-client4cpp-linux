@@ -46,7 +46,7 @@ namespace rmq
     class LocalTransactionExecuter;
 
     /**
-    * Éú²úÕßÄ¬ÈÏÊµÏÖ
+    * ç”Ÿäº§è€…é»˜è®¤å®ç°
     *
     */
     class DefaultMQProducerImpl : public MQProducerInner
@@ -67,7 +67,7 @@ namespace rmq
         void shutdown();
         void shutdown(bool shutdownFactory);
 
-        //¸¸Àà½Ó¿ÚÊµÏÖ
+        //çˆ¶ç±»æ¥å£å®ç°
         std::set<std::string> getPublishTopicList();
         bool isPublishTopicNeedUpdate(const std::string& topic);
 
@@ -77,7 +77,7 @@ namespace rmq
 
         void updateTopicPublishInfo(const std::string& topic, TopicPublishInfo& info);
         virtual TransactionCheckListener* checkListener();
-        //¸¸Àà½Ó¿ÚÊµÏÖ end
+        //çˆ¶ç±»æ¥å£å®ç° end
 
         void createTopic(const std::string& key, const std::string& newTopic, int queueNum);
 
@@ -189,17 +189,17 @@ namespace rmq
         void checkConfig();
 
         /**
-        * ³¢ÊÔÑ°ÕÒTopicÂ·ÓÉĞÅÏ¢£¬Èç¹ûÃ»ÓĞÔòµ½Name ServerÉÏÕÒ£¬ÔÙÃ»ÓĞ£¬ÔòÈ¡Ä¬ÈÏTopic
+        * å°è¯•å¯»æ‰¾Topicè·¯ç”±ä¿¡æ¯ï¼Œå¦‚æœæ²¡æœ‰åˆ™åˆ°Name Serverä¸Šæ‰¾ï¼Œå†æ²¡æœ‰ï¼Œåˆ™å–é»˜è®¤Topic
         */
         TopicPublishInfo& tryToFindTopicPublishInfo(const std::string& topic) ;
 
         bool tryToCompressMessage(Message& msg);
 
     protected:
-        //TODO ÊÂÎñÏà¹Ø¶ÓÁĞ ¼° ¼ì²âÏß³Ì
+        //TODO äº‹åŠ¡ç›¸å…³é˜Ÿåˆ— åŠ æ£€æµ‹çº¿ç¨‹
 
     private:
-        int m_zipCompressLevel;// ÏûÏ¢Ñ¹Ëõlevel£¬Ä¬ÈÏ5
+        int m_zipCompressLevel;// æ¶ˆæ¯å‹ç¼©levelï¼Œé»˜è®¤5
 
         DefaultMQProducer* m_pDefaultMQProducer;
 
@@ -208,7 +208,7 @@ namespace rmq
 
         ServiceState m_serviceState;
         MQClientFactory* m_pMQClientFactory;
-        std::list<SendMessageHook*> m_hookList;//·¢ËÍÃ¿ÌõÏûÏ¢»á»Øµ÷
+        std::list<SendMessageHook*> m_hookList;//å‘é€æ¯æ¡æ¶ˆæ¯ä¼šå›è°ƒ
     };
 }
 

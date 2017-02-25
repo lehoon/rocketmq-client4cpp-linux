@@ -23,11 +23,11 @@
 
 namespace rmq
 {
-	// Ïß³Ì»ØÊÕÊ±¼ä£¬Ä¬ÈÏ90S
+	// çº¿ç¨‹å›æ”¶æ—¶é—´ï¼Œé»˜è®¤90S
 	const long JoinTime = 90 * 1000;
 
 	/**
-	* ºóÌ¨·şÎñÏß³Ì»ùÀà
+	* åå°æœåŠ¡çº¿ç¨‹åŸºç±»
 	*
 	*/
 	class ServiceThread : public kpr::Thread, public kpr::Monitor
@@ -43,8 +43,8 @@ namespace rmq
 	    void waitForRunning(long interval);
 
 	protected:
-	    volatile bool m_notified;// ÊÇ·ñÒÑ¾­±»Notify¹ı
-	    volatile bool m_stoped; // Ïß³ÌÊÇ·ñÒÑ¾­Í£Ö¹
+	    volatile bool m_notified;// æ˜¯å¦å·²ç»è¢«Notifyè¿‡
+	    volatile bool m_stoped; // çº¿ç¨‹æ˜¯å¦å·²ç»åœæ­¢
 	};
 }
 

@@ -25,7 +25,7 @@ namespace rmq
     class Message;
 
     /**
-    * ÓĞĞ§ĞÔ¼ì²é¹«ÓÃÀà¡£
+    * æœ‰æ•ˆæ€§æ£€æŸ¥å…¬ç”¨ç±»ã€‚
     *
     * @author manhong.yqd<jodie.yqd@gmail.com>
     * @since 2013-8-28
@@ -34,7 +34,7 @@ namespace rmq
     {
     public:
         /**
-        * Í¨¹ıÕıÔò±í´ïÊ½½øĞĞ×Ö·ûÆ¥Åä
+        * é€šè¿‡æ­£åˆ™è¡¨è¾¾å¼è¿›è¡Œå­—ç¬¦åŒ¹é…
         *
         * @param origin
         * @param patternStr
@@ -43,7 +43,7 @@ namespace rmq
         static bool regularExpressionMatcher(const std::string& origin, const std::string& patternStr);
 
         /**
-        * Í¨¹ıÕıÔò±í´ïÊ½²éÕÒÆ¥ÅäµÄ×Ö·û
+        * é€šè¿‡æ­£åˆ™è¡¨è¾¾å¼æŸ¥æ‰¾åŒ¹é…çš„å­—ç¬¦
         *
         * @param origin
         * @param patternStr
@@ -52,7 +52,7 @@ namespace rmq
         static std::string getGroupWithRegularExpression(const std::string& origin, const std::string& patternStr);
 
         /**
-        * topic ÓĞĞ§ĞÔ¼ì²é
+        * topic æœ‰æ•ˆæ€§æ£€æŸ¥
         *
         * @param topic
         * @throws MQClientException
@@ -60,7 +60,7 @@ namespace rmq
         static void checkTopic(const std::string& topic);
 
         /**
-        * group ÓĞĞ§ĞÔ¼ì²é
+        * group æœ‰æ•ˆæ€§æ£€æŸ¥
         *
         * @param group
         * @throws MQClientException
@@ -68,7 +68,7 @@ namespace rmq
         static void checkGroup(const std::string& group);
 
         /**
-        * message ÓĞĞ§ĞÔ¼ì²é
+        * message æœ‰æ•ˆæ€§æ£€æŸ¥
         *
         * @param msg
         * @param int maxMessageSize

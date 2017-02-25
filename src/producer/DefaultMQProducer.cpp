@@ -267,7 +267,7 @@ int DefaultMQProducer::getCompressLevel()
 
 void DefaultMQProducer::setCompressLevel(int compressLevel)
 {
-    assert(compressLevel >= 0 && compressLevel <= 9 || compressLevel == -1);
+    assert((compressLevel >= 0 && compressLevel <= 9) || compressLevel == -1);
 
     m_compressLevel = compressLevel;
 }

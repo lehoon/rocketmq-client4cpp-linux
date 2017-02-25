@@ -44,7 +44,7 @@ typedef struct tagTimerlnfo
 {
     unsigned int id;
     unsigned int elapse;
-    int outTime;// ³õÊ¼»¯¿ÉÒÔÎª¸ºÊı£¬ÕâÑù¾Í¿ÉÒÔÑÓ³ÙÆô¶¯ÁË
+    int outTime;// åˆå§‹åŒ–å¯ä»¥ä¸ºè´Ÿæ•°ï¼Œè¿™æ ·å°±å¯ä»¥å»¶è¿Ÿå¯åŠ¨äº†
     bool persistent;
     TimerHandler* pTimerHandler;
 } TimerInfo;

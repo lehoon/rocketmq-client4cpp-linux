@@ -18,7 +18,7 @@ namespace kpr
 {
 
 /**
-* @brief ³£ÓÃÎÄ¼şÃû´¦Àíº¯Êı.
+* @brief å¸¸ç”¨æ–‡ä»¶åå¤„ç†å‡½æ•°.
 *
 */
 class FileUtil
@@ -26,221 +26,221 @@ class FileUtil
 public:
 
     /**
-    * @brief »ñÈ¡ÎÄ¼ş´óĞ¡, Èç¹ûÎÄ¼ş²»´æÔÚ, Ôò·µ»Ø-1.
+    * @brief è·å–æ–‡ä»¶å¤§å°, å¦‚æœæ–‡ä»¶ä¸å­˜åœ¨, åˆ™è¿”å›-1.
     *
-    * @param  sFullFileName ÎÄ¼şÈ«Â·¾¶(ËùÔÚÄ¿Â¼ºÍÎÄ¼şÃû)
-    * @return               ofstream::pos_typeÀàĞÍÎÄ¼ş´óĞ¡
+    * @param  sFullFileName æ–‡ä»¶å…¨è·¯å¾„(æ‰€åœ¨ç›®å½•å’Œæ–‡ä»¶å)
+    * @return               ofstream::pos_typeç±»å‹æ–‡ä»¶å¤§å°
     */
     static std::ifstream::pos_type getFileSize(const std::string& sFullFileName);
 
     /**
-     * @brief ÅĞ¶ÏÊÇ·ñÎª¾ø¶ÔÂ·¾¶, ºöÂÔ¿Õ¸ñÒÔ'/'¿ªÍ·.
+     * @brief åˆ¤æ–­æ˜¯å¦ä¸ºç»å¯¹è·¯å¾„, å¿½ç•¥ç©ºæ ¼ä»¥'/'å¼€å¤´.
      *
-     * @param sFullFileName ÎÄ¼şÈ«Â·¾¶(ËùÔÚÄ¿Â¼ºÍÎÄ¼şÃû)
-     * @return              tureÊÇ¾ø¶ÔÂ·¾¶£¬false´ú±í·Ç¾ø¶ÔÂ·¾¶
+     * @param sFullFileName æ–‡ä»¶å…¨è·¯å¾„(æ‰€åœ¨ç›®å½•å’Œæ–‡ä»¶å)
+     * @return              tureæ˜¯ç»å¯¹è·¯å¾„ï¼Œfalseä»£è¡¨éç»å¯¹è·¯å¾„
      */
     static bool isAbsolute(const std::string& sFullFileName);
 
     /**
-    * @brief ÅĞ¶Ï¸ø¶¨Â·¾¶µÄÎÄ¼şÊÇ·ñ´æÔÚ.
-    * Èç¹ûÎÄ¼şÊÇ·ûºÅÁ¬½Ó,ÔòÒÔ·ûºÅÁ¬½ÓÅĞ¶Ï¶ø²»ÊÇÒÔ·ûºÅÁ¬½ÓÖ¸ÏòµÄÎÄ¼şÅĞ¶Ï
-    * @param sFullFileName ÎÄ¼şÈ«Â·¾¶
-    * @param iFileType     ÎÄ¼şÀàĞÍ, È±Ê¡S_IFREG
-    * @return           true´ú±í´æÔÚ£¬fals´ú±í²»´æÔÚ
+    * @brief åˆ¤æ–­ç»™å®šè·¯å¾„çš„æ–‡ä»¶æ˜¯å¦å­˜åœ¨.
+    * å¦‚æœæ–‡ä»¶æ˜¯ç¬¦å·è¿æ¥,åˆ™ä»¥ç¬¦å·è¿æ¥åˆ¤æ–­è€Œä¸æ˜¯ä»¥ç¬¦å·è¿æ¥æŒ‡å‘çš„æ–‡ä»¶åˆ¤æ–­
+    * @param sFullFileName æ–‡ä»¶å…¨è·¯å¾„
+    * @param iFileType     æ–‡ä»¶ç±»å‹, ç¼ºçœS_IFREG
+    * @return           trueä»£è¡¨å­˜åœ¨ï¼Œfalsä»£è¡¨ä¸å­˜åœ¨
     */
     static bool isFileExist(const std::string& sFullFileName, mode_t iFileType = S_IFREG);
 
     /**
-    * @brief ÅĞ¶Ï¸ø¶¨Â·¾¶µÄÎÄ¼şÊÇ·ñ´æÔÚ.
-    * ×¢Òâ: Èç¹ûÎÄ¼şÊÇ·ûºÅÁ¬½Ó,ÔòÒÔ·ûºÅÁ¬½ÓÖ¸ÏòµÄÎÄ¼şÅĞ¶Ï
-    * @param sFullFileName  ÎÄ¼şÈ«Â·¾¶
-    * @param iFileType      ÎÄ¼şÀàĞÍ, È±Ê¡S_IFREG
-    * @return               true-´æÔÚ£¬fals-²»´æÔÚ
+    * @brief åˆ¤æ–­ç»™å®šè·¯å¾„çš„æ–‡ä»¶æ˜¯å¦å­˜åœ¨.
+    * æ³¨æ„: å¦‚æœæ–‡ä»¶æ˜¯ç¬¦å·è¿æ¥,åˆ™ä»¥ç¬¦å·è¿æ¥æŒ‡å‘çš„æ–‡ä»¶åˆ¤æ–­
+    * @param sFullFileName  æ–‡ä»¶å…¨è·¯å¾„
+    * @param iFileType      æ–‡ä»¶ç±»å‹, ç¼ºçœS_IFREG
+    * @return               true-å­˜åœ¨ï¼Œfals-ä¸å­˜åœ¨
     */
     static bool isFileExistEx(const std::string& sFullFileName, mode_t iFileType = S_IFREG);
 
     /**
-     * @brief ¹æÔò»¯Ä¿Â¼Ãû³Æ, °ÑÒ»Ğ©²»ÓÃµÄÈ¥µô, ÀıÈç./µÈ.
+     * @brief è§„åˆ™åŒ–ç›®å½•åç§°, æŠŠä¸€äº›ä¸ç”¨çš„å»æ‰, ä¾‹å¦‚./ç­‰.
      *
-     * @param path Ä¿Â¼Ãû³Æ
-     * @return        ¹æ·¶ºóµÄÄ¿Â¼Ãû³Æ
+     * @param path ç›®å½•åç§°
+     * @return        è§„èŒƒåçš„ç›®å½•åç§°
      */
     static std::string simplifyDirectory(const std::string& path);
 
     /**
-    * @brief ´´½¨Ä¿Â¼, Èç¹ûÄ¿Â¼ÒÑ¾­´æÔÚ, ÔòÒ²·µ»Ø³É¹¦.
+    * @brief åˆ›å»ºç›®å½•, å¦‚æœç›®å½•å·²ç»å­˜åœ¨, åˆ™ä¹Ÿè¿”å›æˆåŠŸ.
     *
-    * @param sFullPath Òª´´½¨µÄÄ¿Â¼Ãû³Æ
-    * @param iFlag     È¨ÏŞ, Ä¬ÈÏ S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP| S_IXGRP | S_IROTH |  S_IXOTH
-    * @return bool  true-´´½¨³É¹¦ £¬false-´´½¨Ê§°Ü
+    * @param sFullPath è¦åˆ›å»ºçš„ç›®å½•åç§°
+    * @param iFlag     æƒé™, é»˜è®¤ S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP| S_IXGRP | S_IROTH |  S_IXOTH
+    * @return bool  true-åˆ›å»ºæˆåŠŸ ï¼Œfalse-åˆ›å»ºå¤±è´¥
     */
     static bool makeDir(const std::string& sDirectoryPath, mode_t iFlag = S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH |  S_IXOTH);
 
     /**
-     *@brief Ñ­»·´´½¨Ä¿Â¼, Èç¹ûÄ¿Â¼ÒÑ¾­´æÔÚ, ÔòÒ²·µ»Ø³É¹¦.
+     *@brief å¾ªç¯åˆ›å»ºç›®å½•, å¦‚æœç›®å½•å·²ç»å­˜åœ¨, åˆ™ä¹Ÿè¿”å›æˆåŠŸ.
      *
-     * @param sFullPath Òª´´½¨µÄÄ¿Â¼Ãû³Æ
-     * @param iFlag   È¨ÏŞ, Ä¬ÈÏ S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH |  S_IXOTH
-     * @return           true-´´½¨³É¹¦£¬false-´´½¨Ê§°Ü
+     * @param sFullPath è¦åˆ›å»ºçš„ç›®å½•åç§°
+     * @param iFlag   æƒé™, é»˜è®¤ S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH |  S_IXOTH
+     * @return           true-åˆ›å»ºæˆåŠŸï¼Œfalse-åˆ›å»ºå¤±è´¥
      */
 
     static bool makeDirRecursive(const std::string& sDirectoryPath, mode_t iFlag = S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH |  S_IXOTH);
 
     /**
-     * @brief ÉèÖÃÎÄ¼şÊÇ·ñ¿ÉÖ´ĞĞ.
+     * @brief è®¾ç½®æ–‡ä»¶æ˜¯å¦å¯æ‰§è¡Œ.
      *
-     * @param sFullFileName ÎÄ¼şÈ«Â·¾¶
-     * @param canExecutable true±íÊ¾¿ÉÖ´ĞĞ, false´ú±í²»¿ÉÖ®ĞĞ
-     * @return                 ³É¹¦·µ»Ø0, ÆäËûÊ§°Ü
+     * @param sFullFileName æ–‡ä»¶å…¨è·¯å¾„
+     * @param canExecutable trueè¡¨ç¤ºå¯æ‰§è¡Œ, falseä»£è¡¨ä¸å¯ä¹‹è¡Œ
+     * @return                 æˆåŠŸè¿”å›0, å…¶ä»–å¤±è´¥
      */
     static int setExecutable(const std::string& sFullFileName, bool canExecutable);
 
     /**
-     * @brief ÅĞ¶ÏÎÄ¼şÊÇ·ñ¿ÉÖ´ĞĞ.
+     * @brief åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å¯æ‰§è¡Œ.
      *
-     * @param sFullFileName ÎÄ¼şÈ«Â·¾¶
-     * @return                 true-¿ÉÖ´ĞĞ, false-²»¿ÉÖ´ĞĞ
+     * @param sFullFileName æ–‡ä»¶å…¨è·¯å¾„
+     * @return                 true-å¯æ‰§è¡Œ, false-ä¸å¯æ‰§è¡Œ
      */
     static bool canExecutable(const std::string& sFullFileName);
 
     /**
-     * @brief É¾³ıÒ»¸öÎÄ¼ş»òÄ¿Â¼.
+     * @brief åˆ é™¤ä¸€ä¸ªæ–‡ä»¶æˆ–ç›®å½•.
      *
-     * @param sFullFileName ÎÄ¼ş»òÕßÄ¿Â¼µÄÈ«Â·¾¶
-     * @param bRecursive    Èç¹ûÊÇÄ¿Â¼ÊÇ·ñµİ¹éÉ¾³ı
-     * @return              0-³É¹¦£¬Ê§°Ü¿ÉÒÔÍ¨¹ıerrno²é¿´Ê§°ÜµÄÔ­Òò
+     * @param sFullFileName æ–‡ä»¶æˆ–è€…ç›®å½•çš„å…¨è·¯å¾„
+     * @param bRecursive    å¦‚æœæ˜¯ç›®å½•æ˜¯å¦é€’å½’åˆ é™¤
+     * @return              0-æˆåŠŸï¼Œå¤±è´¥å¯ä»¥é€šè¿‡errnoæŸ¥çœ‹å¤±è´¥çš„åŸå› 
      */
     static int removeFile(const std::string& sFullFileName, bool bRecursive);
 
     /**
-    * @brief ¶ÁÈ¡ÎÄ¼şµ½std::string
-    * ÎÄ¼ş´æÔÚÔò·µ»ØÎÄ¼şÊı¾İ£¬²»´æÔÚ»òÕß¶ÁÈ¡ÎÄ¼ş´íÎóµÄÊ±ºò, ·µ»ØÎª¿Õ
-    * @param sFullFileName ÎÄ¼şÃû³Æ
-    * @return              ÎÄ¼şÊı¾İ
+    * @brief è¯»å–æ–‡ä»¶åˆ°std::string
+    * æ–‡ä»¶å­˜åœ¨åˆ™è¿”å›æ–‡ä»¶æ•°æ®ï¼Œä¸å­˜åœ¨æˆ–è€…è¯»å–æ–‡ä»¶é”™è¯¯çš„æ—¶å€™, è¿”å›ä¸ºç©º
+    * @param sFullFileName æ–‡ä»¶åç§°
+    * @return              æ–‡ä»¶æ•°æ®
     */
     static std::string load2str(const std::string& sFullFileName);
 
     /**
-    * @brief Ğ´ÎÄ¼ş.
+    * @brief å†™æ–‡ä»¶.
     *
-    * @param sFullFileName ÎÄ¼şÃû³Æ
-    * @param sFileData     ÎÄ¼şÄÚÈİ
+    * @param sFullFileName æ–‡ä»¶åç§°
+    * @param sFileData     æ–‡ä»¶å†…å®¹
     * @return
     */
     static void save2file(const std::string& sFullFileName, const std::string& sFileData);
 
     /**
-     * @brief Ğ´ÎÄ¼ş.
+     * @brief å†™æ–‡ä»¶.
      *
-     * @param sFullFileName  ÎÄ¼şÃû
-     * @param sFileData      Êı¾İÖ¸Õë
-     * @param length      Ğ´Èë³¤¶È
-     * @return               0-³É¹¦,-1-Ê§°Ü
+     * @param sFullFileName  æ–‡ä»¶å
+     * @param sFileData      æ•°æ®æŒ‡é’ˆ
+     * @param length      å†™å…¥é•¿åº¦
+     * @return               0-æˆåŠŸ,-1-å¤±è´¥
      */
     static int save2file(const std::string& sFullFileName, const char* sFileData, size_t length);
 
     /**
-     * @brief »ñÈ¡Ç°µ±¿ÉÖ´ĞĞÎÄ¼şÂ·¾¶.
+     * @brief è·å–å‰å½“å¯æ‰§è¡Œæ–‡ä»¶è·¯å¾„.
      *
-     * @return std::string ¿ÉÖ´ĞĞÎÄ¼şµÄÂ·¾¶È«Ãû³Æ
+     * @return std::string å¯æ‰§è¡Œæ–‡ä»¶çš„è·¯å¾„å…¨åç§°
      */
     static std::string getExePath();
 
     /**
-    * @brief ÌáÈ¡ÎÄ¼şÃû³Æ
-       *´ÓÒ»¸öÍêÈ«ÎÄ¼şÃûÖĞÈ¥µôÂ·¾¶£¬ÀıÈç:/usr/local/temp.gif»ñÈ¡temp.gif
-    *@param sFullFileName  ÎÄ¼şµÄÍêÈ«Ãû³Æ
-    *@return std::string        ÌáÈ¡ºóµÄÎÄ¼şÃû³Æ
+    * @brief æå–æ–‡ä»¶åç§°
+       *ä»ä¸€ä¸ªå®Œå…¨æ–‡ä»¶åä¸­å»æ‰è·¯å¾„ï¼Œä¾‹å¦‚:/usr/local/temp.gifè·å–temp.gif
+    *@param sFullFileName  æ–‡ä»¶çš„å®Œå…¨åç§°
+    *@return std::string        æå–åçš„æ–‡ä»¶åç§°
     */
     static std::string extractFileName(const std::string& sFullFileName);
 
     /**
-    * @brief ´ÓÒ»¸öÍêÈ«ÎÄ¼şÃûÖĞÌáÈ¡ÎÄ¼şµÄÂ·¾¶.
+    * @brief ä»ä¸€ä¸ªå®Œå…¨æ–‡ä»¶åä¸­æå–æ–‡ä»¶çš„è·¯å¾„.
     *
-    * ÀıÈç1: "/usr/local/temp.gif" »ñÈ¡"/usr/local/"
-    * ÀıÈç2: "temp.gif" »ñÈ¡ "./"
-    * @param sFullFileName ÎÄ¼şµÄÍêÈ«Ãû³Æ
-    * @return              ÌáÈ¡ºóµÄÎÄ¼şÂ·¾¶
+    * ä¾‹å¦‚1: "/usr/local/temp.gif" è·å–"/usr/local/"
+    * ä¾‹å¦‚2: "temp.gif" è·å– "./"
+    * @param sFullFileName æ–‡ä»¶çš„å®Œå…¨åç§°
+    * @return              æå–åçš„æ–‡ä»¶è·¯å¾„
     */
     static std::string extractFilePath(const std::string& sFullFileName);
 
     /**
-    * @brief ÌáÈ¡ÎÄ¼şÀ©Õ¹Ãû.
+    * @brief æå–æ–‡ä»¶æ‰©å±•å.
     *
-    * ÀıÈç1: "/usr/local/temp.gif" »ñÈ¡"gif"
-    * ÀıÈç2: "temp.gif" »ñÈ¡"gif"
-    *@param sFullFileName ÎÄ¼şÃû³Æ
-    *@return              ÎÄ¼şÀ©Õ¹Ãû
+    * ä¾‹å¦‚1: "/usr/local/temp.gif" è·å–"gif"
+    * ä¾‹å¦‚2: "temp.gif" è·å–"gif"
+    *@param sFullFileName æ–‡ä»¶åç§°
+    *@return              æ–‡ä»¶æ‰©å±•å
     */
     static std::string extractFileExt(const std::string& sFullFileName);
 
     /**
-    * @brief ÌáÈ¡ÎÄ¼şÃû³Æ,È¥µôÀ©Õ¹Ãû.
-    * ÀıÈç1: "/usr/local/temp.gif" »ñÈ¡"/usr/local/temp"
-    * ÀıÈç2: "temp.gif" »ñÈ¡"temp"
-    * @param sFullFileName ÎÄ¼şÃû³Æ
-    * @return              È¥µôÀ©Õ¹ÃûµÄÎÄ¼şÃû³Æ
+    * @brief æå–æ–‡ä»¶åç§°,å»æ‰æ‰©å±•å.
+    * ä¾‹å¦‚1: "/usr/local/temp.gif" è·å–"/usr/local/temp"
+    * ä¾‹å¦‚2: "temp.gif" è·å–"temp"
+    * @param sFullFileName æ–‡ä»¶åç§°
+    * @return              å»æ‰æ‰©å±•åçš„æ–‡ä»¶åç§°
     */
     static std::string excludeFileExt(const std::string& sFullFileName);
 
     /**
-    * @brief Ìæ»»ÎÄ¼şÀ©Õ¹Ãû
+    * @brief æ›¿æ¢æ–‡ä»¶æ‰©å±•å
     *
-    * ¸Ä±äÎÄ¼şÀàĞÍ£¬Èç¹ûÎŞÀ©Õ¹Ãû,Ôò¼ÓÉÏÀ©Õ¹Ãû =?1:
-    * ÀıÈç1£º"/usr/temp.gif" Ìæ »» "jpg" µÃµ½"/usr/temp.jpg"
-    * ÀıÈç2: "/usr/local/temp" Ìæ »» "jpg" µÃµ½"/usr/local/temp.jpg"
-    * @param sFullFileName ÎÄ¼şÃû³Æ
-    * @param sExt          À©Õ¹Ãû
-    * @return              Ìæ»»À©Õ¹ÃûºóµÄÎÄ¼şÃû
+    * æ”¹å˜æ–‡ä»¶ç±»å‹ï¼Œå¦‚æœæ— æ‰©å±•å,åˆ™åŠ ä¸Šæ‰©å±•å =?1:
+    * ä¾‹å¦‚1ï¼š"/usr/temp.gif" æ›¿ æ¢ "jpg" å¾—åˆ°"/usr/temp.jpg"
+    * ä¾‹å¦‚2: "/usr/local/temp" æ›¿ æ¢ "jpg" å¾—åˆ°"/usr/local/temp.jpg"
+    * @param sFullFileName æ–‡ä»¶åç§°
+    * @param sExt          æ‰©å±•å
+    * @return              æ›¿æ¢æ‰©å±•ååçš„æ–‡ä»¶å
     */
     static std::string replaceFileExt(const std::string& sFullFileName, const std::string& sExt);
 
     /**
-    * @brief ´ÓÒ»¸öurlÖĞ»ñÈ¡ÍêÈ«ÎÄ¼şÃû.
+    * @brief ä»ä¸€ä¸ªurlä¸­è·å–å®Œå…¨æ–‡ä»¶å.
     *
-    * »ñÈ¡³ıhttp://Íâ,µÚÒ»¸ö'/'ºóÃæµÄËùÓĞ×Ö·û
-    * ÀıÈç1:http://www.qq.com/tmp/temp.gif »ñÈ¡tmp/temp.gif
-    * ÀıÈç2:www.qq.com/tmp/temp.gif »ñÈ¡tmp/temp.gif
-    * ÀıÈç3:/tmp/temp.gif »ñÈ¡tmp/temp.gif
-    * @param sUrl url×Ö·û´®
-    * @return     ÎÄ¼şÃû³Æ
+    * è·å–é™¤http://å¤–,ç¬¬ä¸€ä¸ª'/'åé¢çš„æ‰€æœ‰å­—ç¬¦
+    * ä¾‹å¦‚1:http://www.qq.com/tmp/temp.gif è·å–tmp/temp.gif
+    * ä¾‹å¦‚2:www.qq.com/tmp/temp.gif è·å–tmp/temp.gif
+    * ä¾‹å¦‚3:/tmp/temp.gif è·å–tmp/temp.gif
+    * @param sUrl urlå­—ç¬¦ä¸²
+    * @return     æ–‡ä»¶åç§°
     */
     static std::string extractUrlFilePath(const std::string& sUrl);
 
     /**
-    * @brief ±éÀúÎÄ¼şÊ±È·¶¨ÊÇ·ñÑ¡Ôñ.
+    * @brief éå†æ–‡ä»¶æ—¶ç¡®å®šæ˜¯å¦é€‰æ‹©.
     *
-    * @return 1-Ñ¡Ôñ, 0-²»Ñ¡Ôñ
+    * @return 1-é€‰æ‹©, 0-ä¸é€‰æ‹©
     */
     typedef int (*FILE_SELECT)(const dirent*);
 
     /**
-    * @brief É¨ÃèÒ»¸öÄ¿Â¼.
+    * @brief æ‰«æä¸€ä¸ªç›®å½•.
     *
-    * @param sFilePath     ĞèÒªÉ¨ÃèµÄÂ·¾¶
-    * @param vtMatchFiles  ·µ»ØµÄÎÄ¼şÃûÊ¸Á¿±í
-    * @param f             Æ¥Åäº¯Êı,ÎªNULL±íÊ¾ËùÓĞÎÄ¼ş¶¼»ñÈ¡
-    * @param iMaxSize      ×î´óÎÄ¼ş¸öÊı,iMaxSize <=0Ê±,·µ»ØËùÓĞÆ¥ÅäÎÄ¼ş
-    * @return              ÎÄ¼ş¸öÊı
+    * @param sFilePath     éœ€è¦æ‰«æçš„è·¯å¾„
+    * @param vtMatchFiles  è¿”å›çš„æ–‡ä»¶åçŸ¢é‡è¡¨
+    * @param f             åŒ¹é…å‡½æ•°,ä¸ºNULLè¡¨ç¤ºæ‰€æœ‰æ–‡ä»¶éƒ½è·å–
+    * @param iMaxSize      æœ€å¤§æ–‡ä»¶ä¸ªæ•°,iMaxSize <=0æ—¶,è¿”å›æ‰€æœ‰åŒ¹é…æ–‡ä»¶
+    * @return              æ–‡ä»¶ä¸ªæ•°
     */
     static size_t scanDir(const std::string& sFilePath, std::vector<std::string>& vtMatchFiles, FILE_SELECT f = NULL, int iMaxSize = 0);
 
     /**
-     * @brief ±éÀúÄ¿Â¼, »ñÈ¡Ä¿Â¼ÏÂÃæµÄËùÓĞÎÄ¼şºÍ×ÓÄ¿Â¼.
+     * @brief éå†ç›®å½•, è·å–ç›®å½•ä¸‹é¢çš„æ‰€æœ‰æ–‡ä»¶å’Œå­ç›®å½•.
      *
-     * @param path       ĞèÒª±éÀúµÄÂ·¾¶
-     * @param files      Ä¿±êÂ·¾¶ÏÂÃæËùÓĞÎÄ¼ş
-     * @param bRecursive ÊÇ·ñµİ¹é×ÓÄ¿Â¼
+     * @param path       éœ€è¦éå†çš„è·¯å¾„
+     * @param files      ç›®æ ‡è·¯å¾„ä¸‹é¢æ‰€æœ‰æ–‡ä»¶
+     * @param bRecursive æ˜¯å¦é€’å½’å­ç›®å½•
      *
      **/
     static void listDirectory(const std::string& path, std::vector<std::string>& files, bool bRecursive);
 
     /**
-    * @brief ¸´ÖÆÎÄ¼ş»òÄ¿Â¼.
-    * ½«ÎÄ¼ş»òÕßÄ¿Â¼´ÓsExistFile¸´ÖÆµ½sNewFile
-    * @param sExistFile ¸´ÖÆµÄÎÄ¼ş»òÕßÄ¿Â¼Ô´Â·¾¶
-    * @param sNewFile   ¸´ÖÆµÄÎÄ¼ş»òÕßÄ¿Â¼Ä¿±êÂ·¾¶
-    * @param bRemove    ÊÇ·ñÏÈÉ¾³ısNewFileÔÙcopy £¬·ÀÖ¹Textfile busyµ¼ÖÂ¸´ÖÆÊ§°Ü
+    * @brief å¤åˆ¶æ–‡ä»¶æˆ–ç›®å½•.
+    * å°†æ–‡ä»¶æˆ–è€…ç›®å½•ä»sExistFileå¤åˆ¶åˆ°sNewFile
+    * @param sExistFile å¤åˆ¶çš„æ–‡ä»¶æˆ–è€…ç›®å½•æºè·¯å¾„
+    * @param sNewFile   å¤åˆ¶çš„æ–‡ä»¶æˆ–è€…ç›®å½•ç›®æ ‡è·¯å¾„
+    * @param bRemove    æ˜¯å¦å…ˆåˆ é™¤sNewFileå†copy ï¼Œé˜²æ­¢Textfile busyå¯¼è‡´å¤åˆ¶å¤±è´¥
     * @return
     */
     static void copyFile(const std::string& sExistFile, const std::string& sNewFile, bool bRemove = false);

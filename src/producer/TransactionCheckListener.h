@@ -21,7 +21,7 @@
 namespace rmq
 {
 	/**
-	 * ·þÎñÆ÷»Øµ÷Producer£¬¼ì²é±¾µØÊÂÎñ·ÖÖ§³É¹¦»¹ÊÇÊ§°Ü
+	 * æœåŠ¡å™¨å›žè°ƒProducerï¼Œæ£€æŸ¥æœ¬åœ°äº‹åŠ¡åˆ†æ”¯æˆåŠŸè¿˜æ˜¯å¤±è´¥
 	 *
 	 */
 	class TransactionCheckListener

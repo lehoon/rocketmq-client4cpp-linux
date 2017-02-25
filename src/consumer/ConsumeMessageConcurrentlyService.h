@@ -72,7 +72,7 @@ namespace rmq
   };
 
   /**
-  * ²¢·¢Ïû·ÑÏûÏ¢·şÎñ
+  * å¹¶å‘æ¶ˆè´¹æ¶ˆæ¯æœåŠ¡
   *
   */
   class ConsumeMessageConcurrentlyService : public ConsumeMessageService
@@ -90,7 +90,7 @@ namespace rmq
                                 ConsumeConcurrentlyContext& context,
                                 ConsumeConcurrentlyRequest& consumeRequest);
       /**
-      * ÔÚConsumer±¾µØ¶¨Ê±Ïß³ÌÖĞ¶¨Ê±ÖØÊÔ
+      * åœ¨Consumeræœ¬åœ°å®šæ—¶çº¿ç¨‹ä¸­å®šæ—¶é‡è¯•
       */
       void submitConsumeRequestLater(std::list<MessageExt*>& pMsgs,
                                      ProcessQueue* pProcessQueue,

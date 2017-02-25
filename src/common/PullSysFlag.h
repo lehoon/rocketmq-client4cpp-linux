@@ -20,7 +20,7 @@
 namespace rmq
 {
 	/**
-	* Pull接口用到的flag定义
+	* Pull鎺ュ彛鐢ㄥ埌鐨刦lag瀹氫箟
 	*
 	*/
 	class PullSysFlag

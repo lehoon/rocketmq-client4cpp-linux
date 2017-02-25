@@ -85,15 +85,15 @@ namespace rmq
 
     private:
 		/*
-		// ¸÷ÖÖÅäÖÃ¼°ÔËĞĞÊı¾İ
+		// å„ç§é…ç½®åŠè¿è¡Œæ•°æ®
 		std::map<std::string, std::string> m_properties;
-		// ¶©ÔÄ¹ØÏµ
+		// è®¢é˜…å…³ç³»
 		std::set<SubscriptionData> m_subscriptionSet;
-		// Ïû·Ñ½ø¶È¡¢Rebalance¡¢ÄÚ²¿Ïû·Ñ¶ÓÁĞµÄĞÅÏ¢
+		// æ¶ˆè´¹è¿›åº¦ã€Rebalanceã€å†…éƒ¨æ¶ˆè´¹é˜Ÿåˆ—çš„ä¿¡æ¯
 		std::map<MessageQueue, ProcessQueueInfo> m_mqTable;
-		// RT¡¢TPSÍ³¼Æ
+		// RTã€TPSç»Ÿè®¡
 		std::map<string, ConsumerStat> m_statusTable;
-		// jstackµÄ½á¹û
+		// jstackçš„ç»“æœ
 		std::string m_jstack;
 		*/
     };

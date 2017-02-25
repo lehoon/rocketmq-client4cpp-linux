@@ -28,56 +28,56 @@ namespace rmq
 	class MessageListener;
 
 	/**
-	* Ïû·ÑÕß£¬±»¶¯·½Ê½Ïû·Ñ
+	* æ¶ˆè´¹è€…ï¼Œè¢«åŠ¨æ–¹å¼æ¶ˆè´¹
 	*
 	*/
 	class MQPushConsumer : public MQConsumer
 	{
 	public:
 		/**
-		* ×¢²áÏûÏ¢¼àÌıÆ÷£¬Ò»¸öConsumerÖ»ÄÜÓĞÒ»¸ö¼àÌıÆ÷
+		* æ³¨å†Œæ¶ˆæ¯ç›‘å¬å™¨ï¼Œä¸€ä¸ªConsumeråªèƒ½æœ‰ä¸€ä¸ªç›‘å¬å™¨
 		*
 		* @param messageListener
 		*/
 		virtual void registerMessageListener(MessageListener* pMessageListener)=0;
 
 		/**
-		* ¶©ÔÄÏûÏ¢£¬·½·¨¿ÉÒÔµ÷ÓÃ¶à´ÎÀ´¶©ÔÄ²»Í¬µÄTopic£¬Ò²¿É¸²¸ÇÖ®Ç°TopicµÄ¶©ÔÄ¹ıÂË±í´ïÊ½
+		* è®¢é˜…æ¶ˆæ¯ï¼Œæ–¹æ³•å¯ä»¥è°ƒç”¨å¤šæ¬¡æ¥è®¢é˜…ä¸åŒçš„Topicï¼Œä¹Ÿå¯è¦†ç›–ä¹‹å‰Topicçš„è®¢é˜…è¿‡æ»¤è¡¨è¾¾å¼
 		*
 		* @param topic
-		*            ÏûÏ¢Ö÷Ìâ
+		*            æ¶ˆæ¯ä¸»é¢˜
 		* @param subExpression
-		*            ¶©ÔÄ¹ıÂË±í´ïÊ½×Ö·û´®£¬brokerÒÀ¾İ´Ë±í´ïÊ½½øĞĞ¹ıÂË¡£Ä¿Ç°Ö»Ö§³Ö»òÔËËã<br>
+		*            è®¢é˜…è¿‡æ»¤è¡¨è¾¾å¼å­—ç¬¦ä¸²ï¼Œbrokerä¾æ®æ­¤è¡¨è¾¾å¼è¿›è¡Œè¿‡æ»¤ã€‚ç›®å‰åªæ”¯æŒæˆ–è¿ç®—<br>
 		*            eg: "tag1 || tag2 || tag3"<br>
-		*            Èç¹ûsubExpressionµÈÓÚnull»òÕß*£¬Ôò±íÊ¾È«²¿¶©ÔÄ
+		*            å¦‚æœsubExpressionç­‰äºnullæˆ–è€…*ï¼Œåˆ™è¡¨ç¤ºå…¨éƒ¨è®¢é˜…
 		* @param listener
-		*            ÏûÏ¢»Øµ÷¼àÌıÆ÷
+		*            æ¶ˆæ¯å›è°ƒç›‘å¬å™¨
 		* @throws MQClientException
 		*/
 		virtual  void subscribe(const std::string& topic, const std::string& subExpression)=0;
 
 		/**
-		* È¡Ïû¶©ÔÄ£¬´Óµ±Ç°¶©ÔÄ×éÄÚ×¢Ïú£¬ÏûÏ¢»á±»¶©ÔÄ×éÄÚÆäËû¶©ÔÄÕß¶©ÔÄ
+		* å–æ¶ˆè®¢é˜…ï¼Œä»å½“å‰è®¢é˜…ç»„å†…æ³¨é”€ï¼Œæ¶ˆæ¯ä¼šè¢«è®¢é˜…ç»„å†…å…¶ä»–è®¢é˜…è€…è®¢é˜…
 		*
 		* @param topic
-		*            ÏûÏ¢Ö÷Ìâ
+		*            æ¶ˆæ¯ä¸»é¢˜
 		*/
 		virtual void unsubscribe(const std::string& topic)=0;
 
 		/**
-		* ¶¯Ì¬µ÷ÕûÏû·ÑÏß³Ì³ØÏß³ÌÊıÁ¿
+		* åŠ¨æ€è°ƒæ•´æ¶ˆè´¹çº¿ç¨‹æ± çº¿ç¨‹æ•°é‡
 		*
 		* @param corePoolSize
 		*/
 		virtual void updateCorePoolSize(int corePoolSize)=0;
 
 		/**
-		* Ïû·ÑÏß³Ì¹ÒÆğ£¬ÔİÍ£Ïû·Ñ
+		* æ¶ˆè´¹çº¿ç¨‹æŒ‚èµ·ï¼Œæš‚åœæ¶ˆè´¹
 		*/
 		virtual void suspend()=0;
 
 		/**
-		* Ïû·ÑÏß³Ì»Ö¸´£¬¼ÌĞøÏû·Ñ
+		* æ¶ˆè´¹çº¿ç¨‹æ¢å¤ï¼Œç»§ç»­æ¶ˆè´¹
 		*/
 		virtual void resume()=0;
 	};

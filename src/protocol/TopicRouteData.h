@@ -114,7 +114,7 @@ namespace rmq
 
 
     /**
-    * Topic路由数据，从Name Server获取
+    * Topic璺敱鏁版嵁锛屼粠Name Server鑾峰彇
     *
     */
     class TopicRouteData : public RemotingSerializable
@@ -186,7 +186,7 @@ namespace rmq
         }
 
         /**
-        * 优先获取Master，如果没有Master尝试找Slave
+        * 浼樺厛鑾峰彇Master锛屽鏋滄病鏈塎aster灏濊瘯鎵維lave
         */
         static std::string selectBrokerAddr(BrokerData& data)
         {

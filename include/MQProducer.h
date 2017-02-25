@@ -32,7 +32,7 @@ namespace rmq
 	class MessageQueueSelector;
 
 	/**
-	* ÏûÏ¢Éú²úÕß
+	* æ¶ˆæ¯ç”Ÿäº§è€…
 	*
 	*/
 	class MQProducer : public MQAdmin
@@ -49,33 +49,33 @@ namespace rmq
 		}
 
 		/**
-		* Æô¶¯·şÎñ
+		* å¯åŠ¨æœåŠ¡
 		*
 		* @throw( MQClientException
 		*/
 		virtual void start()=0;
 
 		/**
-		* ¹Ø±Õ·şÎñ£¬Ò»µ©¹Ø±Õ£¬´Ë¶ÔÏó½«²»¿ÉÓÃ
+		* å…³é—­æœåŠ¡ï¼Œä¸€æ—¦å…³é—­ï¼Œæ­¤å¯¹è±¡å°†ä¸å¯ç”¨
 		*/
 		virtual void shutdown()=0;
 
 		/**
-		* ¸ù¾İtopic»ñÈ¡¶ÔÓ¦µÄMessageQueue£¬Èç¹ûÊÇË³ĞòÏûÏ¢£¬Ôò°´ÕÕË³ĞòÏûÏ¢ÅäÖÃ·µ»Ø
+		* æ ¹æ®topicè·å–å¯¹åº”çš„MessageQueueï¼Œå¦‚æœæ˜¯é¡ºåºæ¶ˆæ¯ï¼Œåˆ™æŒ‰ç…§é¡ºåºæ¶ˆæ¯é…ç½®è¿”å›
 		*
 		* @param topic
-		*            ÏûÏ¢Topic
-		* @return ·µ»Ø¶ÓÁĞ¼¯ºÏ
+		*            æ¶ˆæ¯Topic
+		* @return è¿”å›é˜Ÿåˆ—é›†åˆ
 		* @throw( MQClientException
 		*/
 		virtual std::vector<MessageQueue>* fetchPublishMessageQueues(const std::string& topic)=0;
 
 		/**
-		* ·¢ËÍÏûÏ¢£¬Í¬²½µ÷ÓÃ
+		* å‘é€æ¶ˆæ¯ï¼ŒåŒæ­¥è°ƒç”¨
 		*
 		* @param msg
-		*            ÏûÏ¢
-		* @return ·¢ËÍ½á¹û
+		*            æ¶ˆæ¯
+		* @return å‘é€ç»“æœ
 		* @throw( InterruptedException
 		* @throw( MQBrokerException
 		* @throw( RemotingException
@@ -84,12 +84,12 @@ namespace rmq
 		virtual SendResult send(Message& msg)=0;
 
 		/**
-		* ·¢ËÍÏûÏ¢£¬Òì²½µ÷ÓÃ
+		* å‘é€æ¶ˆæ¯ï¼Œå¼‚æ­¥è°ƒç”¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param sendCallback
-		*            ·¢ËÍ½á¹ûÍ¨¹ı´Ë½Ó¿Ú»Øµ÷
+		*            å‘é€ç»“æœé€šè¿‡æ­¤æ¥å£å›è°ƒ
 		* @throw( MQClientException
 		* @throw( RemotingException
 		* @throw( InterruptedException
@@ -97,10 +97,10 @@ namespace rmq
 		virtual void send(Message& msg, SendCallback* sendCallback)=0;
 
 		/**
-		* ·¢ËÍÏûÏ¢£¬OnewayĞÎÊ½£¬·şÎñÆ÷²»Ó¦´ğ£¬ÎŞ·¨±£Ö¤ÏûÏ¢ÊÇ·ñ³É¹¦µ½´ï·şÎñÆ÷
+		* å‘é€æ¶ˆæ¯ï¼ŒOnewayå½¢å¼ï¼ŒæœåŠ¡å™¨ä¸åº”ç­”ï¼Œæ— æ³•ä¿è¯æ¶ˆæ¯æ˜¯å¦æˆåŠŸåˆ°è¾¾æœåŠ¡å™¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @throw( MQClientException
 		* @throw( RemotingException
 		* @throw( InterruptedException
@@ -108,13 +108,13 @@ namespace rmq
 		virtual void sendOneway(Message& msg)=0;
 
 		/**
-		* ÏòÖ¸¶¨¶ÓÁĞ·¢ËÍÏûÏ¢£¬Í¬²½µ÷ÓÃ
+		* å‘æŒ‡å®šé˜Ÿåˆ—å‘é€æ¶ˆæ¯ï¼ŒåŒæ­¥è°ƒç”¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param mq
-		*            ¶ÓÁĞ
-		* @return ·¢ËÍ½á¹û
+		*            é˜Ÿåˆ—
+		* @return å‘é€ç»“æœ
 		* @throw( InterruptedException
 		* @throw( MQBrokerException
 		* @throw( RemotingException
@@ -123,14 +123,14 @@ namespace rmq
 		virtual SendResult send(Message& msg, MessageQueue& mq)=0;
 
 		/**
-		* ÏòÖ¸¶¨¶ÓÁĞ·¢ËÍÏûÏ¢£¬Òì²½µ÷ÓÃ
+		* å‘æŒ‡å®šé˜Ÿåˆ—å‘é€æ¶ˆæ¯ï¼Œå¼‚æ­¥è°ƒç”¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param mq
-		*            ¶ÓÁĞ
+		*            é˜Ÿåˆ—
 		* @param sendCallback
-		*            ·¢ËÍ½á¹ûÍ¨¹ı´Ë½Ó¿Ú»Øµ÷
+		*            å‘é€ç»“æœé€šè¿‡æ­¤æ¥å£å›è°ƒ
 		* @throw( InterruptedException
 		* @throw( RemotingException
 		* @throw( MQClientException
@@ -138,12 +138,12 @@ namespace rmq
 		virtual void send(Message& msg, MessageQueue& mq, SendCallback* sendCallback)=0;
 
 		/**
-		* ÏòÖ¸¶¨¶ÓÁĞ·¢ËÍÏûÏ¢£¬OnewayĞÎÊ½£¬·şÎñÆ÷²»Ó¦´ğ£¬ÎŞ·¨±£Ö¤ÏûÏ¢ÊÇ·ñ³É¹¦µ½´ï·şÎñÆ÷
+		* å‘æŒ‡å®šé˜Ÿåˆ—å‘é€æ¶ˆæ¯ï¼ŒOnewayå½¢å¼ï¼ŒæœåŠ¡å™¨ä¸åº”ç­”ï¼Œæ— æ³•ä¿è¯æ¶ˆæ¯æ˜¯å¦æˆåŠŸåˆ°è¾¾æœåŠ¡å™¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param mq
-		*            ¶ÓÁĞ
+		*            é˜Ÿåˆ—
 		* @throw( MQClientException
 		* @throw( RemotingException
 		* @throw( InterruptedException
@@ -151,17 +151,17 @@ namespace rmq
 		virtual void sendOneway(Message& msg, MessageQueue& mq)=0;
 
 		/**
-		* ·¢ËÍÏûÏ¢£¬¿ÉÒÔ×Ô¶¨ÒåÑ¡Ôñ¶ÓÁĞ£¬¶ÓÁĞµÄ×ÜÊı¿ÉÄÜ»áÓÉÓÚBrokerµÄÆôÍ£±ä»¯<br>
-		* Èç¹ûÒª±£Ö¤ÏûÏ¢ÑÏ¸ñÓĞĞò£¬ÔÚÏòÔËÎ¬ÈËÔ±ÉêÇëTopicÊ±£¬ĞèÒªÌØ±ğËµÃ÷<br>
-		* Í¬²½µ÷ÓÃ
+		* å‘é€æ¶ˆæ¯ï¼Œå¯ä»¥è‡ªå®šä¹‰é€‰æ‹©é˜Ÿåˆ—ï¼Œé˜Ÿåˆ—çš„æ€»æ•°å¯èƒ½ä¼šç”±äºBrokerçš„å¯åœå˜åŒ–<br>
+		* å¦‚æœè¦ä¿è¯æ¶ˆæ¯ä¸¥æ ¼æœ‰åºï¼Œåœ¨å‘è¿ç»´äººå‘˜ç”³è¯·Topicæ—¶ï¼Œéœ€è¦ç‰¹åˆ«è¯´æ˜<br>
+		* åŒæ­¥è°ƒç”¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param selector
-		*            ¶ÓÁĞÑ¡ÔñÆ÷£¬·¢ËÍÊ±»á»Øµ÷
+		*            é˜Ÿåˆ—é€‰æ‹©å™¨ï¼Œå‘é€æ—¶ä¼šå›è°ƒ
 		* @param arg
-		*            »Øµ÷¶ÓÁĞÑ¡ÔñÆ÷Ê±£¬´Ë²ÎÊı»á´«Èë¶ÓÁĞÑ¡Ôñ·½·¨
-		* @return ·¢ËÍ½á¹û
+		*            å›è°ƒé˜Ÿåˆ—é€‰æ‹©å™¨æ—¶ï¼Œæ­¤å‚æ•°ä¼šä¼ å…¥é˜Ÿåˆ—é€‰æ‹©æ–¹æ³•
+		* @return å‘é€ç»“æœ
 		* @throw( InterruptedException
 		* @throw( MQBrokerException
 		* @throw( RemotingException
@@ -170,18 +170,18 @@ namespace rmq
 		virtual SendResult send(Message& msg, MessageQueueSelector* selector, void* arg)=0;
 
 		/**
-		* ·¢ËÍÏûÏ¢£¬¿ÉÒÔ×Ô¶¨ÒåÑ¡Ôñ¶ÓÁĞ£¬¶ÓÁĞµÄ×ÜÊı¿ÉÄÜ»áÓÉÓÚBrokerµÄÆôÍ£±ä»¯<br>
-		* Èç¹ûÒª±£Ö¤ÏûÏ¢ÑÏ¸ñÓĞĞò£¬ÔÚÏòÔËÎ¬ÈËÔ±ÉêÇëTopicÊ±£¬ĞèÒªÌØ±ğËµÃ÷<br>
-		* Òì²½µ÷ÓÃ
+		* å‘é€æ¶ˆæ¯ï¼Œå¯ä»¥è‡ªå®šä¹‰é€‰æ‹©é˜Ÿåˆ—ï¼Œé˜Ÿåˆ—çš„æ€»æ•°å¯èƒ½ä¼šç”±äºBrokerçš„å¯åœå˜åŒ–<br>
+		* å¦‚æœè¦ä¿è¯æ¶ˆæ¯ä¸¥æ ¼æœ‰åºï¼Œåœ¨å‘è¿ç»´äººå‘˜ç”³è¯·Topicæ—¶ï¼Œéœ€è¦ç‰¹åˆ«è¯´æ˜<br>
+		* å¼‚æ­¥è°ƒç”¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param selector
-		*            ¶ÓÁĞÑ¡ÔñÆ÷£¬·¢ËÍÊ±»á»Øµ÷
+		*            é˜Ÿåˆ—é€‰æ‹©å™¨ï¼Œå‘é€æ—¶ä¼šå›è°ƒ
 		* @param arg
-		*            »Øµ÷¶ÓÁĞÑ¡ÔñÆ÷Ê±£¬´Ë²ÎÊı»á´«Èë¶ÓÁĞÑ¡Ôñ·½·¨
+		*            å›è°ƒé˜Ÿåˆ—é€‰æ‹©å™¨æ—¶ï¼Œæ­¤å‚æ•°ä¼šä¼ å…¥é˜Ÿåˆ—é€‰æ‹©æ–¹æ³•
 		* @param sendCallback
-		*            ·¢ËÍ½á¹ûÍ¨¹ı´Ë½Ó¿Ú»Øµ÷
+		*            å‘é€ç»“æœé€šè¿‡æ­¤æ¥å£å›è°ƒ
 		* @throw( MQClientException
 		* @throw( RemotingException
 		* @throw( InterruptedException
@@ -189,16 +189,16 @@ namespace rmq
 		virtual void send(Message& msg, MessageQueueSelector* selector, void* arg, SendCallback* sendCallback)=0;
 
 		/**
-		* ·¢ËÍÏûÏ¢£¬¿ÉÒÔ×Ô¶¨ÒåÑ¡Ôñ¶ÓÁĞ£¬¶ÓÁĞµÄ×ÜÊı¿ÉÄÜ»áÓÉÓÚBrokerµÄÆôÍ£±ä»¯<br>
-		* Èç¹ûÒª±£Ö¤ÏûÏ¢ÑÏ¸ñÓĞĞò£¬ÔÚÏòÔËÎ¬ÈËÔ±ÉêÇëTopicÊ±£¬ĞèÒªÌØ±ğËµÃ÷<br>
-		* OnewayĞÎÊ½£¬·şÎñÆ÷²»Ó¦´ğ£¬ÎŞ·¨±£Ö¤ÏûÏ¢ÊÇ·ñ³É¹¦µ½´ï·şÎñÆ÷
+		* å‘é€æ¶ˆæ¯ï¼Œå¯ä»¥è‡ªå®šä¹‰é€‰æ‹©é˜Ÿåˆ—ï¼Œé˜Ÿåˆ—çš„æ€»æ•°å¯èƒ½ä¼šç”±äºBrokerçš„å¯åœå˜åŒ–<br>
+		* å¦‚æœè¦ä¿è¯æ¶ˆæ¯ä¸¥æ ¼æœ‰åºï¼Œåœ¨å‘è¿ç»´äººå‘˜ç”³è¯·Topicæ—¶ï¼Œéœ€è¦ç‰¹åˆ«è¯´æ˜<br>
+		* Onewayå½¢å¼ï¼ŒæœåŠ¡å™¨ä¸åº”ç­”ï¼Œæ— æ³•ä¿è¯æ¶ˆæ¯æ˜¯å¦æˆåŠŸåˆ°è¾¾æœåŠ¡å™¨
 		*
 		* @param msg
-		*            ÏûÏ¢
+		*            æ¶ˆæ¯
 		* @param selector
-		*            ¶ÓÁĞÑ¡ÔñÆ÷£¬·¢ËÍÊ±»á»Øµ÷
+		*            é˜Ÿåˆ—é€‰æ‹©å™¨ï¼Œå‘é€æ—¶ä¼šå›è°ƒ
 		* @param arg
-		*            »Øµ÷¶ÓÁĞÑ¡ÔñÆ÷Ê±£¬´Ë²ÎÊı»á´«Èë¶ÓÁĞÑ¡Ôñ·½·¨
+		*            å›è°ƒé˜Ÿåˆ—é€‰æ‹©å™¨æ—¶ï¼Œæ­¤å‚æ•°ä¼šä¼ å…¥é˜Ÿåˆ—é€‰æ‹©æ–¹æ³•
 		* @throw( MQClientException
 		* @throw( RemotingException
 		* @throw( InterruptedException

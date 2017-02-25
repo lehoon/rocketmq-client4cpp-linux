@@ -22,23 +22,23 @@
 namespace rmq
 {
 	/**
-	* ��4��״̬����ʾ��Ϣ�Ѿ��ɹ�����Master
+	* 这4种状态都表示消息已经成功到达Master
 	*
 	*/
 	enum SendStatus
 	{
-		// ��Ϣ���ͳɹ�
+		// 消息发送成功
 		SEND_OK,
-		// ��Ϣ���ͳɹ������Ƿ�����ˢ�̳�ʱ����Ϣ�Ѿ�������������У�ֻ�д�ʱ������崻�����Ϣ�Żᶪʧ
+		// 消息发送成功，但是服务器刷盘超时，消息已经进入服务器队列，只有此时服务器宕机，消息才会丢失
 		FLUSH_DISK_TIMEOUT,
-		// ��Ϣ���ͳɹ������Ƿ�����ͬ����Slaveʱ��ʱ����Ϣ�Ѿ�������������У�ֻ�д�ʱ������崻�����Ϣ�Żᶪʧ
+		// 消息发送成功，但是服务器同步到Slave时超时，消息已经进入服务器队列，只有此时服务器宕机，消息才会丢失
 		FLUSH_SLAVE_TIMEOUT,
-		// ��Ϣ���ͳɹ������Ǵ�ʱslave�����ã���Ϣ�Ѿ�������������У�ֻ�д�ʱ������崻�����Ϣ�Żᶪʧ
+		// 消息发送成功，但是此时slave不可用，消息已经进入服务器队列，只有此时服务器宕机，消息才会丢失
 		SLAVE_NOT_AVAILABLE
 	};
 
 	/**
-	* ������Ϣ���
+	* 发送消息结果
 	*
 	*/
 	class SendResult
@@ -73,13 +73,13 @@ namespace rmq
 
 	enum LocalTransactionState
 	{
-		COMMIT_MESSAGE,// �ύ����
-		ROLLBACK_MESSAGE,// �ع�����
+		COMMIT_MESSAGE,// 提交事务
+		ROLLBACK_MESSAGE,// 回滚事务
 		UNKNOW,
 	};
 
 	/**
-	* ����������Ϣ���ؽ��
+	* 发送事务消息返回结果
 	*
 	*/
 	class TransactionSendResult : public SendResult

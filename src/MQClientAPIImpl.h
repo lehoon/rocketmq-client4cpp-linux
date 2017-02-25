@@ -59,7 +59,7 @@ class SendCallback;
 class ClientRemotingProcessor;
 
 /**
-* ·â×°ËùÓĞÓë·şÎñÆ÷Í¨ĞÅ²¿·ÖAPI
+* å°è£…æ‰€æœ‰ä¸æœåŠ¡å™¨é€šä¿¡éƒ¨åˆ†API
 *
 */
 class MQClientAPIImpl
@@ -104,7 +104,7 @@ class MQClientAPIImpl
       MessageExt* viewMessage(const std::string& addr, long long phyoffset, int timeoutMillis);
 
       /**
-      * ¸ù¾İÊ±¼ä²éÑ¯Offset
+      * æ ¹æ®æ—¶é—´æŸ¥è¯¢Offset
       */
       long long searchOffset(const std::string& addr,
                              const std::string& topic,
@@ -113,7 +113,7 @@ class MQClientAPIImpl
                              int timeoutMillis);
 
       /**
-      * »ñÈ¡¶ÓÁĞµÄ×î´óOffset
+      * è·å–é˜Ÿåˆ—çš„æœ€å¤§Offset
       */
       long long getMaxOffset(const std::string& addr,
                              const std::string& topic,
@@ -121,21 +121,21 @@ class MQClientAPIImpl
                              int timeoutMillis);
 
       /**
-      * »ñÈ¡Ä³¸ö×éµÄConsumer IdÁĞ±í
+      * è·å–æŸä¸ªç»„çš„Consumer Idåˆ—è¡¨
       */
       std::list<std::string> getConsumerIdListByGroup(const std::string& addr,
               const std::string& consumerGroup,
               int timeoutMillis);
 
       /**
-      * »ñÈ¡¶ÓÁĞµÄ×îĞ¡Offset
+      * è·å–é˜Ÿåˆ—çš„æœ€å°Offset
       */
       long long getMinOffset(const std::string& addr,
                              const std::string& topic,
                              int queueId,
                              int timeoutMillis);
       /**
-      * »ñÈ¡¶ÓÁĞµÄ×îÔçÊ±¼ä
+      * è·å–é˜Ÿåˆ—çš„æœ€æ—©æ—¶é—´
       */
       long long getEarliestMsgStoretime(const std::string& addr,
                                         const std::string& topic,
@@ -143,21 +143,21 @@ class MQClientAPIImpl
                                         int timeoutMillis);
 
       /**
-      * ²éÑ¯ConsumerÏû·Ñ½ø¶È
+      * æŸ¥è¯¢Consumeræ¶ˆè´¹è¿›åº¦
       */
       long long queryConsumerOffset(const std::string& addr,
                                     QueryConsumerOffsetRequestHeader* pRequestHeader,
                                     int timeoutMillis);
 
       /**
-      * ¸üĞÂConsumerÏû·Ñ½ø¶È
+      * æ›´æ–°Consumeræ¶ˆè´¹è¿›åº¦
       */
       void updateConsumerOffset(const std::string& addr,
                                 UpdateConsumerOffsetRequestHeader* pRequestHeader,
                                 int timeoutMillis);
 
       /**
-      * ¸üĞÂConsumerÏû·Ñ½ø¶È
+      * æ›´æ–°Consumeræ¶ˆè´¹è¿›åº¦
       *
       * @throws InterruptedException
       * @throws RemotingSendRequestException
@@ -171,7 +171,7 @@ class MQClientAPIImpl
                                       int timeoutMillis);
 
       /**
-      * ·¢ËÍĞÄÌø
+      * å‘é€å¿ƒè·³
       */
       void sendHearbeat(const std::string& addr, HeartbeatData* pHeartbeatData, int timeoutMillis);
 
@@ -182,7 +182,7 @@ class MQClientAPIImpl
                             int timeoutMillis);
 
       /**
-      * Ìá½»»òÕß»Ø¹öÊÂÎñ
+      * æäº¤æˆ–è€…å›æ»šäº‹åŠ¡
       */
       void endTransactionOneway(const std::string& addr,
                                 EndTransactionRequestHeader* pRequestHeader,
@@ -190,7 +190,7 @@ class MQClientAPIImpl
                                 int timeoutMillis);
 
       /**
-      * ²éÑ¯ÏûÏ¢
+      * æŸ¥è¯¢æ¶ˆæ¯
       */
       void queryMessage(const std::string& addr,
                         QueryMessageRequestHeader* pRequestHeader,
@@ -202,7 +202,7 @@ class MQClientAPIImpl
                           int timeoutMillis);
 
       /**
-      * Ê§°ÜµÄÏûÏ¢·¢»ØBroker
+      * å¤±è´¥çš„æ¶ˆæ¯å‘å›Broker
       */
       void consumerSendMessageBack(const std::string& addr,
       							   MessageExt& msg,
@@ -228,14 +228,14 @@ class MQClientAPIImpl
                                    int timeoutMillis);
 
       /**
-      * ¸ù¾İProducerGroup»ñÈ¡ProducerÁ¬½ÓÁĞ±í
+      * æ ¹æ®ProducerGroupè·å–Producerè¿æ¥åˆ—è¡¨
       */
       ProducerConnection* getProducerConnectionList(const std::string& addr,
               const std::string& producerGroup,
               int timeoutMillis);
 
       /**
-      * ¸ù¾İConsumerGroup»ñÈ¡ConsumerÁ¬½ÓÁĞ±íÒÔ¼°¶©ÔÄ¹ØÏµ
+      * æ ¹æ®ConsumerGroupè·å–Consumerè¿æ¥åˆ—è¡¨ä»¥åŠè®¢é˜…å…³ç³»
       */
       ConsumerConnection* getConsumerConnectionList(const std::string& addr,
               const std::string& consumerGroup,
@@ -244,7 +244,7 @@ class MQClientAPIImpl
       KVTable getBrokerRuntimeInfo(const std::string& addr,  int timeoutMillis);
 
       /**
-      * ¸üĞÂBrokerµÄÅäÖÃÎÄ¼ş
+      * æ›´æ–°Brokerçš„é…ç½®æ–‡ä»¶
       *
       * @param addr
       * @param properties
@@ -261,27 +261,27 @@ class MQClientAPIImpl
                               int timeoutMillis);
 
       /**
-      * Name Server: ´ÓName Server»ñÈ¡¼¯ÈºĞÅÏ¢
+      * Name Server: ä»Name Serverè·å–é›†ç¾¤ä¿¡æ¯
       */
       ClusterInfo* getBrokerClusterInfo(int timeoutMillis);
 
       /**
-      * Name Server: ´ÓName Server»ñÈ¡ Default Topic Â·ÓÉĞÅÏ¢
+      * Name Server: ä»Name Serverè·å– Default Topic è·¯ç”±ä¿¡æ¯
       */
       TopicRouteData* getDefaultTopicRouteInfoFromNameServer(const std::string& topic, int timeoutMillis);
 
       /**
-      * Name Server: ´ÓName Server»ñÈ¡TopicÂ·ÓÉĞÅÏ¢
+      * Name Server: ä»Name Serverè·å–Topicè·¯ç”±ä¿¡æ¯
       */
       TopicRouteData* getTopicRouteInfoFromNameServer(const std::string& topic, int timeoutMillis);
 
       /**
-      * Name Server: ´ÓName Server»ñÈ¡ËùÓĞTopicÁĞ±í
+      * Name Server: ä»Name Serverè·å–æ‰€æœ‰Topicåˆ—è¡¨
       */
       TopicList* getTopicListFromNameServer(int timeoutMillis);
 
       /**
-      * Name Server: BrokerÏÂÏßÇ°£¬Çå³ıBroker¶ÔÓ¦µÄÈ¨ÏŞ
+      * Name Server: Brokerä¸‹çº¿å‰ï¼Œæ¸…é™¤Brokerå¯¹åº”çš„æƒé™
       */
       int wipeWritePermOfBroker(const std::string& namesrvAddr,
                                 const std::string& brokerName,
@@ -294,14 +294,14 @@ class MQClientAPIImpl
                                    int timeoutMillis);
 
       /**
-      * Name Server: ´ÓNamesrv»ñÈ¡KVÅäÖÃ
+      * Name Server: ä»Namesrvè·å–KVé…ç½®
       */
       std::string getKVConfigValue(const std::string& projectNamespace,
                                    const std::string& key,
                                    int timeoutMillis);
 
       /**
-      * Name Server: Ìí¼ÓKVÅäÖÃ
+      * Name Server: æ·»åŠ KVé…ç½®
       */
       void putKVConfigValue(const std::string& projectNamespace,
                             const std::string& key,
@@ -309,29 +309,29 @@ class MQClientAPIImpl
                             int timeoutMillis);
 
       /**
-      * Name Server: Ìí¼ÓKVÅäÖÃ
+      * Name Server: æ·»åŠ KVé…ç½®
       */
       void deleteKVConfigValue(const std::string& projectNamespace, const std::string& key, int timeoutMillis);
 
       /**
-      * Name Server: Í¨¹ı server ip »ñÈ¡ project ĞÅÏ¢
+      * Name Server: é€šè¿‡ server ip è·å– project ä¿¡æ¯
       */
       std::string getProjectGroupByIp(const std::string& ip,  int timeoutMillis);
 
       /**
-      * Name Server: Í¨¹ı value »ñÈ¡ËùÓĞµÄ key ĞÅÏ¢
+      * Name Server: é€šè¿‡ value è·å–æ‰€æœ‰çš„ key ä¿¡æ¯
       */
       std::string getKVConfigByValue(const std::string& projectNamespace,
                                      const std::string& projectGroup,
                                      int timeoutMillis);
 
       /**
-      * Name Server: »ñÈ¡Ö¸¶¨NamespaceÏÂµÄËùÓĞKV
+      * Name Server: è·å–æŒ‡å®šNamespaceä¸‹çš„æ‰€æœ‰KV
       */
       KVTable getKVListByNamespace(const std::string& projectNamespace,  int timeoutMillis);
 
       /**
-      * Name Server: É¾³ı value ¶ÔÓ¦µÄËùÓĞ key
+      * Name Server: åˆ é™¤ value å¯¹åº”çš„æ‰€æœ‰ key
       */
       void deleteKVConfigByValue(const std::string& projectNamespace,
                                  const std::string& projectGroup,
@@ -373,7 +373,7 @@ class MQClientAPIImpl
       TopAddressing m_topAddressing;
       ClientRemotingProcessor* m_pClientRemotingProcessor;
       std::string m_nameSrvAddr;
-      std::string m_projectGroupPrefix;// ĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄproject group ,c++ÊÇ·ñĞèÒª£¿
+      std::string m_projectGroupPrefix;// è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„project group ,c++æ˜¯å¦éœ€è¦ï¼Ÿ
   };
 }
 

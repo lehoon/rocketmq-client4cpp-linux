@@ -40,7 +40,7 @@ namespace rmq
   class PullAPIWrapper;
 
   /**
-  * Pull方式的Consumer实现
+  * Pull鏂瑰紡鐨凜onsumer瀹炵幇
   */
   class DefaultMQPullConsumerImpl : public  MQConsumerInner
   {
@@ -125,8 +125,8 @@ namespace rmq
       ServiceState m_serviceState;
       MQClientFactory* m_pMQClientFactory;
       PullAPIWrapper* m_pPullAPIWrapper;
-      OffsetStore* m_pOffsetStore; // 消费进度存储
-      RebalanceImpl* m_pRebalanceImpl;// Rebalance实现
+      OffsetStore* m_pOffsetStore; // 娑堣垂杩涘害瀛樺偍
+      RebalanceImpl* m_pRebalanceImpl;// Rebalance瀹炵幇
       friend class DefaultMQPullConsumerImplCallback;
   };
 

@@ -57,7 +57,7 @@ namespace rmq
 	typedef kpr::RefHandleT<ProcessDataWork> ProcessDataWorkPtr;
 
     /**
-    * Ô¶³ÌÍ¨ĞÅClient
+    * è¿œç¨‹é€šä¿¡Client
     *
     */
     class TcpRemotingClient
@@ -141,8 +141,8 @@ namespace rmq
         kpr::ThreadPoolPtr m_pNetThreadPool;
 		kpr::ThreadPtr m_pEventThread;
 
-        TcpRequestProcessor* m_pDefaultRequestProcessor;// Ä¬ÈÏÇëÇó´úÂë´¦ÀíÆ÷
-        std::map<int, TcpRequestProcessor*> m_processorTable;// ×¢²áµÄ¸÷¸öRPC´¦ÀíÆ÷
+        TcpRequestProcessor* m_pDefaultRequestProcessor;// é»˜è®¤è¯·æ±‚ä»£ç å¤„ç†å™¨
+        std::map<int, TcpRequestProcessor*> m_processorTable;// æ³¨å†Œçš„å„ä¸ªRPCå¤„ç†å™¨
     };
 }
 

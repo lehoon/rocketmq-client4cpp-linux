@@ -26,21 +26,21 @@
 namespace rmq
 {
 	/**
-	* Consumer¶ÓÁĞ×Ô¶¯·ÖÅä²ßÂÔ
+	* Consumeré˜Ÿåˆ—è‡ªåŠ¨åˆ†é…ç­–ç•¥
 	*
 	*/
 	class AllocateMessageQueueStrategy
 	{
 		/**
-		* ¸øµ±Ç°µÄConsumerId·ÖÅä¶ÓÁĞ
+		* ç»™å½“å‰çš„ConsumerIdåˆ†é…é˜Ÿåˆ—
 		*
 		* @param currentCID
-		*            µ±Ç°ConsumerId
+		*            å½“å‰ConsumerId
 		* @param mqAll
-		*            µ±Ç°TopicµÄËùÓĞ¶ÓÁĞ¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
+		*            å½“å‰Topicçš„æ‰€æœ‰é˜Ÿåˆ—é›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
 		* @param cidAll
-		*            µ±Ç°¶©ÔÄ×éµÄËùÓĞConsumer¼¯ºÏ£¬ÎŞÖØ¸´Êı¾İ£¬ÇÒÓĞĞò
-		* @return ·ÖÅä½á¹û£¬ÎŞÖØ¸´Êı¾İ
+		*            å½“å‰è®¢é˜…ç»„çš„æ‰€æœ‰Consumeré›†åˆï¼Œæ— é‡å¤æ•°æ®ï¼Œä¸”æœ‰åº
+		* @return åˆ†é…ç»“æœï¼Œæ— é‡å¤æ•°æ®
 		*/
 	public:
 		virtual ~AllocateMessageQueueStrategy() {}

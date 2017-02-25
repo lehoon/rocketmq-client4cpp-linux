@@ -22,7 +22,7 @@
 namespace rmq
 {
   /**
-  * 只在内部使用，不对外公开
+  * 鍙湪鍐呴儴浣跨敤锛屼笉瀵瑰鍏紑
   *
   */
   struct PullResultExt : public PullResult

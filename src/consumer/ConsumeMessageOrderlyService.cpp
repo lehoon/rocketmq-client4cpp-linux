@@ -45,7 +45,7 @@ public:
     {
         m_pService->lockMQPeriodically();
 
-        // ³ÖĞøÔËĞĞ²»ÄÜÉ¾³ı
+        // æŒç»­è¿è¡Œä¸èƒ½åˆ é™¤
         //delete this;
     }
 
@@ -260,7 +260,7 @@ bool ConsumeMessageOrderlyService::processConsumeResult(std::list<MessageExt*>& 
     long long commitOffset = -1L;
     int msgsSize = msgs.size();
 
-    // ·ÇÊÂÎñ·½Ê½£¬×Ô¶¯Ìá½»
+    // éäº‹åŠ¡æ–¹å¼ï¼Œè‡ªåŠ¨æäº¤
     if (context.autoCommit)
     {
         switch (status)
@@ -271,7 +271,7 @@ bool ConsumeMessageOrderlyService::processConsumeResult(std::list<MessageExt*>& 
                 //  consumeRequest.getMessageQueue());
             case SUCCESS:
                 commitOffset = consumeRequest.getProcessQueue()->commit();
-                // Í³¼ÆĞÅÏ¢
+                // ç»Ÿè®¡ä¿¡æ¯
                 getConsumerStat().consumeMsgOKTotal.fetchAndAdd(msgsSize);
                 break;
             case SUSPEND_CURRENT_QUEUE_A_MOMENT:
@@ -281,35 +281,35 @@ bool ConsumeMessageOrderlyService::processConsumeResult(std::list<MessageExt*>& 
                                           context.suspendCurrentQueueTimeMillis);
                 continueConsume = false;
 
-                // Í³¼ÆĞÅÏ¢
+                // ç»Ÿè®¡ä¿¡æ¯
                 getConsumerStat().consumeMsgFailedTotal.fetchAndAdd(msgsSize);
                 break;
             default:
                 break;
         }
     }
-    // ÊÂÎñ·½Ê½£¬ÓÉÓÃ»§À´¿ØÖÆÌá½»»Ø¹ö
+    // äº‹åŠ¡æ–¹å¼ï¼Œç”±ç”¨æˆ·æ¥æ§åˆ¶æäº¤å›æ»š
     else
     {
         switch (status)
         {
             case SUCCESS:
-                // Í³¼ÆĞÅÏ¢
+                // ç»Ÿè®¡ä¿¡æ¯
                 getConsumerStat().consumeMsgOKTotal.fetchAndAdd(msgsSize);
                 break;
             case COMMIT:
                 commitOffset = consumeRequest.getProcessQueue()->commit();
-                // Í³¼ÆĞÅÏ¢
+                // ç»Ÿè®¡ä¿¡æ¯
                 getConsumerStat().consumeMsgOKTotal.fetchAndAdd(msgsSize);
                 break;
             case ROLLBACK:
-                // Èç¹ûRollbackºó£¬×îºÃsuspendÒ»»á¶ùÔÙÏû·Ñ£¬·ÀÖ¹Ó¦ÓÃÎŞÏŞRollbackÏÂÈ¥
+                // å¦‚æœRollbackåï¼Œæœ€å¥½suspendä¸€ä¼šå„¿å†æ¶ˆè´¹ï¼Œé˜²æ­¢åº”ç”¨æ— é™Rollbackä¸‹å»
                 consumeRequest.getProcessQueue()->rollback();
                 submitConsumeRequestLater(consumeRequest.getProcessQueue(),
                                           consumeRequest.getMessageQueue(),
                                           context.suspendCurrentQueueTimeMillis);
                 continueConsume = false;
-                // Í³¼ÆĞÅÏ¢
+                // ç»Ÿè®¡ä¿¡æ¯
                 getConsumerStat().consumeMsgFailedTotal.fetchAndAdd(msgsSize);
                 break;
             case SUSPEND_CURRENT_QUEUE_A_MOMENT:
@@ -318,7 +318,7 @@ bool ConsumeMessageOrderlyService::processConsumeResult(std::list<MessageExt*>& 
                                           consumeRequest.getMessageQueue(),
                                           context.suspendCurrentQueueTimeMillis);
                 continueConsume = false;
-                // Í³¼ÆĞÅÏ¢
+                // ç»Ÿè®¡ä¿¡æ¯
                 getConsumerStat().consumeMsgFailedTotal.fetchAndAdd(msgsSize);
                 break;
             default:
@@ -369,12 +369,12 @@ void ConsumeOrderlyRequest::Do()
 
 	try
 	{
-	    // ±£Ö¤ÔÚµ±Ç°ConsumerÄÚ£¬Í¬Ò»¶ÓÁĞ´®ĞĞÏû·Ñ
+	    // ä¿è¯åœ¨å½“å‰Consumerå†…ï¼ŒåŒä¸€é˜Ÿåˆ—ä¸²è¡Œæ¶ˆè´¹
 	    kpr::Mutex* objLock = m_pService->getMessageQueueLock().fetchLockObject(m_messageQueue);
 	    {
 	        kpr::ScopedLock<kpr::Mutex> lock(*objLock);
 
-	        // ±£Ö¤ÔÚConsumer¼¯Èº£¬Í¬Ò»¶ÓÁĞ´®ĞĞÏû·Ñ
+	        // ä¿è¯åœ¨Consumeré›†ç¾¤ï¼ŒåŒä¸€é˜Ÿåˆ—ä¸²è¡Œæ¶ˆè´¹
 	        MessageModel messageModel = m_pService->getDefaultMQPushConsumerImpl()->messageModel();
 	        if (BROADCASTING == messageModel
 	        	|| (m_pProcessQueue->isLocked() || !m_pProcessQueue->isLockExpired()))
@@ -394,7 +394,7 @@ void ConsumeOrderlyRequest::Do()
 	                {
 	                    RMQ_WARN("the message queue not locked, so consume later, MQ: %s", m_messageQueue.toString().c_str());
 
-	                    //TODO ÔİÊ±´ò¿ª
+	                    //TODO æš‚æ—¶æ‰“å¼€
 	                    m_pService->tryLockLaterAndReconsume(m_messageQueue, m_pProcessQueue, 10);
 	                    break;
 	                }
@@ -404,16 +404,16 @@ void ConsumeOrderlyRequest::Do()
 	                {
 	                    RMQ_WARN("the message queue lock expired, so consume later, MQ: %s", m_messageQueue.toString().c_str());
 
-	                    //TODO ÔİÊ±´ò¿ª
+	                    //TODO æš‚æ—¶æ‰“å¼€
 	                    m_pService->tryLockLaterAndReconsume(m_messageQueue, m_pProcessQueue, 10);
 	                    break;
 	                }
 
-	                // ÔÚÏß³ÌÊıĞ¡ÓÚ¶ÓÁĞÊıÇé¿öÏÂ£¬·ÀÖ¹¸ö±ğ¶ÓÁĞ±»¶öËÀ
+	                // åœ¨çº¿ç¨‹æ•°å°äºé˜Ÿåˆ—æ•°æƒ…å†µä¸‹ï¼Œé˜²æ­¢ä¸ªåˆ«é˜Ÿåˆ—è¢«é¥¿æ­»
 	                long interval = long(KPRUtil::GetCurrentTimeMillis() - beginTime);
 	                if (interval > ConsumeMessageOrderlyService::s_MaxTimeConsumeContinuously)
 	                {
-	                    // ¹ı10msºóÔÙÏû·Ñ
+	                    // è¿‡10msåå†æ¶ˆè´¹
 	                    m_pService->submitConsumeRequestLater(m_pProcessQueue, m_messageQueue, 10);
 	                    break;
 	                }
@@ -428,7 +428,7 @@ void ConsumeOrderlyRequest::Do()
 
 	                    ConsumeOrderlyStatus status = SUSPEND_CURRENT_QUEUE_A_MOMENT;
 
-	                    // Ö´ĞĞHook
+	                    // æ‰§è¡ŒHook
 	                    ConsumeMessageContext consumeMessageContext;
 	                    if (m_pService->getDefaultMQPushConsumerImpl()->hasHook())
 	                    {
@@ -462,7 +462,7 @@ void ConsumeOrderlyRequest::Do()
 
 	                    long long consumeRT = KPRUtil::GetCurrentTimeMillis() - beginTimestamp;
 
-	                    // ÓÃ»§Å×³öÒì³£»òÕß·µ»Ønull£¬¶¼¹ÒÆğ¶ÓÁĞ
+	                    // ç”¨æˆ·æŠ›å‡ºå¼‚å¸¸æˆ–è€…è¿”å›nullï¼Œéƒ½æŒ‚èµ·é˜Ÿåˆ—
 	                    if (SUSPEND_CURRENT_QUEUE_A_MOMENT == status
 	                    	|| ROLLBACK == status)
 	                    {
@@ -473,7 +473,7 @@ void ConsumeOrderlyRequest::Do()
 	                    	//status = ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT;
 	                    }
 
-	                    // Ö´ĞĞHook
+	                    // æ‰§è¡ŒHook
 	                    if (m_pService->getDefaultMQPushConsumerImpl()->hasHook())
 	                    {
 	                        consumeMessageContext.success = (SUCCESS == status
@@ -481,7 +481,7 @@ void ConsumeOrderlyRequest::Do()
 	                        m_pService->getDefaultMQPushConsumerImpl()->executeHookAfter(consumeMessageContext);
 	                    }
 
-	                    // ¼ÇÂ¼Í³¼ÆĞÅÏ¢
+	                    // è®°å½•ç»Ÿè®¡ä¿¡æ¯
 	                    m_pService->getConsumerStat().consumeMsgRTTotal.fetchAndAdd(consumeRT);
 	                    MixAll::compareAndIncreaseOnly(m_pService->getConsumerStat()
 	                                                   .consumeMsgRTMax, consumeRT);
@@ -494,7 +494,7 @@ void ConsumeOrderlyRequest::Do()
 	                }
 	            }
 	        }
-	        // Ã»ÓĞÄÃµ½µ±Ç°¶ÓÁĞµÄËø£¬ÉÔºóÔÙÏû·Ñ
+	        // æ²¡æœ‰æ‹¿åˆ°å½“å‰é˜Ÿåˆ—çš„é”ï¼Œç¨åå†æ¶ˆè´¹
 	        else
 	        {
 	        	if (m_pProcessQueue->isDropped())

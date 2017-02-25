@@ -34,7 +34,7 @@ namespace rmq
 	class AllocateMessageQueueStrategy;
 
 	/**
-	* Ïû·ÑÕß£¬Ö÷¶¯À­È¡·½Ê½Ïû·Ñ
+	* æ¶ˆè´¹è€…ï¼Œä¸»åŠ¨æ‹‰å–æ–¹å¼æ¶ˆè´¹
 	*
 	*/
 	class DefaultMQPullConsumer : public ClientConfig , public MQPullConsumer
@@ -120,47 +120,47 @@ namespace rmq
 
 	private:
 		/**
-		* ×öÍ¬ÑùÊÂÇéµÄConsumer¹éÎªÍ¬Ò»¸öGroup£¬Ó¦ÓÃ±ØĞëÉèÖÃ£¬²¢±£Ö¤ÃüÃûÎ¨Ò»
+		* åšåŒæ ·äº‹æƒ…çš„Consumerå½’ä¸ºåŒä¸€ä¸ªGroupï¼Œåº”ç”¨å¿…é¡»è®¾ç½®ï¼Œå¹¶ä¿è¯å‘½åå”¯ä¸€
 		*/
 		std::string m_consumerGroup;
 
 		/**
-		* ³¤ÂÖÑ¯Ä£Ê½£¬ConsumerÁ¬½ÓÔÚBroker¹ÒÆğ×î³¤Ê±¼ä£¬²»½¨ÒéĞŞ¸Ä
+		* é•¿è½®è¯¢æ¨¡å¼ï¼ŒConsumerè¿æ¥åœ¨BrokeræŒ‚èµ·æœ€é•¿æ—¶é—´ï¼Œä¸å»ºè®®ä¿®æ”¹
 		*/
 		int m_brokerSuspendMaxTimeMillis ;
 
 		/**
-		* ³¤ÂÖÑ¯Ä£Ê½£¬Consumer³¬Ê±Ê±¼ä£¨±ØĞëÒª´óÓÚbrokerSuspendMaxTimeMillis£©£¬²»½¨ÒéĞŞ¸Ä
+		* é•¿è½®è¯¢æ¨¡å¼ï¼ŒConsumerè¶…æ—¶æ—¶é—´ï¼ˆå¿…é¡»è¦å¤§äºbrokerSuspendMaxTimeMillisï¼‰ï¼Œä¸å»ºè®®ä¿®æ”¹
 		*/
 		int m_consumerTimeoutMillisWhenSuspend;
 
 		/**
-		* ·Ç×èÈûÀ­Ä£Ê½£¬Consumer³¬Ê±Ê±¼ä£¬²»½¨ÒéĞŞ¸Ä
+		* éé˜»å¡æ‹‰æ¨¡å¼ï¼ŒConsumerè¶…æ—¶æ—¶é—´ï¼Œä¸å»ºè®®ä¿®æ”¹
 		*/
 		int m_consumerPullTimeoutMillis;
 
 		/**
-		* ¼¯ÈºÏû·Ñ/¹ã²¥Ïû·Ñ
+		* é›†ç¾¤æ¶ˆè´¹/å¹¿æ’­æ¶ˆè´¹
 		*/
 		MessageModel m_messageModel;
 
 		/**
-		* ¶ÓÁĞ±ä»¯¼àÌıÆ÷
+		* é˜Ÿåˆ—å˜åŒ–ç›‘å¬å™¨
 		*/
 		MessageQueueListener* m_pMessageQueueListener;
 
 		/**
-		* Offset´æ´¢£¬ÏµÍ³»á¸ù¾İ¿Í»§¶ËÅäÖÃ×Ô¶¯´´½¨ÏàÓ¦µÄÊµÏÖ£¬Èç¹ûÓ¦ÓÃÅäÖÃÁË£¬ÔòÒÔÓ¦ÓÃÅäÖÃµÄÎªÖ÷
+		* Offsetå­˜å‚¨ï¼Œç³»ç»Ÿä¼šæ ¹æ®å®¢æˆ·ç«¯é…ç½®è‡ªåŠ¨åˆ›å»ºç›¸åº”çš„å®ç°ï¼Œå¦‚æœåº”ç”¨é…ç½®äº†ï¼Œåˆ™ä»¥åº”ç”¨é…ç½®çš„ä¸ºä¸»
 		*/
 		OffsetStore* m_pOffsetStore;
 
 		/**
-		* ĞèÒª¼àÌıÄÄĞ©TopicµÄ¶ÓÁĞ±ä»¯
+		* éœ€è¦ç›‘å¬å“ªäº›Topicçš„é˜Ÿåˆ—å˜åŒ–
 		*/
 		std::set<std::string> m_registerTopics;
 
 		/**
-		* ¶ÓÁĞ·ÖÅäËã·¨£¬Ó¦ÓÃ¿ÉÖØĞ´
+		* é˜Ÿåˆ—åˆ†é…ç®—æ³•ï¼Œåº”ç”¨å¯é‡å†™
 		*/
 		AllocateMessageQueueStrategy* m_pAllocateMessageQueueStrategy;
 	};

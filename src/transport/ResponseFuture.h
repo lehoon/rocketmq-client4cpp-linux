@@ -32,7 +32,7 @@ namespace rmq
     class RemotingCommand;
 
     /**
-    * Òì²½ÇëÇóÓ¦´ğ·â×°
+    * å¼‚æ­¥è¯·æ±‚åº”ç­”å°è£…
     *
     */
     class ResponseFuture : public kpr::RefCount
@@ -68,7 +68,7 @@ namespace rmq
         kpr::Monitor* m_pMonitor;
         bool m_notifyFlag;
         kpr::AtomicInteger m_exec;
-        //TODO È·ÈÏ¸újava°æµÄÒ»ÖÂĞÔ
+        //TODO ç¡®è®¤è·Ÿjavaç‰ˆçš„ä¸€è‡´æ€§
     };
 	typedef kpr::RefHandleT<ResponseFuture> ResponseFuturePtr;
 }

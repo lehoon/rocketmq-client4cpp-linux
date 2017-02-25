@@ -26,7 +26,7 @@ namespace rmq
 {
 
 
-// ¶¨Ê±À­È¡ÈÎÎñ
+// å®šæ—¶æ‹‰å–ä»»åŠ¡
 class SubmitPullRequestLater : public kpr::TimerHandler
 {
 public:
@@ -71,7 +71,7 @@ PullMessageService::~PullMessageService()
 }
 
 /**
-* Ö»¶¨Ê±Ò»´Î
+* åªå®šæ—¶ä¸€æ¬¡
 */
 void PullMessageService::executePullRequestLater(PullRequest* pPullRequest, long timeDelay)
 {
@@ -87,7 +87,7 @@ void PullMessageService::executeTaskLater(kpr::TimerHandler* pHandler, long time
 
 
 /**
-* Á¢¿ÌÖ´ĞĞPullRequest
+* ç«‹åˆ»æ‰§è¡ŒPullRequest
 */
 void PullMessageService::executePullRequestImmediately(PullRequest* pPullRequest)
 {

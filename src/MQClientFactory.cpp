@@ -224,7 +224,7 @@ void MQClientFactory::updateTopicRouteInfoFromNameServer()
 {
     std::set<std::string> topicList;
 
-    // Consumer¶ÔÏó
+    // Consumerå¯¹è±¡
     {
     	kpr::ScopedRLock<kpr::RWMutex> lock(m_consumerTableLock);
         std::map<std::string, MQConsumerInner*>::iterator it = m_consumerTable.begin();
@@ -288,7 +288,7 @@ bool MQClientFactory::updateTopicRouteInfoFromNameServer(const std::string& topi
                     for (; it != dataList.end(); it++)
                     {
                         QueueData data = *it;
-                        // ¶ÁĞ´·ÖÇø¸öÊıÊÇÒ»ÖÂ£¬¹ÊÖ»×öÒ»´ÎÅĞ¶Ï
+                        // è¯»å†™åˆ†åŒºä¸ªæ•°æ˜¯ä¸€è‡´ï¼Œæ•…åªåšä¸€æ¬¡åˆ¤æ–­
                         int queueNums =
                             std::min<int>(pDefaultMQProducer->getDefaultTopicQueueNums(),
                                           data.readQueueNums);
@@ -330,10 +330,10 @@ bool MQClientFactory::updateTopicRouteInfoFromNameServer(const std::string& topi
 
                 if (changed)
                 {
-                    // ºóÃæÅÅĞò»áÓ°ÏìÏÂ´ÎµÄequalÂß¼­ÅĞ¶Ï£¬ËùÒÔÏÈcloneÒ»·İ
+                    // åé¢æ’åºä¼šå½±å“ä¸‹æ¬¡çš„equalé€»è¾‘åˆ¤æ–­ï¼Œæ‰€ä»¥å…ˆcloneä¸€ä»½
                     TopicRouteData cloneTopicRouteData = *topicRouteData;
 
-                    // ¸üĞÂBrokerµØÖ·ĞÅÏ¢
+                    // æ›´æ–°Brokeråœ°å€ä¿¡æ¯
                     std::list<BrokerData> dataList = topicRouteData->getBrokerDatas();
 
                     std::list<BrokerData>::iterator it = dataList.begin();
@@ -343,7 +343,7 @@ bool MQClientFactory::updateTopicRouteInfoFromNameServer(const std::string& topi
                         m_brokerAddrTable[(*it).brokerName] = (*it).brokerAddrs;
                     }
 
-                    // ¸üĞÂ·¢²¼¶ÓÁĞĞÅÏ¢
+                    // æ›´æ–°å‘å¸ƒé˜Ÿåˆ—ä¿¡æ¯
                     {
                         TopicPublishInfoPtr publishInfo =
                             topicRouteData2TopicPublishInfo(topic, *topicRouteData);
@@ -361,7 +361,7 @@ bool MQClientFactory::updateTopicRouteInfoFromNameServer(const std::string& topi
                         }
                     }
 
-                    // ¸üĞÂ¶©ÔÄ¶ÓÁĞĞÅÏ¢
+                    // æ›´æ–°è®¢é˜…é˜Ÿåˆ—ä¿¡æ¯
                     {
                         std::set<MessageQueue>* subscribeInfo =
                             topicRouteData2TopicSubscribeInfo(topic, *topicRouteData);
@@ -422,7 +422,7 @@ TopicPublishInfo*  MQClientFactory::topicRouteData2TopicPublishInfo(const std::s
         TopicRouteData& route)
 {
     TopicPublishInfo* info = new TopicPublishInfo();
-    // Ë³ĞòÏûÏ¢
+    // é¡ºåºæ¶ˆæ¯
     if (!route.getOrderTopicConf().empty())
     {
         std::vector<std::string> brokers;
@@ -441,11 +441,11 @@ TopicPublishInfo*  MQClientFactory::topicRouteData2TopicPublishInfo(const std::s
 
         info->setOrderTopic(true);
     }
-    // ·ÇË³ĞòÏûÏ¢
+    // éé¡ºåºæ¶ˆæ¯
     else
     {
         std::list<QueueData> qds = route.getQueueDatas();
-        // ÅÅĞòÔ­Òò£º¼´Ê¹Ã»ÓĞÅäÖÃË³ĞòÏûÏ¢Ä£Ê½£¬Ä¬ÈÏ¶ÓÁĞµÄË³ĞòÍ¬ÅäÖÃµÄÒ»ÖÂ¡£
+        // æ’åºåŸå› ï¼šå³ä½¿æ²¡æœ‰é…ç½®é¡ºåºæ¶ˆæ¯æ¨¡å¼ï¼Œé»˜è®¤é˜Ÿåˆ—çš„é¡ºåºåŒé…ç½®çš„ä¸€è‡´ã€‚
         qds.sort();
         std::list<QueueData>::iterator it = qds.begin();
         for (; it != qds.end(); it++)
@@ -453,7 +453,7 @@ TopicPublishInfo*  MQClientFactory::topicRouteData2TopicPublishInfo(const std::s
             QueueData& qd = (*it);
             if (PermName::isWriteable(qd.perm))
             {
-                // ÕâÀïĞèÒªÅĞ¶ÏBrokerName¶ÔÓ¦µÄMasterÊÇ·ñ´æÔÚ£¬ÒòÎªÖ»ÄÜÏòMaster·¢ËÍÏûÏ¢
+                // è¿™é‡Œéœ€è¦åˆ¤æ–­BrokerNameå¯¹åº”çš„Masteræ˜¯å¦å­˜åœ¨ï¼Œå› ä¸ºåªèƒ½å‘Masterå‘é€æ¶ˆæ¯
                 bool find = false;
                 BrokerData brokerData;
                 std::list<BrokerData> bds = route.getBrokerDatas();
@@ -657,7 +657,7 @@ FindBrokerResult MQClientFactory::findBrokerAddressInAdmin(const std::string& br
     typeof(m_brokerAddrTable.begin()) it = m_brokerAddrTable.find(brokerName);
     if (it != m_brokerAddrTable.end())
     {
-        // TODO Èç¹ûÓĞ¶à¸öSlave£¬¿ÉÄÜ»áÃ¿´Î¶¼Ñ¡ÖĞÏàÍ¬µÄSlave£¬ÕâÀïĞèÒªÓÅ»¯
+        // TODO å¦‚æœæœ‰å¤šä¸ªSlaveï¼Œå¯èƒ½ä¼šæ¯æ¬¡éƒ½é€‰ä¸­ç›¸åŒçš„Slaveï¼Œè¿™é‡Œéœ€è¦ä¼˜åŒ–
         typeof(it->second.begin()) it1 = it->second.begin();
         for (; it1 != it->second.end(); it1++)
         {
@@ -710,7 +710,7 @@ FindBrokerResult MQClientFactory::findBrokerAddressInSubscribe(const std::string
 {
     std::string brokerAddr = "";
     bool slave = false;
-    bool found = false;
+    //bool found = false;
 
     kpr::ScopedRLock<kpr::RWMutex> lock(m_brokerAddrTableLock);
     std::map<std::string, std::map<int, std::string> >::iterator it = m_brokerAddrTable.find(brokerName);
@@ -721,14 +721,14 @@ FindBrokerResult MQClientFactory::findBrokerAddressInSubscribe(const std::string
         {
             brokerAddr = it1->second;
             slave = (brokerId != MixAll::MASTER_ID);
-            found = true;
+            //found = true;
         }
         else
         {
             it1 = it->second.begin();
             brokerAddr = it1->second;
             slave = (brokerId != MixAll::MASTER_ID);
-            found = true;
+            //found = true;
         }
     }
 
@@ -857,7 +857,7 @@ void MQClientFactory::sendHeartbeatToAllBroker()
             std::string& addr = it1->second;
             if (!addr.empty())
             {
-                // ËµÃ÷Ö»ÓĞProducer£¬Ôò²»ÏòSlave·¢ĞÄÌø
+                // è¯´æ˜åªæœ‰Producerï¼Œåˆ™ä¸å‘Slaveå‘å¿ƒè·³
                 if (consumerEmpty)
                 {
                     if (it1->first != MixAll::MASTER_ID)
@@ -1023,20 +1023,20 @@ void MQClientFactory::logStatsPeriodicallyTask()
 
 void MQClientFactory::startScheduledTask()
 {
-    // ¶¨Ê±»ñÈ¡Name ServerµØÖ·
+    // å®šæ—¶è·å–Name Serveråœ°å€
     m_scheduledTaskIds[0] = m_timerTaskManager.RegisterTimer(1000 * 10, 1000 * 60 * 2, m_pFetchNameServerAddrTask);
 
-    // ¶¨Ê±´ÓName Server»ñÈ¡TopicÂ·ÓÉĞÅÏ¢
+    // å®šæ—¶ä»Name Serverè·å–Topicè·¯ç”±ä¿¡æ¯
     m_scheduledTaskIds[1] = m_timerTaskManager.RegisterTimer(10, m_clientConfig.getPollNameServerInterval(), m_pUpdateTopicRouteInfoFromNameServerTask);
 
-    // ¶¨Ê±ÇåÀíÏÂÏßµÄBroker
-    // ÏòËùÓĞBroker·¢ËÍĞÄÌøĞÅÏ¢£¨°üº¬¶©ÔÄ¹ØÏµµÈ£©
+    // å®šæ—¶æ¸…ç†ä¸‹çº¿çš„Broker
+    // å‘æ‰€æœ‰Brokerå‘é€å¿ƒè·³ä¿¡æ¯ï¼ˆåŒ…å«è®¢é˜…å…³ç³»ç­‰ï¼‰
     m_scheduledTaskIds[2] = m_timerTaskManager.RegisterTimer(1000, m_clientConfig.getHeartbeatBrokerInterval(), m_pCleanBrokerTask);
 
-    // ¶¨Ê±³Ö¾Ã»¯ConsumerÏû·Ñ½ø¶È£¨¹ã²¥´æ´¢µ½±¾µØ£¬¼¯Èº´æ´¢µ½Broker£©
+    // å®šæ—¶æŒä¹…åŒ–Consumeræ¶ˆè´¹è¿›åº¦ï¼ˆå¹¿æ’­å­˜å‚¨åˆ°æœ¬åœ°ï¼Œé›†ç¾¤å­˜å‚¨åˆ°Brokerï¼‰
     m_scheduledTaskIds[3] = m_timerTaskManager.RegisterTimer(1000 * 10, m_clientConfig.getPersistConsumerOffsetInterval(), m_pPersistAllConsumerOffsetTask);
 
-    // Í³¼ÆĞÅÏ¢´òµã
+    // ç»Ÿè®¡ä¿¡æ¯æ‰“ç‚¹
     m_scheduledTaskIds[4] = m_timerTaskManager.RegisterTimer(1000 * 10, 1000, m_pRecordSnapshotPeriodicallyTask);
     m_scheduledTaskIds[5] = m_timerTaskManager.RegisterTimer(1000 * 10, 1000 * 60, m_pLogStatsPeriodicallyTask);
 }
@@ -1189,7 +1189,7 @@ bool MQClientFactory::topicRouteDataIsChange(TopicRouteData& olddata, TopicRoute
 bool MQClientFactory::isNeedUpdateTopicRouteInfo(const std::string& topic)
 {
     bool result = false;
-    // ²é¿´·¢²¼¶ÓÁĞÊÇ·ñĞèÒª¸üĞÂ
+    // æŸ¥çœ‹å‘å¸ƒé˜Ÿåˆ—æ˜¯å¦éœ€è¦æ›´æ–°
     {
     	kpr::ScopedRLock<kpr::RWMutex> lock(m_producerTableLock);
         std::map<std::string, MQProducerInner*>::iterator it = m_producerTable.begin();
@@ -1203,7 +1203,7 @@ bool MQClientFactory::isNeedUpdateTopicRouteInfo(const std::string& topic)
         }
     }
 
-    // ²é¿´¶©ÔÄ¶ÓÁĞÊÇ·ñĞèÒª¸üĞÂ
+    // æŸ¥çœ‹è®¢é˜…é˜Ÿåˆ—æ˜¯å¦éœ€è¦æ›´æ–°
     {
     	kpr::ScopedRLock<kpr::RWMutex> lock(m_consumerTableLock);
         std::map<std::string, MQConsumerInner*>::iterator it = m_consumerTable.begin();

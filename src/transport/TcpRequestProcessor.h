@@ -22,7 +22,7 @@ namespace rmq
 	class TcpTransport;
 
 	/**
-	 * ½ÓÊÕÇëÇó´¦ÀíÆ÷
+	 * æ¥æ”¶è¯·æ±‚å¤„ç†å™¨
 	 *
 	 */
 	class TcpRequestProcessor

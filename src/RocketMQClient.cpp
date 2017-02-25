@@ -76,13 +76,12 @@ int64_t RocketMQUtil::getNowMs()
 
 std::string RocketMQUtil::str2fmt(const char* format, ...)
 {
-    int dataLen = 0;
     va_list args;
     char buffer[8092];
     buffer[0] = buffer[sizeof(buffer) - 1] = '\0';
 
     va_start( args, format );
-    dataLen = ::vsnprintf(buffer, sizeof(buffer), format, args);
+    ::vsnprintf(buffer, sizeof(buffer), format, args);
     va_end(args);
 
     return std::string(buffer);

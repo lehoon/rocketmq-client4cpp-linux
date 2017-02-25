@@ -29,7 +29,7 @@ namespace rmq
     class PullRequest;
 
     /**
-    * ³¤ÂÖÑ¯À­ÏûÏ¢·şÎñ£¬µ¥Ïß³ÌÒì²½À­È¡
+    * é•¿è½®è¯¢æ‹‰æ¶ˆæ¯æœåŠ¡ï¼Œå•çº¿ç¨‹å¼‚æ­¥æ‹‰å–
     *
     */
     class PullMessageService : public ServiceThread
@@ -39,13 +39,13 @@ namespace rmq
         ~PullMessageService();
 
         /**
-        * Ö»¶¨Ê±Ò»´Î
+        * åªå®šæ—¶ä¸€æ¬¡
         */
         void executePullRequestLater(PullRequest* pPullRequest, long timeDelay);
 		void executeTaskLater(kpr::TimerHandler* pHandler, long timeDelay);
 
         /**
-        * Á¢¿ÌÖ´ĞĞPullRequest
+        * ç«‹åˆ»æ‰§è¡ŒPullRequest
         */
         void executePullRequestImmediately(PullRequest* pPullRequest);
         std::string getServiceName();

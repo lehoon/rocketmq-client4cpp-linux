@@ -1,5 +1,9 @@
 #include "Common.h"
 #include "DefaultMQPullConsumer.h"
+
+#include <limits.h>
+
+
 using namespace rmq;
 
 

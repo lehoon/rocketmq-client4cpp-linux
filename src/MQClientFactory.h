@@ -48,7 +48,7 @@ namespace rmq
     class DefaultMQProducerImpl;
 
     /**
-    * ¿Í»§¶ËFactoryÀà£¬ÓÃÀ´¹ÜÀíProducerÓëConsumer
+    * å®¢æˆ·ç«¯Factoryç±»ï¼Œç”¨æ¥ç®¡ç†Producerä¸Consumer
     *
     */
 
@@ -65,7 +65,7 @@ namespace rmq
         bool updateTopicRouteInfoFromNameServer(const std::string& topic);
 
         /**
-        * µ÷ÓÃName Server½Ó¿Ú£¬¸ù¾İTopic»ñÈ¡Â·ÓÉĞÅÏ¢
+        * è°ƒç”¨Name Serveræ¥å£ï¼Œæ ¹æ®Topicè·å–è·¯ç”±ä¿¡æ¯
         */
         bool updateTopicRouteInfoFromNameServer(const std::string& topic, bool isDefault,
                                                 DefaultMQProducer* pDefaultMQProducer);
@@ -92,7 +92,7 @@ namespace rmq
         MQConsumerInner* selectConsumer(const std::string& group);
 
         /**
-        * ¹ÜÀíÀàµÄ½Ó¿Ú²éÑ¯BrokerµØÖ·£¬MasterÓÅÏÈ
+        * ç®¡ç†ç±»çš„æ¥å£æŸ¥è¯¢Brokeråœ°å€ï¼ŒMasterä¼˜å…ˆ
         *
         * @param brokerName
         * @return
@@ -100,12 +100,12 @@ namespace rmq
         FindBrokerResult findBrokerAddressInAdmin(const std::string& brokerName);
 
         /**
-        * ·¢²¼ÏûÏ¢¹ı³ÌÖĞ£¬Ñ°ÕÒBrokerµØÖ·£¬Ò»¶¨ÊÇÕÒMaster
+        * å‘å¸ƒæ¶ˆæ¯è¿‡ç¨‹ä¸­ï¼Œå¯»æ‰¾Brokeråœ°å€ï¼Œä¸€å®šæ˜¯æ‰¾Master
         */
         std::string findBrokerAddressInPublish(const std::string& brokerName);
 
         /**
-        * ¶©ÔÄÏûÏ¢¹ı³ÌÖĞ£¬Ñ°ÕÒBrokerµØÖ·£¬È¡Master»¹ÊÇSlaveÓÉ²ÎÊı¾ö¶¨
+        * è®¢é˜…æ¶ˆæ¯è¿‡ç¨‹ä¸­ï¼Œå¯»æ‰¾Brokeråœ°å€ï¼Œå–Masterè¿˜æ˜¯Slaveç”±å‚æ•°å†³å®š
         */
         FindBrokerResult findBrokerAddressInSubscribe(//
             const std::string& brokerName,//
@@ -131,7 +131,7 @@ namespace rmq
         void startScheduledTask();
 
         /**
-        * ÇåÀíÏÂÏßµÄbroker
+        * æ¸…ç†ä¸‹çº¿çš„broker
         */
         void cleanOfflineBroker();
         bool isBrokerAddrExistInTopicRouteTable(const std::string& addr);
@@ -164,7 +164,7 @@ namespace rmq
         };
 		typedef kpr::RefHandleT<ScheduledTask> ScheduledTaskPtr;
 
-        //¶¨Ê±ÈÎÎñ
+        //å®šæ—¶ä»»åŠ¡
         void fetchNameServerAddr();
         void updateTopicRouteInfoFromNameServerTask();
         void cleanBroker();
@@ -179,41 +179,41 @@ namespace rmq
         std::string m_clientId;
         long long m_bootTimestamp;
 
-        // Producer¶ÔÏó
+        // Producerå¯¹è±¡
         //group --> MQProducerInner
         std::map<std::string, MQProducerInner*> m_producerTable;
         kpr::RWMutex m_producerTableLock;
 
-        // Consumer¶ÔÏó
+        // Consumerå¯¹è±¡
         //group --> MQConsumerInner
         std::map<std::string, MQConsumerInner*> m_consumerTable;
         kpr::RWMutex m_consumerTableLock;
 
-        // AdminExt¶ÔÏó
+        // AdminExtå¯¹è±¡
         // group --> MQAdminExtInner
         std::map<std::string, MQAdminExtInner*> m_adminExtTable;
         kpr::RWMutex m_adminExtTableLock;
 
-        // Ô¶³Ì¿Í»§¶ËÅäÖÃ
+        // è¿œç¨‹å®¢æˆ·ç«¯é…ç½®
         RemoteClientConfig* m_pRemoteClientConfig;
 
-        // RPCµ÷ÓÃµÄ·â×°Àà
+        // RPCè°ƒç”¨çš„å°è£…ç±»
         MQClientAPIImpl* m_pMQClientAPIImpl;
         MQAdminImpl* m_pMQAdminImpl;
 
-        // ´æ´¢´ÓName ServerÄÃµ½µÄTopicÂ·ÓÉĞÅÏ¢
+        // å­˜å‚¨ä»Name Serveræ‹¿åˆ°çš„Topicè·¯ç”±ä¿¡æ¯
         /// Topic---> TopicRouteData
         std::map<std::string, TopicRouteData> m_topicRouteTable;
         kpr::RWMutex m_topicRouteTableLock;
 
         kpr::Mutex m_mutex;
-        // µ÷ÓÃName Server»ñÈ¡TopicÂ·ÓÉĞÅÏ¢Ê±£¬¼ÓËø
+        // è°ƒç”¨Name Serverè·å–Topicè·¯ç”±ä¿¡æ¯æ—¶ï¼ŒåŠ é”
         kpr::Mutex m_lockNamesrv;
 
-        // ĞÄÌøÓë×¢Ïú¶¯×÷¼ÓËø
+        // å¿ƒè·³ä¸æ³¨é”€åŠ¨ä½œåŠ é”
         kpr::Mutex m_lockHeartbeat;
 
-        // ´æ´¢Broker Name ÓëBroker AddressµÄ¶ÔÓ¦¹ØÏµ
+        // å­˜å‚¨Broker Name ä¸Broker Addressçš„å¯¹åº”å…³ç³»
         //
         //-----brokerName
         //     ------brokerid  addr
@@ -221,7 +221,7 @@ namespace rmq
         std::map<std::string, std::map<int, std::string> > m_brokerAddrTable;
         kpr::RWMutex m_brokerAddrTableLock;
 
-        // ¶¨Ê±Ïß³Ì
+        // å®šæ—¶çº¿ç¨‹
         kpr::TimerTaskManager m_timerTaskManager;
         ScheduledTaskPtr m_pFetchNameServerAddrTask;
         ScheduledTaskPtr m_pUpdateTopicRouteInfoFromNameServerTask;
@@ -232,13 +232,13 @@ namespace rmq
 
         int m_scheduledTaskIds[6];
 
-        ClientRemotingProcessor* m_pClientRemotingProcessor;// ´¦Àí·şÎñÆ÷Ö÷¶¯·¢À´µÄÇëÇó
-        PullMessageService* m_pPullMessageService;// À­ÏûÏ¢·şÎñ
-        RebalanceService* m_pRebalanceService;// Rebalance·şÎñ
-        DefaultMQProducer* m_pDefaultMQProducer;// ÄÚÖÃProducer¶ÔÏó
+        ClientRemotingProcessor* m_pClientRemotingProcessor;// å¤„ç†æœåŠ¡å™¨ä¸»åŠ¨å‘æ¥çš„è¯·æ±‚
+        PullMessageService* m_pPullMessageService;// æ‹‰æ¶ˆæ¯æœåŠ¡
+        RebalanceService* m_pRebalanceService;// RebalanceæœåŠ¡
+        DefaultMQProducer* m_pDefaultMQProducer;// å†…ç½®Producerå¯¹è±¡
         ServiceState m_serviceState;
 
-        // ¼àÌıÒ»¸öUDP¶Ë¿Ú£¬ÓÃÀ´·ÀÖ¹Í¬Ò»¸öFactoryÆô¶¯¶à·İ£¨ÓĞ¿ÉÄÜ·Ö²¼ÔÚ¶à¸öJVMÖĞ£©£¿£¿C++ÊÇ·ñĞèÒª
+        // ç›‘å¬ä¸€ä¸ªUDPç«¯å£ï¼Œç”¨æ¥é˜²æ­¢åŒä¸€ä¸ªFactoryå¯åŠ¨å¤šä»½ï¼ˆæœ‰å¯èƒ½åˆ†å¸ƒåœ¨å¤šä¸ªJVMä¸­ï¼‰ï¼Ÿï¼ŸC++æ˜¯å¦éœ€è¦
         //SOCKET m_datagramSocket;
     };
 }

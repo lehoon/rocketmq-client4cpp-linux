@@ -74,7 +74,7 @@ PullResult* PullAPIWrapper::processPullResult(MessageQueue& mq,
         std::list<MessageExt*> msgList =
             MessageDecoder::decodes(pullResultExt.messageBinary, pullResultExt.messageBinaryLen);
 
-        // ÏûÏ¢ÔÙ´Î¹ıÂË
+        // æ¶ˆæ¯å†æ¬¡è¿‡æ»¤
         std::list<MessageExt*> msgListFilterAgain;
 
         if (!subscriptionData.getTagsSet().empty())
@@ -104,7 +104,7 @@ PullResult* PullAPIWrapper::processPullResult(MessageQueue& mq,
             msgList.clear();
         }
 
-        // Çå³ıĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+        // æ¸…é™¤è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
         if (!UtilAll::isBlank(projectGroupPrefix))
         {
             subscriptionData.setTopic(VirtualEnvUtil::clearProjectGroup(subscriptionData.getTopic(),
@@ -117,7 +117,7 @@ PullResult* PullAPIWrapper::processPullResult(MessageQueue& mq,
                 MessageExt* msg = *it;
                 msg->setTopic(VirtualEnvUtil::clearProjectGroup(msg->getTopic(), projectGroupPrefix));
 
-                // ÏûÏ¢ÖĞ·ÅÈë¶ÓÁĞµÄ×î´ó×îĞ¡Offset£¬·½±ãÓ¦ÓÃÀ´¸ĞÖªÏûÏ¢¶Ñ»ı³Ì¶È
+                // æ¶ˆæ¯ä¸­æ”¾å…¥é˜Ÿåˆ—çš„æœ€å¤§æœ€å°Offsetï¼Œæ–¹ä¾¿åº”ç”¨æ¥æ„ŸçŸ¥æ¶ˆæ¯å †ç§¯ç¨‹åº¦
                 msg->putProperty(Message::PROPERTY_MIN_OFFSET, UtilAll::toString(pullResult.minOffset));
                 msg->putProperty(Message::PROPERTY_MAX_OFFSET, UtilAll::toString(pullResult.maxOffset));
             }
@@ -129,7 +129,7 @@ PullResult* PullAPIWrapper::processPullResult(MessageQueue& mq,
             {
                 MessageExt* msg = *it;
 
-				// ÏûÏ¢ÖĞ·ÅÈë¶ÓÁĞµÄ×î´ó×îĞ¡Offset£¬·½±ãÓ¦ÓÃÀ´¸ĞÖªÏûÏ¢¶Ñ»ı³Ì¶È
+				// æ¶ˆæ¯ä¸­æ”¾å…¥é˜Ÿåˆ—çš„æœ€å¤§æœ€å°Offsetï¼Œæ–¹ä¾¿åº”ç”¨æ¥æ„ŸçŸ¥æ¶ˆæ¯å †ç§¯ç¨‹åº¦
                 msg->putProperty(Message::PROPERTY_MIN_OFFSET, UtilAll::toString(pullResult.minOffset));
                 msg->putProperty(Message::PROPERTY_MAX_OFFSET, UtilAll::toString(pullResult.maxOffset));
             }
@@ -141,7 +141,7 @@ PullResult* PullAPIWrapper::processPullResult(MessageQueue& mq,
             pullResultExt.msgFoundList.push_back(*it);
         }
 
-        //Çå³ı×ÊÔ´
+        //æ¸…é™¤èµ„æº
         it = msgList.begin();
         for (; it != msgList.end(); it++)
         {
@@ -185,7 +185,7 @@ PullResult* PullAPIWrapper::pullKernelImpl(MessageQueue& mq,
                 recalculatePullFromWhichNode(mq), false);
     if (findBrokerResult.brokerAddr.empty())
     {
-        // TODO ´Ë´¦¿ÉÄÜ¶ÔName ServerÑ¹Á¦¹ı´ó£¬ĞèÒªµ÷ÓÅ
+        // TODO æ­¤å¤„å¯èƒ½å¯¹Name Serverå‹åŠ›è¿‡å¤§ï¼Œéœ€è¦è°ƒä¼˜
         m_pMQClientFactory->updateTopicRouteInfoFromNameServer(mq.getTopic());
         findBrokerResult = m_pMQClientFactory->findBrokerAddressInSubscribe(mq.getBrokerName(),
                            recalculatePullFromWhichNode(mq), false);
@@ -195,7 +195,7 @@ PullResult* PullAPIWrapper::pullKernelImpl(MessageQueue& mq,
     {
         int sysFlagInner = sysFlag;
 
-        // Slave²»ÔÊĞíÊµÊ±Ìá½»Ïû·Ñ½ø¶È£¬¿ÉÒÔ¶¨Ê±Ìá½»
+        // Slaveä¸å…è®¸å®æ—¶æäº¤æ¶ˆè´¹è¿›åº¦ï¼Œå¯ä»¥å®šæ—¶æäº¤
         if (findBrokerResult.slave)
         {
             sysFlagInner = PullSysFlag::clearCommitOffsetFlag(sysFlagInner);

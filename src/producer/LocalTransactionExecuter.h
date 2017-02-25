@@ -21,7 +21,7 @@
 namespace rmq
 {
 	/**
-	 * Ö´ÐÐ±¾µØÊÂÎñ£¬ÓÉ¿Í»§¶Ë»Øµ÷
+	 * æ‰§è¡Œæœ¬åœ°äº‹åŠ¡ï¼Œç”±å®¢æˆ·ç«¯å›žè°ƒ
 	 *
 	 */
 	class LocalTransactionExecuter

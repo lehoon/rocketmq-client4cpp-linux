@@ -65,7 +65,7 @@ ConsumerStat& ConsumeMessageConcurrentlyService::getConsumerStat()
 bool ConsumeMessageConcurrentlyService::sendMessageBack(MessageExt& msg,
         ConsumeConcurrentlyContext& context)
 {
-    // Èç¹ûÓÃ»§Ã»ÓĞÉèÖÃ£¬·şÎñÆ÷»á¸ù¾İÖØÊÔ´ÎÊı×Ô¶¯µş¼ÓÑÓÊ±Ê±¼ä
+    // å¦‚æœç”¨æˆ·æ²¡æœ‰è®¾ç½®ï¼ŒæœåŠ¡å™¨ä¼šæ ¹æ®é‡è¯•æ¬¡æ•°è‡ªåŠ¨å åŠ å»¶æ—¶æ—¶é—´
     try
     {
         m_pDefaultMQPushConsumerImpl->sendMessageBack(msg,
@@ -169,7 +169,7 @@ void ConsumeMessageConcurrentlyService::submitConsumeRequest(std::list<MessageEx
 
 void ConsumeMessageConcurrentlyService::updateCorePoolSize(int corePoolSize)
 {
-	//todo ÔİÊ±²»Ö§³Öµ÷ÕûÏß³Ì³Ø´óĞ¡
+	//todo æš‚æ—¶ä¸æ”¯æŒè°ƒæ•´çº¿ç¨‹æ± å¤§å°
 }
 
 void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrentlyStatus status,
@@ -196,7 +196,7 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
 
             int ok = ackIndex + 1;
             int failed = msgsSize - ok;
-            // Í³¼ÆĞÅÏ¢
+            // ç»Ÿè®¡ä¿¡æ¯
             getConsumerStat().consumeMsgOKTotal.fetchAndAdd(ok);
             getConsumerStat().consumeMsgFailedTotal.fetchAndAdd(failed);
         }
@@ -204,7 +204,7 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
         break;
         case RECONSUME_LATER:
             ackIndex = -1;
-            // Í³¼ÆĞÅÏ¢
+            // ç»Ÿè®¡ä¿¡æ¯
             getConsumerStat().consumeMsgFailedTotal.fetchAndAdd(msgsSize);
             break;
         default:
@@ -214,7 +214,7 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
     std::list<MessageExt*>& msgs = consumeRequest.getMsgs();
     std::list<MessageExt*>::iterator it = msgs.begin();
 
-    //Ìø¹ıÒÑ¾­Ïû·ÑµÄÏûÏ¢
+    //è·³è¿‡å·²ç»æ¶ˆè´¹çš„æ¶ˆæ¯
     for (int i = 0; i < ackIndex + 1 && it != msgs.end(); i++)
     {
         it++;
@@ -223,8 +223,8 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
     switch (m_pDefaultMQPushConsumer->getMessageModel())
     {
         case BROADCASTING:
-            // Èç¹ûÊÇ¹ã²¥Ä£Ê½£¬Ö±½Ó¶ªÆúÊ§°ÜÏûÏ¢£¬ĞèÒªÔÚÎÄµµÖĞ¸æÖªÓÃ»§
-            // ÕâÑù×öµÄÔ­Òò£º¹ã²¥Ä£Ê½¶ÔÓÚÊ§°ÜÖØÊÔ´ú¼Û¹ı¸ß£¬¶ÔÕû¸ö¼¯ÈºĞÔÄÜ»áÓĞ½Ï´óÓ°Ïì£¬Ê§°ÜÖØÊÔ¹¦ÄÜ½»ÓÉÓ¦ÓÃ´¦Àí
+            // å¦‚æœæ˜¯å¹¿æ’­æ¨¡å¼ï¼Œç›´æ¥ä¸¢å¼ƒå¤±è´¥æ¶ˆæ¯ï¼Œéœ€è¦åœ¨æ–‡æ¡£ä¸­å‘ŠçŸ¥ç”¨æˆ·
+            // è¿™æ ·åšçš„åŸå› ï¼šå¹¿æ’­æ¨¡å¼å¯¹äºå¤±è´¥é‡è¯•ä»£ä»·è¿‡é«˜ï¼Œå¯¹æ•´ä¸ªé›†ç¾¤æ€§èƒ½ä¼šæœ‰è¾ƒå¤§å½±å“ï¼Œå¤±è´¥é‡è¯•åŠŸèƒ½äº¤ç”±åº”ç”¨å¤„ç†
             for (; it != msgs.end(); it++)
             {
                 MessageExt* msg = *it;
@@ -233,7 +233,7 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
             break;
         case CLUSTERING:
         {
-            // ´¦ÀíÏû·ÑÊ§°ÜµÄÏûÏ¢£¬Ö±½Ó·¢»Øµ½Broker
+            // å¤„ç†æ¶ˆè´¹å¤±è´¥çš„æ¶ˆæ¯ï¼Œç›´æ¥å‘å›åˆ°Broker
             std::list<MessageExt*> msgBackFailed;
             for (; it != msgs.end(); it++)
             {
@@ -248,8 +248,8 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
 
             if (!msgBackFailed.empty())
             {
-                // ·¢»ØÊ§°ÜµÄÏûÏ¢ÈÔÈ»Òª±£Áô
-                // É¾³ıconsumeRequestÖĞ·¢ËÍÊ§°ÜµÄÏûÏ¢
+                // å‘å›å¤±è´¥çš„æ¶ˆæ¯ä»ç„¶è¦ä¿ç•™
+                // åˆ é™¤consumeRequestä¸­å‘é€å¤±è´¥çš„æ¶ˆæ¯
                 it = msgs.begin();
 
                 for (; it != msgs.end();)
@@ -272,7 +272,7 @@ void ConsumeMessageConcurrentlyService::processConsumeResult(ConsumeConcurrently
                     }
                 }
 
-                // ´Ë¹ı³Ì´¦ÀíÊ§°ÜµÄÏûÏ¢£¬ĞèÒªÔÚClientÖĞ×ö¶¨Ê±Ïû·Ñ£¬Ö±µ½³É¹¦
+                // æ­¤è¿‡ç¨‹å¤„ç†å¤±è´¥çš„æ¶ˆæ¯ï¼Œéœ€è¦åœ¨Clientä¸­åšå®šæ—¶æ¶ˆè´¹ï¼Œç›´åˆ°æˆåŠŸ
                 submitConsumeRequestLater(msgBackFailed, consumeRequest.getProcessQueue(),
                                           consumeRequest.getMessageQueue());
             }
@@ -338,7 +338,7 @@ void ConsumeConcurrentlyRequest::Do()
 	    ConsumeConcurrentlyContext context(m_messageQueue);
 	    ConsumeConcurrentlyStatus status = RECONSUME_LATER;
 
-	    // Ö´ĞĞHook
+	    // æ‰§è¡ŒHook
 	    ConsumeMessageContext consumeMessageContext;
 	    if (m_pService->getDefaultMQPushConsumerImpl()->hasHook())
 	    {
@@ -366,17 +366,17 @@ void ConsumeConcurrentlyRequest::Do()
 
 	    long long consumeRT = KPRUtil::GetCurrentTimeMillis() - beginTimestamp;
 
-	    // Ö´ĞĞHook
+	    // æ‰§è¡ŒHook
 	    if (m_pService->getDefaultMQPushConsumerImpl()->hasHook())
 	    {
 	        consumeMessageContext.success = (status == CONSUME_SUCCESS);
 	        m_pService->getDefaultMQPushConsumerImpl()->executeHookAfter(consumeMessageContext);
 	    }
 
-	    // ¼ÇÂ¼Í³¼ÆĞÅÏ¢
+	    // è®°å½•ç»Ÿè®¡ä¿¡æ¯
 	    m_pService->getConsumerStat().consumeMsgRTTotal.fetchAndAdd(consumeRT);
 	    bool updated = MixAll::compareAndIncreaseOnly(m_pService->getConsumerStat().consumeMsgRTMax, consumeRT);
-	    // ºÄÊ±×î´óÖµĞÂ¼ÇÂ¼
+	    // è€—æ—¶æœ€å¤§å€¼æ–°è®°å½•
 	    if (updated)
 	    {
 	        RMQ_WARN("consumeMessage RT new max: %lld, Group: %s, Msgs: %d, MQ: %s",

@@ -27,7 +27,7 @@ namespace rmq
     class MessageExt;
 
     /**
-    * ÕıÔÚ±»Ïû·ÑµÄ¶ÓÁĞ£¬º¬ÏûÏ¢
+    * æ­£åœ¨è¢«æ¶ˆè´¹çš„é˜Ÿåˆ—ï¼Œå«æ¶ˆæ¯
     *
     */
     class ProcessQueue
@@ -39,17 +39,17 @@ namespace rmq
         bool isLockExpired();
 
         /**
-        * @return ÊÇ·ñĞèÒª·Ö·¢µ±Ç°¶ÓÁĞµ½Ïû·ÑÏß³Ì³Ø
+        * @return æ˜¯å¦éœ€è¦åˆ†å‘å½“å‰é˜Ÿåˆ—åˆ°æ¶ˆè´¹çº¿ç¨‹æ± 
         */
         bool putMessage(const std::list<MessageExt*>& msgs);
 
         /**
-        * »ñÈ¡µ±Ç°¶ÓÁĞµÄ×î´ó¿ç¶È
+        * è·å–å½“å‰é˜Ÿåˆ—çš„æœ€å¤§è·¨åº¦
         */
         long long getMaxSpan();
 
         /**
-        * É¾³ıÒÑ¾­Ïû·Ñ¹ıµÄÏûÏ¢£¬·µ»Ø×îĞ¡Offset£¬Õâ¸öOffset¶ÔÓ¦µÄÏûÏ¢Î´Ïû·Ñ
+        * åˆ é™¤å·²ç»æ¶ˆè´¹è¿‡çš„æ¶ˆæ¯ï¼Œè¿”å›æœ€å°Offsetï¼Œè¿™ä¸ªOffsetå¯¹åº”çš„æ¶ˆæ¯æœªæ¶ˆè´¹
         *
         * @param msgs
         * @return
@@ -57,7 +57,7 @@ namespace rmq
         long long removeMessage(std::list<MessageExt*>& msgs);
 
 		/**
-        * Çå³ıÏûÏ¢
+        * æ¸…é™¤æ¶ˆæ¯
         */
 		void clear();
 
@@ -75,7 +75,7 @@ namespace rmq
 
         /**
         * ========================================================================
-        * ÒÔÏÂ²¿·ÖÎªË³ĞòÏûÏ¢×¨ÓĞ²Ù×÷
+        * ä»¥ä¸‹éƒ¨åˆ†ä¸ºé¡ºåºæ¶ˆæ¯ä¸“æœ‰æ“ä½œ
         */
 		kpr::Mutex& getLockConsume();
         void setLocked(bool locked);
@@ -88,7 +88,7 @@ namespace rmq
         void makeMessageToCosumeAgain(const std::list<MessageExt*>& msgs);
 
         /**
-        * Èç¹ûÈ¡²»µ½ÏûÏ¢£¬Ôò½«ÕıÔÚÏû·Ñ×´Ì¬ÖÃÎªfalse
+        * å¦‚æœå–ä¸åˆ°æ¶ˆæ¯ï¼Œåˆ™å°†æ­£åœ¨æ¶ˆè´¹çŠ¶æ€ç½®ä¸ºfalse
         *
         * @param batchSize
         * @return
@@ -99,27 +99,27 @@ namespace rmq
         void setLastLockTimestamp(long long lastLockTimestamp);
 
     public:
-        static unsigned int s_RebalanceLockMaxLiveTime;// ¿Í»§¶Ë±¾µØLock´æ»î×î´óÊ±¼ä£¬³¬¹ıÔò×Ô¶¯¹ıÆÚ£¬µ¥Î»ms
-        static unsigned int s_RebalanceLockInterval;// ¶¨Ê±Lock¼ä¸ôÊ±¼ä£¬µ¥Î»ms
-        static unsigned int s_PullMaxIdleTime;		// À­È¡×î´óidleÊ±¼ä£¬µ¥Î»ms
+        static unsigned int s_RebalanceLockMaxLiveTime;// å®¢æˆ·ç«¯æœ¬åœ°Lockå­˜æ´»æœ€å¤§æ—¶é—´ï¼Œè¶…è¿‡åˆ™è‡ªåŠ¨è¿‡æœŸï¼Œå•ä½ms
+        static unsigned int s_RebalanceLockInterval;// å®šæ—¶Locké—´éš”æ—¶é—´ï¼Œå•ä½ms
+        static unsigned int s_PullMaxIdleTime;		// æ‹‰å–æœ€å¤§idleæ—¶é—´ï¼Œå•ä½ms
 
     private:
         kpr::RWMutex m_lockTreeMap;
         std::map<long long, MessageExt*> m_msgTreeMap;
         volatile long long m_queueOffsetMax ;
         kpr::AtomicInteger m_msgCount;
-        volatile bool m_dropped;// µ±Ç°QÊÇ·ñ±»rebalance¶ªÆú
+        volatile bool m_dropped;// å½“å‰Qæ˜¯å¦è¢«rebalanceä¸¢å¼ƒ
         volatile unsigned long long m_lastPullTimestamp;
 		volatile unsigned long long m_lastConsumeTimestamp;
 
         /**
-        * Ë³ĞòÏûÏ¢×¨ÓÃ
+        * é¡ºåºæ¶ˆæ¯ä¸“ç”¨
         */
         kpr::Mutex m_lockConsume;
-        volatile bool m_locked;// ÊÇ·ñ´ÓBrokerËø¶¨
-        volatile unsigned long long m_lastLockTimestamp;// ×îºóÒ»´ÎËø¶¨³É¹¦Ê±¼ä´Á
-        volatile bool m_consuming;// ÊÇ·ñÕıÔÚ±»Ïû·Ñ
-        std::map<long long, MessageExt*> m_msgTreeMapTemp;// ÊÂÎñ·½Ê½Ïû·Ñ£¬Î´Ìá½»µÄÏûÏ¢
+        volatile bool m_locked;// æ˜¯å¦ä»Brokeré”å®š
+        volatile unsigned long long m_lastLockTimestamp;// æœ€åä¸€æ¬¡é”å®šæˆåŠŸæ—¶é—´æˆ³
+        volatile bool m_consuming;// æ˜¯å¦æ­£åœ¨è¢«æ¶ˆè´¹
+        std::map<long long, MessageExt*> m_msgTreeMapTemp;// äº‹åŠ¡æ–¹å¼æ¶ˆè´¹ï¼Œæœªæäº¤çš„æ¶ˆæ¯
         kpr::AtomicInteger m_tryUnlockTimes;
     };
 }

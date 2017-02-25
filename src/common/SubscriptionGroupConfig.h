@@ -36,14 +36,14 @@ namespace rmq
             whichBrokerWhenConsumeSlowly = 1;
         }
 
-        std::string groupName;// ¶©ÔÄ×éÃû
-        bool consumeEnable;// Ïû·Ñ¹¦ÄÜÊÇ·ñ¿ªÆô
-        bool consumeFromMinEnable;// ÊÇ·ñÔÊĞí´Ó¶ÓÁĞ×îĞ¡Î»ÖÃ¿ªÊ¼Ïû·Ñ£¬ÏßÉÏÄ¬ÈÏ»áÉèÖÃÎªfalse
-        bool consumeBroadcastEnable;// ÊÇ·ñÔÊĞí¹ã²¥·½Ê½Ïû·Ñ
-        int retryQueueNums;// Ïû·ÑÊ§°ÜµÄÏûÏ¢·Åµ½Ò»¸öÖØÊÔ¶ÓÁĞ£¬Ã¿¸ö¶©ÔÄ×éÅäÖÃ¼¸¸öÖØÊÔ¶ÓÁĞ
-        int retryMaxTimes; // ÖØÊÔÏû·Ñ×î´ó´ÎÊı£¬³¬¹ıÔòÍ¶µİµ½ËÀĞÅ¶ÓÁĞ£¬²»ÔÙÍ¶µİ£¬²¢±¨¾¯
-        long brokerId;// ´ÓÄÄ¸öBroker¿ªÊ¼Ïû·Ñ
-        long whichBrokerWhenConsumeSlowly;// ·¢ÏÖÏûÏ¢¶Ñ»ıºó£¬½«ConsumerµÄÏû·ÑÇëÇóÖØ¶¨Ïòµ½ÁíÍâÒ»Ì¨Slave»úÆ÷
+        std::string groupName;// è®¢é˜…ç»„å
+        bool consumeEnable;// æ¶ˆè´¹åŠŸèƒ½æ˜¯å¦å¼€å¯
+        bool consumeFromMinEnable;// æ˜¯å¦å…è®¸ä»é˜Ÿåˆ—æœ€å°ä½ç½®å¼€å§‹æ¶ˆè´¹ï¼Œçº¿ä¸Šé»˜è®¤ä¼šè®¾ç½®ä¸ºfalse
+        bool consumeBroadcastEnable;// æ˜¯å¦å…è®¸å¹¿æ’­æ–¹å¼æ¶ˆè´¹
+        int retryQueueNums;// æ¶ˆè´¹å¤±è´¥çš„æ¶ˆæ¯æ”¾åˆ°ä¸€ä¸ªé‡è¯•é˜Ÿåˆ—ï¼Œæ¯ä¸ªè®¢é˜…ç»„é…ç½®å‡ ä¸ªé‡è¯•é˜Ÿåˆ—
+        int retryMaxTimes; // é‡è¯•æ¶ˆè´¹æœ€å¤§æ¬¡æ•°ï¼Œè¶…è¿‡åˆ™æŠ•é€’åˆ°æ­»ä¿¡é˜Ÿåˆ—ï¼Œä¸å†æŠ•é€’ï¼Œå¹¶æŠ¥è­¦
+        long brokerId;// ä»å“ªä¸ªBrokerå¼€å§‹æ¶ˆè´¹
+        long whichBrokerWhenConsumeSlowly;// å‘ç°æ¶ˆæ¯å †ç§¯åï¼Œå°†Consumerçš„æ¶ˆè´¹è¯·æ±‚é‡å®šå‘åˆ°å¦å¤–ä¸€å°Slaveæœºå™¨
     };
 }
 

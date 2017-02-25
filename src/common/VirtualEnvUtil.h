@@ -22,7 +22,7 @@
 namespace rmq
 {
     /**
-    * 虚拟环境相关 API 封装
+    * 铏氭嫙鐜鐩稿叧 API 灏佽
     *
     * @author manhong.yqd<jodie.yqd@gmail.com>
     * @since 2013-8-26
@@ -31,7 +31,7 @@ namespace rmq
     {
     public:
         /**
-        * 添加虚拟运行环境相关的projectGroupPrefix
+        * 娣诲姞铏氭嫙杩愯鐜鐩稿叧鐨刾rojectGroupPrefix
         *
         * @param origin
         * @param projectGroup
@@ -40,7 +40,7 @@ namespace rmq
         static std::string buildWithProjectGroup(const std::string& origin, const std::string& projectGroup);
 
         /**
-        * 清除虚拟运行环境相关的projectGroupPrefix
+        * 娓呴櫎铏氭嫙杩愯鐜鐩稿叧鐨刾rojectGroupPrefix
         *
         * @param origin
         * @param projectGroup

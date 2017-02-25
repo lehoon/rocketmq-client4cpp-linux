@@ -23,7 +23,7 @@
 namespace rmq
 {
     /**
-     * remote¿Í»§¶ËÅäÖÃÀà
+     * remoteå®¢æˆ·ç«¯é…ç½®ç±»
      *
      */
     class RemoteClientConfig
@@ -32,12 +32,12 @@ namespace rmq
         RemoteClientConfig()
         {
             clientWorkerThreads = 4;
-            clientCallbackExecutorThreads = get_nprocs();//¿ÉÓÃcpu¸öÊı
+            clientCallbackExecutorThreads = get_nprocs();//å¯ç”¨cpuä¸ªæ•°
             clientSelectorThreads = 1;
             clientOnewaySemaphoreValue = 2048;
             clientAsyncSemaphoreValue = 2048;
             connectTimeoutMillis = 3000;
-            channelNotActiveInterval = 1000 * 60;// channel³¬¹ı1·ÖÖÓ²»±»·ÃÎÊ ¾Í¹Ø±Õ
+            channelNotActiveInterval = 1000 * 60;// channelè¶…è¿‡1åˆ†é’Ÿä¸è¢«è®¿é—® å°±å…³é—­
             clientChannelMaxIdleTimeSeconds = 120;
 			clientSocketSndBufSize = 65535;
 			clientSocketRcvBufSize = 65535;
@@ -46,20 +46,20 @@ namespace rmq
 			nsL5CmdId = 0;
         }
 
-        // ´¦ÀíServer Response/Request
+        // å¤„ç†Server Response/Request
         int clientWorkerThreads;
-        int clientCallbackExecutorThreads;//cpu¸öÊı
+        int clientCallbackExecutorThreads;//cpuä¸ªæ•°
         int clientSelectorThreads;
         int clientOnewaySemaphoreValue;
         int clientAsyncSemaphoreValue;
         int connectTimeoutMillis;
 
-        int channelNotActiveInterval;// channel³¬¹ı1·ÖÖÓ²»±»·ÃÎÊ ¾Í¹Ø±Õ
+        int channelNotActiveInterval;// channelè¶…è¿‡1åˆ†é’Ÿä¸è¢«è®¿é—® å°±å…³é—­
         int clientChannelMaxIdleTimeSeconds;
 		int clientSocketSndBufSize;
 		int clientSocketRcvBufSize;
 
-		// namesrvµÄl5ÅäÖÃ
+		// namesrvçš„l5é…ç½®
 		int nsL5ModId;
 		int nsL5CmdId;
     };

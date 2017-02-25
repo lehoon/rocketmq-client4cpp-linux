@@ -19,7 +19,7 @@
 namespace rmq
 {
 
-// TODO Ã¿´Î·¢²¼°æ±¾¶¼ÒªĞŞ¸Ä´Ë´¦°æ±¾ºÅ
+// TODO æ¯æ¬¡å‘å¸ƒç‰ˆæœ¬éƒ½è¦ä¿®æ”¹æ­¤å¤„ç‰ˆæœ¬å·
 int MQVersion::s_CurrentVersion = MQVersion::V3_2_6;
 
 const char* MQVersion::getVersionDesc(int value)

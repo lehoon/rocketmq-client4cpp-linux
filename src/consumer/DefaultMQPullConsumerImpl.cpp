@@ -82,7 +82,7 @@ void  DefaultMQPullConsumerImpl::start()
 
 	            m_pMQClientFactory = MQClientManager::getInstance()->getAndCreateMQClientFactory(*m_pDefaultMQPullConsumer);
 
-	            // ³õÊ¼»¯Rebalance±äÁ¿
+	            // åˆå§‹åŒ–Rebalanceå˜é‡
 	            m_pRebalanceImpl->setConsumerGroup(m_pDefaultMQPullConsumer->getConsumerGroup());
 	            m_pRebalanceImpl->setMessageModel(m_pDefaultMQPullConsumer->getMessageModel());
 	            m_pRebalanceImpl->setAllocateMessageQueueStrategy(m_pDefaultMQPullConsumer->getAllocateMessageQueueStrategy());
@@ -96,7 +96,7 @@ void  DefaultMQPullConsumerImpl::start()
 	            }
 	            else
 	            {
-	                // ¹ã²¥Ïû·Ñ/¼¯ÈºÏû·Ñ
+	                // å¹¿æ’­æ¶ˆè´¹/é›†ç¾¤æ¶ˆè´¹
 	                switch (m_pDefaultMQPullConsumer->getMessageModel())
 	                {
 	                    case BROADCASTING:
@@ -110,7 +110,7 @@ void  DefaultMQPullConsumerImpl::start()
 	                }
 	            }
 
-	            // ¼ÓÔØÏû·Ñ½ø¶È
+	            // åŠ è½½æ¶ˆè´¹è¿›åº¦
 	            m_pOffsetStore->load();
 
 	            bool registerOK =
@@ -442,7 +442,7 @@ PullResult* DefaultMQPullConsumerImpl::pullSyncImpl(MessageQueue& mq,
         THROW_MQEXCEPTION(MQClientException, "maxNums <= 0", -1);
     }
 
-    // ×Ô¶¯¶©ÔÄ
+    // è‡ªåŠ¨è®¢é˜…
     subscriptionAutomatically(mq.getTopic());
 
     int sysFlag = PullSysFlag::buildSysFlag(false, block, true);
@@ -520,7 +520,7 @@ void DefaultMQPullConsumerImpl::pullAsyncImpl(//
         THROW_MQEXCEPTION(MQClientException, "pullCallback is null", -1);
     }
 
-    // ×Ô¶¯¶©ÔÄ
+    // è‡ªåŠ¨è®¢é˜…
     subscriptionAutomatically(mq.getTopic());
     try
     {
@@ -568,7 +568,7 @@ void  DefaultMQPullConsumerImpl::copySubscription()
 {
     try
     {
-        // ¸´ÖÆÓÃ»§³õÊ¼ÉèÖÃµÄ¶©ÔÄ¹ØÏµ
+        // å¤åˆ¶ç”¨æˆ·åˆå§‹è®¾ç½®çš„è®¢é˜…å…³ç³»
         std::set<std::string> registerTopics = m_pDefaultMQPullConsumer->getRegisterTopics();
         std::set<std::string>::iterator it = registerTopics.begin();
 

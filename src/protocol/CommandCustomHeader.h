@@ -23,7 +23,7 @@
 namespace rmq
 {
     /**
-    * RemotingCommand中自定义字段对象
+    * RemotingCommand涓嚜瀹氫箟瀛楁瀵硅薄
     *
     */
     class CommandCustomHeader

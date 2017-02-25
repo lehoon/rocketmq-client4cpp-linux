@@ -27,16 +27,16 @@ namespace rmq
 
 	enum ReadOffsetType
 	{
-		// Ö»´ÓMemory¶ÁÈ¡
+		// åªä»Memoryè¯»å–
 		READ_FROM_MEMORY,
-		// Ö»´Ó´æ´¢²ã¶ÁÈ¡£¨±¾µØ»òÕßÔ¶¶Ë£©
+		// åªä»å­˜å‚¨å±‚è¯»å–ï¼ˆæœ¬åœ°æˆ–è€…è¿œç«¯ï¼‰
 		READ_FROM_STORE,
-		// ÏÈ´ÓÄÚ´æ¶Á£¬ÄÚ´æ²»´æÔÚÔÙ´Ó´æ´¢²ã¶Á
+		// å…ˆä»å†…å­˜è¯»ï¼Œå†…å­˜ä¸å­˜åœ¨å†ä»å­˜å‚¨å±‚è¯»
 		MEMORY_FIRST_THEN_STORE,
 	};
 
 	/**
-	* Consumer Offset´æ´¢½Ó¿Ú
+	* Consumer Offsetå­˜å‚¨æ¥å£
 	*
 	*/
 	class OffsetStore
@@ -45,33 +45,33 @@ namespace rmq
 		virtual ~OffsetStore() {}
 
 		/**
-		* ¼ÓÔØOffset
+		* åŠ è½½Offset
 		*/
 		virtual void load()=0;
 
 		/**
-		* ¸üĞÂÏû·Ñ½ø¶È£¬´æ´¢µ½ÄÚ´æ
+		* æ›´æ–°æ¶ˆè´¹è¿›åº¦ï¼Œå­˜å‚¨åˆ°å†…å­˜
 		*/
 		virtual void updateOffset(const MessageQueue& mq, long long offset, bool increaseOnly)=0;
 
 		/**
-		* ´Ó±¾µØ»º´æ¶ÁÈ¡Ïû·Ñ½ø¶È
+		* ä»æœ¬åœ°ç¼“å­˜è¯»å–æ¶ˆè´¹è¿›åº¦
 		*/
 		virtual long long readOffset(const MessageQueue& mq, ReadOffsetType type)=0;
 
 		/**
-		* ³Ö¾Ã»¯È«²¿Ïû·Ñ½ø¶È£¬¿ÉÄÜ³Ö¾Ã»¯±¾µØ»òÕßÔ¶¶ËBroker
+		* æŒä¹…åŒ–å…¨éƒ¨æ¶ˆè´¹è¿›åº¦ï¼Œå¯èƒ½æŒä¹…åŒ–æœ¬åœ°æˆ–è€…è¿œç«¯Broker
 		*/
 		virtual void persistAll(std::set<MessageQueue>& mqs)=0;
 		virtual void persist(const MessageQueue& mq)=0;
 
 		/**
-		* É¾³ı²»±ØÒªµÄMessageQueue offset
+		* åˆ é™¤ä¸å¿…è¦çš„MessageQueue offset
 		*/
 		virtual void removeOffset(const MessageQueue& mq)=0;
 
 		/**
-		* ¿ËÂ¡Æ«ÒÆÁ¿±í
+		* å…‹éš†åç§»é‡è¡¨
 		*/
 		virtual std::map<MessageQueue, long long> cloneOffsetTable(const std::string& topic) = 0;
 	};

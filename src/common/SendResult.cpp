@@ -36,7 +36,7 @@ SendResult::SendResult(const SendStatus& sendStatus,
       m_queueOffset(queueOffset)
 {
 
-    // Çå³ıĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ¸…é™¤è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(projectGroupPrefix))
     {
         m_messageQueue.setTopic(VirtualEnvUtil::clearProjectGroup(m_messageQueue.getTopic(),
@@ -118,7 +118,7 @@ std::string SendResult::toJsonString() const
 
 
 /**
-* ·¢ËÍÊÂÎñÏûÏ¢·µ»Ø½á¹û
+* å‘é€äº‹åŠ¡æ¶ˆæ¯è¿”å›ç»“æœ
 *
 */
 TransactionSendResult::TransactionSendResult()

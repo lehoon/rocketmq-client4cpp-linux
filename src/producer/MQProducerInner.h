@@ -28,7 +28,7 @@ namespace rmq
 	class TopicPublishInfo;
 
 	/**
-	* Producer内部接口
+	* Producer鍐呴儴鎺ュ彛
 	*
 	*/
 	class MQProducerInner

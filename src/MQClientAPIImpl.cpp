@@ -46,7 +46,7 @@ MQClientAPIImpl::MQClientAPIImpl(ClientConfig& clientConfig,
     m_pRemotingClient = new TcpRemotingClient(remoteClientConfig);
 
     /**
-    * ×¢²á¿Í»§¶ËÖ§³ÖµÄRPC CODE
+    * æ³¨å†Œå®¢æˆ·ç«¯æ”¯æŒçš„RPC CODE
     */
     m_pRemotingClient->registerProcessor(CHECK_TRANSACTION_STATE_VALUE, m_pClientRemotingProcessor);
     m_pRemotingClient->registerProcessor(NOTIFY_CONSUMER_IDS_CHANGED_VALUE, m_pClientRemotingProcessor);
@@ -113,10 +113,10 @@ void MQClientAPIImpl::updateNameServerAddressList(const std::string& addrs)
 
 void MQClientAPIImpl::start()
 {
-    // Ô¶³ÌÍ¨ĞÅ Client Æô¶¯
+    // è¿œç¨‹é€šä¿¡ Client å¯åŠ¨
     m_pRemotingClient->start();
 
-    // »ñÈ¡ĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄproject group
+    // è·å–è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„project group
     try
     {
         std::string localAddress = getLocalAddress();
@@ -136,7 +136,7 @@ void MQClientAPIImpl::createSubscriptionGroup(const std::string& addr,
         SubscriptionGroupConfig config,
         int timeoutMillis)
 {
-    //TODO, admin¹¦ÄÜÔİ²»ÊµÏÖ
+    //TODO, adminåŠŸèƒ½æš‚ä¸å®ç°
 }
 
 
@@ -145,7 +145,7 @@ void MQClientAPIImpl::createTopic(const std::string& addr,
                                   TopicConfig topicConfig,
                                   int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     std::string topicWithProjectGroup = topicConfig.getTopicName();
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
@@ -192,7 +192,7 @@ SendResult MQClientAPIImpl::sendMessage(const std::string& addr,
                                         CommunicationMode communicationMode,
                                         SendCallback* pSendCallback)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         msg.setTopic(VirtualEnvUtil::buildWithProjectGroup(msg.getTopic(), m_projectGroupPrefix));
@@ -215,7 +215,7 @@ SendResult MQClientAPIImpl::sendMessage(const std::string& addr,
         request = RemotingCommand::createRequestCommand(SEND_MESSAGE_VALUE, pRequestHeader);
     }
 
-	// ¼ì²éÊÇ·ñ·¢ËÍÑ¹ËõÏûÏ¢
+	// æ£€æŸ¥æ˜¯å¦å‘é€å‹ç¼©æ¶ˆæ¯
     if (msg.getCompressBody() != NULL)
     {
     	request->setBody((char*)msg.getCompressBody(), msg.getCompressBodyLen(), false);
@@ -256,7 +256,7 @@ PullResult* MQClientAPIImpl::pullMessage(const std::string& addr,
         CommunicationMode communicationMode,
         PullCallback* pPullCallback)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         pRequestHeader->consumerGroup = (VirtualEnvUtil::buildWithProjectGroup(
@@ -406,7 +406,7 @@ std::list<std::string> MQClientAPIImpl::getConsumerIdListByGroup(const std::stri
         const std::string& consumerGroup,
         int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     std::string consumerGroupWithProjectGroup = consumerGroup;
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
@@ -525,7 +525,7 @@ long long MQClientAPIImpl::queryConsumerOffset(const std::string& addr,
         QueryConsumerOffsetRequestHeader* pRequestHeader,
         int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         pRequestHeader->consumerGroup = VirtualEnvUtil::buildWithProjectGroup(
@@ -611,7 +611,7 @@ void MQClientAPIImpl::updateConsumerOffsetOneway(const std::string& addr,
 
 void MQClientAPIImpl::sendHearbeat(const std::string& addr, HeartbeatData* pHeartbeatData, int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         std::set<ConsumerData>& consumerDatas = pHeartbeatData->getConsumerDataSet();
@@ -713,7 +713,7 @@ void MQClientAPIImpl::endTransactionOneway(const std::string& addr,
         const std::string& remark,
         int timeoutMillis)
 {
-    //TODO£¬ÔİÊ±²»Ö§³ÖÊÂÎï¹¦ÄÜ
+    //TODOï¼Œæš‚æ—¶ä¸æ”¯æŒäº‹ç‰©åŠŸèƒ½
 }
 
 void MQClientAPIImpl::queryMessage(const std::string& addr,
@@ -736,7 +736,7 @@ void MQClientAPIImpl::queryMessage(const std::string& addr,
 
 bool MQClientAPIImpl::registerClient(const std::string& addr, HeartbeatData& heartbeat, int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         std::set<ConsumerData>& consumerDatas = heartbeat.getConsumerDataSet();
@@ -787,7 +787,7 @@ void MQClientAPIImpl::consumerSendMessageBack(
         int delayLevel,
         int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     std::string consumerGroupWithProjectGroup = consumerGroup;
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
@@ -826,7 +826,7 @@ std::set<MessageQueue> MQClientAPIImpl::lockBatchMQ(const std::string& addr,
         LockBatchRequestBody* pRequestBody,
         int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         pRequestBody->setConsumerGroup((VirtualEnvUtil::buildWithProjectGroup(
@@ -859,7 +859,7 @@ std::set<MessageQueue> MQClientAPIImpl::lockBatchMQ(const std::string& addr,
                     LockBatchResponseBody::decode(response->getBody(), response->getBodyLen());
                 std::set<MessageQueue> messageQueues = responseBody->getLockOKMQSet();
 
-                // Çå³ıĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+                // æ¸…é™¤è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
                 if (!UtilAll::isBlank(m_projectGroupPrefix))
                 {
                     std::set<MessageQueue>::iterator it = messageQueues.begin();
@@ -888,7 +888,7 @@ void MQClientAPIImpl::unlockBatchMQ(const std::string& addr,
                                     int timeoutMillis,
                                     bool oneway)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
         pRequestBody->setConsumerGroup((VirtualEnvUtil::buildWithProjectGroup(
@@ -938,7 +938,7 @@ TopicStatsTable MQClientAPIImpl::getTopicStatsInfo(const std::string& addr,
         const std::string& topic,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     TopicStatsTable t;
     return t;
 }
@@ -947,7 +947,7 @@ ConsumeStats MQClientAPIImpl::getConsumeStats(const std::string& addr,
         const std::string& consumerGroup,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     ConsumeStats cs;
     return cs;
 }
@@ -956,7 +956,7 @@ ProducerConnection* MQClientAPIImpl::getProducerConnectionList(const std::string
         const std::string& producerGroup,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     return NULL;
 }
 
@@ -964,13 +964,13 @@ ConsumerConnection* MQClientAPIImpl::getConsumerConnectionList(const std::string
         const std::string& consumerGroup,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     return NULL;
 }
 
 KVTable MQClientAPIImpl::getBrokerRuntimeInfo(const std::string& addr,  int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     KVTable kv;
     return kv;
 }
@@ -979,12 +979,12 @@ void MQClientAPIImpl::updateBrokerConfig(const std::string& addr,
         const std::map<std::string, std::string>&  properties,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 ClusterInfo* MQClientAPIImpl::getBrokerClusterInfo(int timeoutMillis)
 {
-   //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+   //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     return NULL;
 }
 
@@ -1027,7 +1027,7 @@ TopicRouteData* MQClientAPIImpl::getDefaultTopicRouteInfoFromNameServer(const st
 
 TopicRouteData* MQClientAPIImpl::getTopicRouteInfoFromNameServer(const std::string& topic, int timeoutMillis)
 {
-    // Ìí¼ÓĞéÄâÔËĞĞ»·¾³Ïà¹ØµÄprojectGroupPrefix
+    // æ·»åŠ è™šæ‹Ÿè¿è¡Œç¯å¢ƒç›¸å…³çš„projectGroupPrefix
     std::string topicWithProjectGroup = topic;
     if (!UtilAll::isBlank(m_projectGroupPrefix))
     {
@@ -1115,7 +1115,7 @@ int MQClientAPIImpl::wipeWritePermOfBroker(const std::string& namesrvAddr,
         const std::string& brokerName,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     return 0;
 }
 
@@ -1123,21 +1123,21 @@ void MQClientAPIImpl::deleteTopicInBroker(const std::string& addr,
         const std::string& topic,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 void MQClientAPIImpl::deleteTopicInNameServer(const std::string& addr,
         const std::string& topic,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 void MQClientAPIImpl::deleteSubscriptionGroup(const std::string& addr,
         const std::string& groupName,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 std::string MQClientAPIImpl::getKVConfigValue(const std::string& projectNamespace,
@@ -1175,14 +1175,14 @@ void MQClientAPIImpl::putKVConfigValue(const std::string& projectNamespace,
                                        const std::string& value,
                                        int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 void MQClientAPIImpl::deleteKVConfigValue(const std::string& projectNamespace,
         const std::string& key,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 std::string MQClientAPIImpl::getProjectGroupByIp(const std::string& ip,  int timeoutMillis)
@@ -1194,13 +1194,13 @@ std::string MQClientAPIImpl::getKVConfigByValue(const std::string& projectNamesp
         const std::string& projectGroup,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     return "";
 }
 
 KVTable MQClientAPIImpl::getKVListByNamespace(const std::string& projectNamespace,  int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
     return KVTable();
 }
 
@@ -1208,7 +1208,7 @@ void MQClientAPIImpl::deleteKVConfigByValue(const std::string& projectNamespace,
         const std::string& projectGroup,
         int timeoutMillis)
 {
-    //TODO£¬admin¹¦ÄÜÔİÊ±²»Ö§³Ö
+    //TODOï¼ŒadminåŠŸèƒ½æš‚æ—¶ä¸æ”¯æŒ
 }
 
 SendResult* MQClientAPIImpl::sendMessageSync(const std::string& addr,

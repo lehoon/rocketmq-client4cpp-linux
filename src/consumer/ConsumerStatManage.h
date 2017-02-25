@@ -27,18 +27,18 @@
 namespace rmq
 {
     /**
-    * ConsumerÄÚ²¿ÔËĞĞÊ±Í³¼ÆĞÅÏ¢
+    * Consumerå†…éƒ¨è¿è¡Œæ—¶ç»Ÿè®¡ä¿¡æ¯
     *
     */
     struct ConsumerStat
     {
-        long long createTimestamp;// ´òµãÊ±¼ä´Á
-        kpr::AtomicLong consumeMsgRTMax;// Ò»´ÎÏû·ÑÏûÏ¢µÄ×î´óRT
-        kpr::AtomicLong consumeMsgRTTotal;// Ã¿´ÎÏû·ÑÏûÏ¢RTµş¼Ó×ÜºÍ
-        kpr::AtomicLong consumeMsgOKTotal;// Ïû·ÑÏûÏ¢³É¹¦´ÎÊı×ÜºÍ
-        kpr::AtomicLong consumeMsgFailedTotal;// Ïû·ÑÏûÏ¢Ê§°Ü´ÎÊı×ÜºÍ
-        kpr::AtomicLong pullRTTotal;// À­ÏûÏ¢RTµş¼Ó×ÜºÍ£¨Ö»°üº¬³É¹¦À­µ½µÄ£©
-        kpr::AtomicLong pullTimesTotal;// À­ÏûÏ¢´ÎÊı£¨Ö»°üº¬³É¹¦À­µ½µÄ£©
+        long long createTimestamp;// æ‰“ç‚¹æ—¶é—´æˆ³
+        kpr::AtomicLong consumeMsgRTMax;// ä¸€æ¬¡æ¶ˆè´¹æ¶ˆæ¯çš„æœ€å¤§RT
+        kpr::AtomicLong consumeMsgRTTotal;// æ¯æ¬¡æ¶ˆè´¹æ¶ˆæ¯RTå åŠ æ€»å’Œ
+        kpr::AtomicLong consumeMsgOKTotal;// æ¶ˆè´¹æ¶ˆæ¯æˆåŠŸæ¬¡æ•°æ€»å’Œ
+        kpr::AtomicLong consumeMsgFailedTotal;// æ¶ˆè´¹æ¶ˆæ¯å¤±è´¥æ¬¡æ•°æ€»å’Œ
+        kpr::AtomicLong pullRTTotal;// æ‹‰æ¶ˆæ¯RTå åŠ æ€»å’Œï¼ˆåªåŒ…å«æˆåŠŸæ‹‰åˆ°çš„ï¼‰
+        kpr::AtomicLong pullTimesTotal;// æ‹‰æ¶ˆæ¯æ¬¡æ•°ï¼ˆåªåŒ…å«æˆåŠŸæ‹‰åˆ°çš„ï¼‰
 
 		ConsumerStat()
 		{
@@ -53,7 +53,7 @@ namespace rmq
     };
 
     /**
-    * ÓÃÀ´Í³¼ÆConsumerÔËĞĞ×´Ì¬
+    * ç”¨æ¥ç»Ÿè®¡Consumerè¿è¡ŒçŠ¶æ€
     *
     */
     class ConsumerStatManager
@@ -70,7 +70,7 @@ namespace rmq
         }
 
         /**
-        * Ã¿¸ô1Ãë¼ÇÂ¼Ò»´Î
+        * æ¯éš”1ç§’è®°å½•ä¸€æ¬¡
         */
         void recordSnapshotPeriodically()
         {
@@ -83,7 +83,7 @@ namespace rmq
         }
 
         /**
-        * Ã¿¸ô1·ÖÖÓ¼ÇÂ¼Ò»´Î
+        * æ¯éš”1åˆ†é’Ÿè®°å½•ä¸€æ¬¡
         */
         void logStatsPeriodically(std::string& group, std::string& clientId)
         {
@@ -93,7 +93,7 @@ namespace rmq
                 ConsumerStat& first = m_snapshotList.front();
                 ConsumerStat& last = m_snapshotList.back();
 
-                // Ïû·ÑÇé¿ö
+                // æ¶ˆè´¹æƒ…å†µ
                 {
                     double avgRT = (last.consumeMsgRTTotal.get() - first.consumeMsgRTTotal.get())
                                    /
@@ -117,7 +117,7 @@ namespace rmq
                         tps);
                 }
 
-                // À­ÏûÏ¢Çé¿ö
+                // æ‹‰æ¶ˆæ¯æƒ…å†µ
                 {
                     double avgRT = (last.pullRTTotal.get() - first.pullRTTotal.get())
                                    / (double)(last.pullTimesTotal.get() - first.pullTimesTotal.get());

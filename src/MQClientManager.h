@@ -28,7 +28,7 @@ namespace rmq
 	class ClientConfig;
 
 	/**
-	* Clientµ¥Àı¹ÜÀí
+	* Clientå•ä¾‹ç®¡ç†
 	*
 	*/
 	class MQClientManager

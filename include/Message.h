@@ -25,7 +25,7 @@
 namespace rmq
 {
 	/**
-	* ��Ϣ��Producer��Consumerʹ��
+	* 消息，Producer与Consumer使用
 	*
 	*/
 	class Message
@@ -94,27 +94,27 @@ namespace rmq
 
 	public:
 		/**
-		* ��Ϣ�ؼ��ʣ����Key��KEY_SEPARATOR��������ѯ��Ϣʹ�ã�
+		* 消息关键词，多个Key用KEY_SEPARATOR隔开（查询消息使用）
 		*/
 		static const std::string PROPERTY_KEYS;
 
 		/**
-		* ��Ϣ��ǩ��ֻ֧������һ��Tag���������Ϣ����ʹ�ã�
+		* 消息标签，只支持设置一个Tag（服务端消息过滤使用）
 		*/
 		static const std::string PROPERTY_TAGS;
 
 		/**
-		* �Ƿ�ȴ�����������Ϣ�洢����ٷ��أ������ǵȴ�ˢ����ɻ��ߵȴ�ͬ�����Ƶ�������������
+		* 是否等待服务器将消息存储完毕再返回（可能是等待刷盘完成或者等待同步复制到其他服务器）
 		*/
 		static const std::string PROPERTY_WAIT_STORE_MSG_OK;
 
 		/**
-		* ��Ϣ��ʱͶ��ʱ�伶��0��ʾ����ʱ������0��ʾ�ض���ʱ���𣨾��弶���ڷ������˶��壩
+		* 消息延时投递时间级别，0表示不延时，大于0表示特定延时级别（具体级别在服务器端定义）
 		*/
 		static const std::string PROPERTY_DELAY_TIME_LEVEL;
 
 		/**
-		* �ڲ�ʹ��
+		* 内部使用
 		*/
 		static const std::string PROPERTY_RETRY_TOPIC;
 		static const std::string PROPERTY_REAL_TOPIC;
@@ -132,15 +132,15 @@ namespace rmq
 		static const std::string KEY_SEPARATOR;
 
 	private:
-		std::string m_topic;///< ��Ϣ����
-		int m_flag;///< ��Ϣ��־��ϵͳ������Ԥ����ȫ��Ӧ�þ������ʹ��
-		std::map<std::string, std::string> m_properties;///< ��Ϣ���ԣ�ϵͳ�б������ԣ�Ӧ��Ҳ�����Զ�������
+		std::string m_topic;///< 消息主题
+		int m_flag;///< 消息标志，系统不做干预，完全由应用决定如何使用
+		std::map<std::string, std::string> m_properties;///< 消息属性，系统有保留属性，应用也可以自定义属性
 
-		char* m_body;///< ��Ϣ��
-		int   m_bodyLen;///< ��Ϣ����
+		char* m_body;///< 消息体
+		int   m_bodyLen;///< 消息长度
 
-		char* m_compressBody;///< ѹ����Ϣ��
-		int   m_compressBodyLen;///< ѹ����Ϣ����
+		char* m_compressBody;///< 压缩消息体
+		int   m_compressBodyLen;///< 压缩消息长度
 	};
 }
 

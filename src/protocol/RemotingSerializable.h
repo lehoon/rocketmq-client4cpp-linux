@@ -24,7 +24,7 @@ namespace rmq
 {
 
 	/**
-	* ¸´ÔÓ¶ÔÏóµÄĞòÁĞ»¯£¬ÀûÓÃjsonÀ´ÊµÏÖ
+	* å¤æ‚å¯¹è±¡çš„åºåˆ—åŒ–ï¼Œåˆ©ç”¨jsonæ¥å®ç°
 	*
 	*/
 	class RemotingSerializable : public kpr::RefCount

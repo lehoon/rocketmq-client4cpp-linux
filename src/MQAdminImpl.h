@@ -31,7 +31,7 @@ namespace rmq
     class MessageQueue;
 
     /**
-    * ¹ÜÀíÀà½Ó¿ÚÊµÏÖ
+    * ç®¡ç†ç±»æ¥å£å®ç°
     *
     */
     class MQAdminImpl

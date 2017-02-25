@@ -22,7 +22,7 @@
 namespace rmq
 {
 /**
- * Name server 的配置类
+ * Name server 鐨勯厤缃被
  *
  */
 class NamesrvConfig
@@ -65,7 +65,7 @@ public:
 
 private:
     std::string m_rocketmqHome;
-    std::string m_kvConfigPath;// 通用的KV配置持久化地址
+    std::string m_kvConfigPath;// 閫氱敤鐨凨V閰嶇疆鎸佷箙鍖栧湴鍧�
 };
 }
 
